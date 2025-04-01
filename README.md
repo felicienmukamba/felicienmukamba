@@ -11,7 +11,8 @@
 [![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/fr/docs/Web/CSS)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
-
+[![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
+[![Next.js](https://img.shields.io/badge/Next.js-%23000000.svg?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 
 🚀 **Ce qui m'anime :**
 
@@ -22,7 +23,7 @@ Je suis particulièrement enthousiaste à l'idée de créer des applications web
 * <a href="https://www.linkedin.com/in/felicien-mukamba-5b49ab252/" target="_blank">LinkedIn</a>
 * <a href="https://github.com/felicienmukamba/" target="_blank">GitHub</a>
 * <a href="https://x.com/felicienmukamb" target="_blank">X (Twitter)</a>
-* [Votre Adresse E-mail](mailto:felicienmukamba.cd@gmail.com)
+* <a href="mailto:felicienmukamba.cd@gmail.com">Email</a>
 
 ---
 
