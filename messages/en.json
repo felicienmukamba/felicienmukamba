@@ -1,0 +1,159 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "skills": "Skills",
+        "projects": "Projects",
+        "services": "Services",
+        "contact": "Contact"
+    },
+    "hero": {
+        "greeting": "Hello 👋, I'm",
+        "name": "Felicien Mukamba",
+        "location": "Bukavu, DRC",
+        "title": "software engineer",
+        "description": "A {title} passionate about web development from the Democratic Republic of Congo",
+        "contactBtn": "Contact Me",
+        "projectsBtn": "View My Projects"
+    },
+    "about": {
+        "title": "About {highlight}",
+        "highlight": "Me",
+        "subtitle": "Software engineer passionate about innovation and developing quality web applications",
+        "innovation": {
+            "title": "Innovation",
+            "description": "I focus on creating innovative and user-friendly web applications"
+        },
+        "learning": {
+            "title": "Continuous Learning",
+            "description": "I continuously learn and explore new web technologies"
+        },
+        "cleanCode": {
+            "title": "Clean Code",
+            "description": "Passionate about transforming ideas into reality through clean and efficient code"
+        },
+        "ux": {
+            "title": "UX/UI",
+            "description": "I love creating pleasant and intuitive user experiences"
+        },
+        "quote": "The only way to do great work is to love what you do.",
+        "quoteAuthor": "— Steve Jobs"
+    },
+    "skills": {
+        "title": "Technical {highlight}",
+        "highlight": "Skills",
+        "subtitle": "Technologies and tools I master to create innovative solutions",
+        "categories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "mobile": "Mobile",
+            "devops": "DevOps",
+            "databases": "Databases",
+            "other": "Other"
+        }
+    },
+    "projects": {
+        "title": "My {highlight}",
+        "highlight": "Projects",
+        "subtitle": "Discover some of my recent projects",
+        "viewCode": "Code",
+        "viewDetails": "Details",
+        "viewAll": "View all my projects on GitHub",
+        "items": {
+            "citizen": {
+                "title": "Citizen Management System",
+                "description": "Complete application for managing identity, health and security of citizens in DRC"
+            },
+            "citizenMobile": {
+                "title": "Citizen Mobile App",
+                "description": "Mobile version of the citizen management system developed with Flutter"
+            },
+            "facialRecognition": {
+                "title": "Facial Recognition",
+                "description": "Facial recognition application using AI for biometric authentication"
+            },
+            "yolo": {
+                "title": "YOLO Flutter App",
+                "description": "Flutter application integrating Ultralytics YOLO models for real-time object detection"
+            }
+        }
+    },
+    "services": {
+        "products": {
+            "title": "Software {highlight}",
+            "highlight": "Solutions",
+            "subtitle": "SOSIDE - Tailor-Made Software Solutions",
+            "tagline": "Innovation & Biometrics for your management",
+            "items": {
+                "school": {
+                    "title": "School Management",
+                    "description": "Tailor-made management software with biometric recognition"
+                },
+                "university": {
+                    "title": "University Management",
+                    "description": "Tailor-made management software with biometric recognition"
+                },
+                "supermarket": {
+                    "title": "Supermarket Management",
+                    "description": "Tailor-made management software for points of sale"
+                },
+                "ecommerce": {
+                    "title": "E-Commerce",
+                    "description": "Tailor-made multi-vendor online sales management software"
+                },
+                "hospital": {
+                    "title": "Hospital Management",
+                    "description": "Tailor-made management software with biometric recognition"
+                },
+                "citizen": {
+                    "title": "Citizen Management",
+                    "description": "Integrated national management software with biometric recognition"
+                }
+            }
+        },
+        "training": {
+            "title": "Digital Expert {highlight}",
+            "highlight": "Training",
+            "subtitle": "Tailor-made training to transform your career",
+            "items": {
+                "fullstack": "Full Stack Web Developer",
+                "mobile": "Full Stack Mobile Developer",
+                "devops": "DevOps Expert",
+                "data": "Data & Engineer",
+                "business": "Business Analyst",
+                "marketing": "Digital Marketing Expert",
+                "design": "Graphics Expert"
+            }
+        }
+    },
+    "contact": {
+        "title": "Contact{highlight}",
+        "highlight": " Me",
+        "subtitle": "Feel free to contact me to discuss your projects",
+        "info": {
+            "title": "Contact Information",
+            "email": "Email",
+            "phone": "Phone",
+            "location": "Location"
+        },
+        "form": {
+            "name": "Name",
+            "namePlaceholder": "Your name",
+            "email": "Email",
+            "emailPlaceholder": "your@email.com",
+            "message": "Message",
+            "messagePlaceholder": "Your message...",
+            "submit": "Send Message"
+        },
+        "cta": "Book a demonstration of our software solutions or sign up for our training to become a digital expert.",
+        "footer": {
+            "copyright": "© 2025 Felicien Mukamba. All rights reserved.",
+            "madeWith": "Built with ❤️ in the Democratic Republic of Congo 🇨🇩"
+        }
+    },
+    "theme": {
+        "light": "Light",
+        "dark": "Dark",
+        "toggle": "Toggle theme"
+    }
+}
