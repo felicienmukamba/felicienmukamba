@@ -67,9 +67,11 @@ function MainSphere() {
           attach="material"
           distort={0.4}
           speed={2}
-          roughness={0.1}
-          metalness={0.9}
+          roughness={0.4}
+          metalness={0.2}
           wireframe
+          transparent
+          opacity={0.3}
         />
       </mesh>
     </Float>
@@ -96,8 +98,8 @@ function TorusMesh() {
           attach="material"
           factor={0.3}
           speed={2}
-          roughness={0.2}
-          metalness={0.8}
+          roughness={0.6}
+          metalness={0.1}
         />
       </mesh>
     </Float>
@@ -124,8 +126,8 @@ function OctahedronMesh() {
           attach="material"
           distort={0.2}
           speed={3}
-          roughness={0.15}
-          metalness={0.85}
+          roughness={0.5}
+          metalness={0.2}
         />
       </mesh>
     </Float>
@@ -138,10 +140,10 @@ export function Scene3D() {
       <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 2]} gl={{ antialias: true, alpha: true }}>
         <color attach="background" args={["transparent"]} />
         <fog attach="fog" args={["transparent", 8, 25]} />
-        <ambientLight intensity={0.4} />
-        <directionalLight position={[10, 10, 5]} intensity={0.8} />
-        <pointLight position={[-10, -10, -5]} intensity={0.4} color="#4fd1c5" />
-        <pointLight position={[10, -10, 5]} intensity={0.3} color="#805ad5" />
+        <ambientLight intensity={1.2} />
+        <directionalLight position={[10, 10, 5]} intensity={1.5} />
+        <pointLight position={[-10, -10, -5]} intensity={1} color="#4fd1c5" />
+        <pointLight position={[10, -10, 5]} intensity={1} color="#805ad5" />
         <MainSphere />
         <TorusMesh />
         <OctahedronMesh />

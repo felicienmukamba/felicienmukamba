@@ -69,38 +69,37 @@
    DARK MODE — Premium, façon Linear / Vercel (Deep Slate & Depth)
    ═══════════════════════════════════════════════════════════════ */
 .dark {
-  /* Le fond est très profond, mais pas 100% noir pour la profondeur */
-  --background: oklch(0.12 0.005 250);
-  --foreground: oklch(0.96 0.005 250);
-  /* Blanc cassé pour éviter la fatigue visuelle */
+  /* Ultra deep background for maximum contrast (OLED style) */
+  --background: oklch(0.08 0.005 260);
+  --foreground: oklch(0.98 0 0); /* Pure white text for crispness */
 
-  /* Les cartes se détachent subtilement du fond (Elevation) */
-  --card: oklch(0.16 0.005 250);
-  --card-foreground: oklch(0.96 0.005 250);
-  --popover: oklch(0.16 0.005 250);
-  --popover-foreground: oklch(0.96 0.005 250);
+  /* Elevation cards */
+  --card: oklch(0.12 0.005 260);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.12 0.005 260);
+  --popover-foreground: oklch(0.98 0 0);
 
-  --primary: oklch(0.96 0.005 250);
-  --primary-foreground: oklch(0.12 0.005 250);
-  --secondary: oklch(0.22 0.01 250);
-  --secondary-foreground: oklch(0.96 0.005 250);
-  --muted: oklch(0.22 0.01 250);
-  --muted-foreground: oklch(0.65 0.01 250);
+  --primary: oklch(0.98 0 0);
+  --primary-foreground: oklch(0.08 0.005 260);
+  --secondary: oklch(0.15 0.01 260);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.15 0.01 260);
+  --muted-foreground: oklch(0.65 0.01 260);
 
-  /* Un accent légèrement plus lumineux en dark mode pour "poper" */
-  --accent: oklch(0.65 0.2 265);
-  --accent-foreground: oklch(0.99 0 0);
+  /* Deep vibrant accent */
+  --accent: oklch(0.65 0.25 265);
+  --accent-foreground: oklch(1 0 0);
 
-  /* Bordures nettes mais discrètes */
-  --border: oklch(0.24 0.01 250);
-  --input: oklch(0.24 0.01 250);
-  --ring: oklch(0.65 0.2 265);
+  /* Super subtle borders */
+  --border: oklch(0.20 0.01 260);
+  --input: oklch(0.20 0.01 260);
+  --ring: oklch(0.65 0.25 265);
 
   /* Dark mode accent palette */
-  --accent-blue: oklch(0.65 0.2 265);
+  --accent-blue: oklch(0.65 0.25 265);
   --accent-teal: oklch(0.72 0.16 180);
   --accent-green: oklch(0.68 0.16 155);
-  --accent-violet: oklch(0.65 0.22 290);
+  --accent-violet: oklch(0.65 0.25 290);
 
   --chart-1: oklch(0.5 0.2 264);
   --chart-2: oklch(0.7 0.15 162);
@@ -108,21 +107,20 @@
   --chart-4: oklch(0.6 0.25 303);
   --chart-5: oklch(0.65 0.24 16);
 
-  --sidebar: oklch(0.14 0.005 250);
-  --sidebar-foreground: oklch(0.96 0.005 250);
-  --sidebar-primary: oklch(0.65 0.2 265);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.20 0.01 250);
-  --sidebar-accent-foreground: oklch(0.96 0.005 250);
-  --sidebar-border: oklch(0.24 0.01 250);
-  --sidebar-ring: oklch(0.65 0.2 265);
+  --sidebar: oklch(0.08 0.005 260);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.65 0.25 265);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.15 0.01 260);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.20 0.01 260);
+  --sidebar-ring: oklch(0.65 0.25 265);
 }
 
-@theme inline {
+@theme {
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono: "Space Grotesk", "JetBrains Mono", "SF Mono", Monaco, Consolas, monospace;
 
-  /* Mapping automatique des variables vers Tailwind v4 */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -200,17 +198,17 @@
 
   /* ── Glass effect (Amélioré façon Apple avec inner-border) ── */
   .glass {
-    background: oklch(from var(--background) l c h / 0.65);
+    background: color-mix(in srgb, var(--background) 75%, transparent);
     backdrop-filter: blur(24px) saturate(1.8);
     -webkit-backdrop-filter: blur(24px) saturate(1.8);
-    border: 1px solid oklch(from var(--foreground) l c h / 0.08);
-    box-shadow: inset 0 1px 0 oklch(from var(--background) l c h / 0.4);
+    border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--background) 40%, transparent), 0 8px 32px 0 rgba(0, 0, 0, 0.05);
   }
 
   /* ── Background dot grid ── */
   .bg-grid {
     background-image: radial-gradient(circle,
-        oklch(from var(--foreground) l c h / 0.08) 1px,
+        color-mix(in srgb, var(--foreground) 10%, transparent) 1px,
         transparent 1px);
     background-size: 24px 24px;
   }
@@ -249,7 +247,7 @@
   /* ── Premium Border effect ── */
   .premium-border {
     position: relative;
-    border: 1px solid oklch(from var(--border) l c h / 0.5);
+    border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
   }
   .premium-border::before {
     content: "";
@@ -257,7 +255,7 @@
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, oklch(from var(--foreground) l c h / 0.1) 0%, transparent 50%, oklch(from var(--foreground) l c h / 0.05) 100%);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--foreground) 15%, transparent) 0%, transparent 50%, color-mix(in srgb, var(--foreground) 5%, transparent) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -266,20 +264,19 @@
 
   /* ── Hover lift effect (Ombres adoucies et plus réalistes) ── */
   .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   .hover-lift:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     box-shadow:
-      0 12px 24px -8px oklch(from var(--foreground) l c h / 0.08),
-      0 4px 8px -4px oklch(from var(--foreground) l c h / 0.04);
+      0 12px 24px -8px color-mix(in srgb, var(--foreground) 15%, transparent),
+      0 4px 8px -4px color-mix(in srgb, var(--foreground) 10%, transparent);
   }
 
   /* En dark mode, on remplace l'ombre classique par un léger "Glow" de bordure pour l'effet Lift */
   .dark .hover-lift:hover {
-    box-shadow: 0 0 0 1px oklch(from var(--foreground) l c h / 0.15),
-      0 12px 24px -8px oklch(from var(--background) 0 0 0 / 1);
+    box-shadow: 0 0 30px -5px color-mix(in srgb, var(--accent) 30%, transparent);
   }
 
   /* ── Line animation ── */
