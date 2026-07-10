@@ -7,18 +7,18 @@ import { ThemeProvider } from "next-themes"
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 })
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-mono",
   subsets: ["latin"],
+  display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "Félicien Mukamba - Software Engineer & Full-Stack Developer",
-  description:
-    "Portfolio professionnel de Félicien Mukamba, Ingénieur Logiciel & Développeur Full-Stack basé à Bukavu, RDC",
-    generator: 'v0.app'
+  title: "Félicien Mukamba | Staff Software Engineer",
+  description: "Portfolio of Félicien Mukamba, Staff Software Engineer & Full-Stack Developer",
 }
 
 export default function RootLayout({
