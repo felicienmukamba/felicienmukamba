@@ -196,8 +196,8 @@ export default function Portfolio() {
             </div>
           </header>
 
-          {/* Right Column - Scrollable */}
-          <main className="pt-24 lg:w-1/2 lg:py-24">
+          {/* Right Column - Scrollable (Glassmorphism Panel) */}
+          <main className="pt-24 lg:w-1/2 lg:py-24 lg:px-12 backdrop-blur-xl bg-background/60 border-l border-border/20 shadow-[-20px_0_40px_-10px_rgba(0,0,0,0.05)] relative min-h-screen">
             {/* About Section */}
             <section id="about" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24">
               <motion.div
@@ -253,7 +253,7 @@ export default function Portfolio() {
                       transition={{ delay: index * 0.1 }}
                       className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4"
                     >
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition-all lg:block lg:group-hover:bg-secondary/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-2xl transition-all lg:block lg:group-hover:bg-secondary/30 lg:group-hover:backdrop-blur-sm lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-sm" />
 
                       <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:col-span-2">
                         {exp.period}
@@ -337,11 +337,11 @@ export default function Portfolio() {
                       transition={{ delay: index * 0.1 }}
                       className="group relative"
                     >
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition-all lg:block lg:group-hover:bg-secondary/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
+                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-2xl transition-all lg:block lg:group-hover:bg-secondary/30 lg:group-hover:backdrop-blur-sm lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-sm" />
 
                       <div className="relative z-10 grid gap-4 sm:grid-cols-8 sm:gap-8 md:gap-4">
                         <div className="sm:col-span-3 sm:order-1 order-2">
-                          <div className="relative aspect-video rounded-md overflow-hidden border border-border/50 bg-secondary/30">
+                          <div className="relative aspect-video rounded-xl overflow-hidden border border-border/20 shadow-md bg-secondary/10">
                             <motion.img
                               src={project.image || "/placeholder.svg"}
                               alt={project.title}
@@ -587,7 +587,7 @@ export default function Portfolio() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
-                      className="p-4 rounded-lg bg-secondary/30 border border-border/50"
+                      className="p-5 rounded-2xl bg-secondary/10 border border-border/20 shadow-sm backdrop-blur-sm"
                     >
                       <h3 className="font-medium text-sm text-foreground mb-3">{category.name}</h3>
                       <div className="flex flex-wrap gap-2">
@@ -633,7 +633,7 @@ export default function Portfolio() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
-                      className="p-4 rounded-lg bg-secondary/30 border border-border/50"
+                      className="p-5 rounded-2xl bg-secondary/10 border border-border/20 shadow-sm backdrop-blur-sm"
                     >
                       <h3 className="font-medium text-foreground">{ref.name}</h3>
                       <p className="text-sm text-accent">{ref.role}</p>
@@ -662,7 +662,7 @@ export default function Portfolio() {
                   {t.contact.title}
                 </h2>
 
-                <div className="p-6 rounded-lg bg-secondary/30 border border-border/50">
+                <div className="p-8 rounded-2xl bg-secondary/10 border border-border/20 shadow-sm backdrop-blur-sm">
                   <h3 className="text-xl font-bold text-foreground mb-2">{t.contact.subtitle}</h3>
                   <p className="text-muted-foreground mb-6">{t.contact.description}</p>
 
