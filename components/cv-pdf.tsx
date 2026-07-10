@@ -195,7 +195,7 @@ export function CVPDF({ language }: CVPDFProps) {
     fr: {
       name: "FÉLICIEN MUKAMBA",
       subtitle: "Kazindja",
-      title: "Ingénieur Logiciel Full-Stack",
+      title: "Staff Software Engineer",
       contact: {
         email: "felicienmukamba.cd@gmail.com",
         phone: "+243 995 209 133",
@@ -205,13 +205,37 @@ export function CVPDF({ language }: CVPDFProps) {
       },
       profile: {
         title: "Profil",
-        text: "Développeur Full-Stack (Bac+5) spécialisé dans la conception d'architectures logicielles sécurisées pour le secteur public. Expert Java/Spring Boot et frameworks modernes (Next.js, React). Créateur du PGCC, solution d'identité numérique intégrant biométrie et chiffrement AES-256. Passionné par la souveraineté numérique africaine.",
+        text: "Fullstack Software Engineer et fondateur de SOSIDE COMPANY SAS (Bac+5), spécialisé dans la conception d'architectures logicielles distribuées. Expert Java/Spring Boot, Next.js et Docker. Créateur du PGCC, solution d'identité numérique intégrant biométrie et chiffrement AES-256. Passionné par la souveraineté numérique africaine et les systèmes hautement disponibles.",
       },
       experience: {
         title: "Expériences",
         items: [
           {
-            title: "Informaticien & Chef de Projets",
+            title: "Fondateur & Lead Software Engineer",
+            company: "SOSIDE COMPANY SAS",
+            period: "2024 - Présent",
+            description:
+              "Direction technique et stratégique. Pilotage de la transformation digitale et intégration de solutions IA pour des clients institutionnels.",
+            achievements: [
+              "Orchestration et livraison de 3 plateformes B2B majeures",
+              "Réduction du time-to-market de 40% via microservices Docker",
+              "Standardisation des pipelines CI/CD",
+            ],
+          },
+          {
+            title: "Senior Fullstack Engineer",
+            company: "Aumsoft Technology",
+            period: "Déc 2024 - Présent",
+            description:
+              "Conception d'architectures scalables et sécurisées pour des solutions web et mobile complexes.",
+            achievements: [
+              "Architecture de systèmes d'information multi-universitaires",
+              "Gestion fluide de plus de 10 000 dossiers étudiants simultanés",
+              "Déploiement de backends Spring Boot réactifs",
+            ],
+          },
+          {
+            title: "Data Manager & IT Support",
             company: "GEVAPOM ASBL",
             period: "Janvier 2024 - Présent",
             description:
@@ -219,32 +243,6 @@ export function CVPDF({ language }: CVPDFProps) {
             achievements: [
               "Réduction de 60% du temps administratif",
               "Digitalisation complète des processus éducatifs",
-              "Formation de 50+ enseignants aux outils numériques",
-              "Gestion de budgets et planification stratégique",
-            ],
-          },
-          {
-            title: "GDSC Lead",
-            company: "Google Developer Student Clubs - ISP Bukavu",
-            period: "Septembre 2023 - Juin 2024",
-            description:
-              "Leadership de la plus grande communauté tech de l'Est du Congo. Organisation d'événements majeurs et formations.",
-            achievements: [
-              "Organisation DevFest KIVU 2023 (200+ participants)",
-              "Animation de 20+ ateliers de développement",
-              "Création d'une communauté de 300+ développeurs",
-              "Mentorat de 50+ étudiants en programmation",
-            ],
-          },
-          {
-            title: "Développeur Full-Stack Freelance",
-            company: "Projets Indépendants",
-            period: "2023",
-            description: "Développement de solutions sur mesure pour clients locaux et internationaux.",
-            achievements: [
-              "5+ projets livrés avec succès",
-              "Applications utilisées par 1000+ utilisateurs",
-              "Satisfaction client à 100%",
             ],
           },
         ],
@@ -307,7 +305,7 @@ export function CVPDF({ language }: CVPDFProps) {
     en: {
       name: "FÉLICIEN MUKAMBA",
       subtitle: "Kazindja",
-      title: "Full-Stack Software Engineer",
+      title: "Staff Software Engineer",
       contact: {
         email: "felicienmukamba.cd@gmail.com",
         phone: "+243 995 209 133",
@@ -317,11 +315,35 @@ export function CVPDF({ language }: CVPDFProps) {
       },
       profile: {
         title: "Profile",
-        text: "Full-Stack Developer (Bachelor's degree) specialized in designing secure software architectures for the public sector. Expert in Java/Spring Boot and modern frameworks (Next.js, React). Creator of PGCC, a digital identity solution integrating biometrics and AES-256 encryption. Passionate about African digital sovereignty.",
+        text: "Fullstack Software Engineer and founder of SOSIDE COMPANY SAS (Master's level), specialized in designing distributed software architectures. Expert in Java/Spring Boot, Next.js, and Docker. Creator of PGCC, a digital identity solution integrating biometrics and AES-256 encryption. Passionate about African digital sovereignty and highly available systems.",
       },
       experience: {
         title: "Experience",
         items: [
+          {
+            title: "Founder & Lead Software Engineer",
+            company: "SOSIDE COMPANY SAS",
+            period: "2024 - Present",
+            description:
+              "Technical and strategic leadership. Piloting digital transformation and integrating AI solutions for institutional clients.",
+            achievements: [
+              "Orchestrated the delivery of 3 major B2B platforms",
+              "Reduced time-to-market by 40% via Docker microservices",
+              "Standardized CI/CD pipelines",
+            ],
+          },
+          {
+            title: "Senior Fullstack Engineer",
+            company: "Aumsoft Technology",
+            period: "Dec 2024 - Present",
+            description:
+              "Design of scalable and secure architectures for complex web and mobile solutions.",
+            achievements: [
+              "Architected multi-university information systems",
+              "Seamless management of over 10,000 simultaneous student records",
+              "Deployed reactive Spring Boot backends",
+            ],
+          },
           {
             title: "IT Specialist & Project Manager",
             company: "GEVAPOM ASBL",
@@ -331,32 +353,6 @@ export function CVPDF({ language }: CVPDFProps) {
             achievements: [
               "60% reduction in administrative time",
               "Complete digitalization of educational processes",
-              "Training of 50+ teachers on digital tools",
-              "Budget management and strategic planning",
-            ],
-          },
-          {
-            title: "GDSC Lead",
-            company: "Google Developer Student Clubs - ISP Bukavu",
-            period: "September 2023 - June 2024",
-            description:
-              "Leading the largest tech community in Eastern Congo. Organizing major events and training sessions.",
-            achievements: [
-              "Organized DevFest KIVU 2023 (200+ attendees)",
-              "Facilitated 20+ development workshops",
-              "Built a community of 300+ developers",
-              "Mentored 50+ students in programming",
-            ],
-          },
-          {
-            title: "Freelance Full-Stack Developer",
-            company: "Independent Projects",
-            period: "2023",
-            description: "Developing custom solutions for local and international clients.",
-            achievements: [
-              "5+ projects successfully delivered",
-              "Applications used by 1000+ users",
-              "100% client satisfaction",
             ],
           },
         ],
@@ -419,7 +415,7 @@ export function CVPDF({ language }: CVPDFProps) {
     ln: {
       name: "FÉLICIEN MUKAMBA",
       subtitle: "Kazindja",
-      title: "Ingénieur ya Logiciel Full-Stack",
+      title: "Staff Software Engineer",
       contact: {
         email: "felicienmukamba.cd@gmail.com",
         phone: "+243 995 209 133",
@@ -429,11 +425,35 @@ export function CVPDF({ language }: CVPDFProps) {
       },
       profile: {
         title: "Profile",
-        text: "Développeur Full-Stack (Bac+5) na mayele mingi ya kosala ba architectures ya logiciel oyo ebatelami mpo na secteur public. Expert ya Java/Spring Boot mpe ba frameworks ya sika. Mosali ya PGCC, solution ya identité numérique na biométrie mpe chiffrement AES-256.",
+        text: "Fullstack Software Engineer mpe mokeli ya SOSIDE COMPANY SAS (Bac+5), spécialisé na kotonga ba architectures logicielles distribuées. Expert ya Java/Spring Boot, Next.js, mpe Docker. Mosali ya PGCC, solution ya identité numérique na biométrie mpe chiffrement AES-256.",
       },
       experience: {
         title: "Misala",
         items: [
+          {
+            title: "Mokeli & Lead Software Engineer",
+            company: "SOSIDE COMPANY SAS",
+            period: "2024 - Lelo",
+            description:
+              "Bokambi technique mpe stratégique. Pilotage ya transformation digitale mpe intégration ya ba solutions IA mpo na ba clients institutionnels.",
+            achievements: [
+              "Orchestration mpe livraison ya ba plateformes B2B minene 3",
+              "Bokitisi time-to-market ya 40% na nzela ya ba microservices Docker",
+              "Standardisation ya ba pipelines CI/CD",
+            ],
+          },
+          {
+            title: "Senior Fullstack Engineer",
+            company: "Aumsoft Technology",
+            period: "Déc 2024 - Lelo",
+            description:
+              "Conception ya ba architectures scalables mpe sécurisées mpo na ba solutions web mpe mobile.",
+            achievements: [
+              "Architecture ya ba systèmes d'information multi-universitaires",
+              "Gestion ya ba dossiers étudiants 10 000+ na mbala moko",
+              "Déploiement ya ba backends Spring Boot réactifs",
+            ],
+          },
           {
             title: "Informaticien & Mokambi ya Projets",
             company: "GEVAPOM ASBL",
@@ -442,26 +462,7 @@ export function CVPDF({ language }: CVPDFProps) {
             achievements: [
               "Kokitisa 60% ya tango ya administration",
               "Digitalisation mobimba ya ba processus",
-              "Formation ya ba enseignants 50+",
             ],
-          },
-          {
-            title: "GDSC Lead",
-            company: "Google Developer Student Clubs - ISP Bukavu",
-            period: "Septembre 2023 - Juin 2024",
-            description: "Kokamba communauté tech ya monene na Est ya Congo.",
-            achievements: [
-              "Organisation DevFest KIVU 2023 (batu 200+)",
-              "Ba ateliers 20+ ya développement",
-              "Communauté ya développeurs 300+",
-            ],
-          },
-          {
-            title: "Développeur Full-Stack Freelance",
-            company: "Ba Projets Independant",
-            period: "2023",
-            description: "Kosala ba solutions mpo na ba clients.",
-            achievements: ["Projets 5+ esili", "Ba applications oyo batu 1000+ bazali kosalela"],
           },
         ],
       },

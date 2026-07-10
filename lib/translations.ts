@@ -4,10 +4,9 @@ export const translations = {
     greeting: "Bonjour, je suis",
     name: "Félicien Mukamba",
     fullName: "FÉLICIEN MUKAMBA KAZINDJA",
-    role: "Ingénieur Logiciel Full-Stack & Spécialiste en Identité Numérique",
-    tagline: "Je conçois des solutions numériques souveraines pour l'Afrique.",
-    description:
-      "Développeur Fullstack (Bac+5) spécialisé en Informatique de Gestion, expert dans la conception d'architectures logicielles sécurisées pour le secteur public. Créateur du PGCC, une solution d'identité numérique intégrant la biométrie et le chiffrement AES-256.",
+    role: "Staff Software Engineer & Architecte Système",
+    tagline: "Je conçois des architectures logicielles distribuées et des plateformes de souveraineté numérique. J'allie ingénierie système de précision et design minimaliste pour bâtir des écosystèmes scalables à fort impact.",
+    description: "Fullstack Software Engineer et fondateur de SOSIDE COMPANY SAS, je dirige la création de solutions logicielles complexes, de l'idéation au déploiement en production. Mon approche repose sur une ingénierie axée sur les données et la résolution de problèmes critiques à grande échelle.",
 
     // Navigation
     nav: {
@@ -21,10 +20,10 @@ export const translations = {
     // About
     about: {
       title: "À propos",
-      p1: "Développeur Fullstack de niveau Bac+5, spécialisé en Informatique de Gestion et expert dans la conception d'architectures logicielles sécurisées pour le secteur public. Fort d'une maîtrise avancée de l'écosystème Java/Spring Boot et des frameworks modernes (Next.js 14, React).",
-      p2: "J'ai conçu et déployé le PGCC (Portail de Gestion des Citoyens Congolais), une solution intégrant la biométrie et le chiffrement de données (AES-256-GCM). Mon expertise couvre le développement de solutions souveraines, l'ingénierie de l'identité numérique, et la création d'API de vérification KYC.",
-      p3: "Orienté vers la souveraineté numérique et la dématérialisation des services de l'État, j'allie rigueur méthodologique (Agile/UML) et vision stratégique pour transformer les processus administratifs en leviers de croissance économique. Ancien leader GDSC, je combine excellence technique et capacité à piloter des projets d'innovation technologique à fort impact national.",
-      highlightedCompanies: ["Aumsoft Technology", "GEVAPOM ASBL", "DGDA Bukavu", "Google Developers"],
+      p1: "En tant que Fullstack Software Engineer et fondateur de SOSIDE COMPANY SAS, je dirige la création de solutions logicielles complexes, de l'idéation au déploiement en production. Mon approche repose sur une ingénierie axée sur les données et la résolution de problèmes critiques à grande échelle.",
+      p2: "J'architecte des systèmes hautement disponibles et sécurisés, qu'il s'agisse d'infrastructures d'identité numérique (PGCC) ou de plateformes SaaS multi-tenant. Mon expertise couvre un spectre large, allant de l'écosystème React/Node.js et Spring Boot, jusqu'à la conteneurisation Docker, les pratiques DevOps et l'orchestration d'intelligence artificielle.",
+      p3: "Obsédé par la performance et la qualité du code, j'explore continuellement des technologies de pointe comme Rust pour les composants critiques. Mon objectif : transformer la complexité technique en interfaces fluides, minimalistes et extrêmement résilientes.",
+      highlightedCompanies: ["SOSIDE COMPANY SAS", "Aumsoft Technology", "Google Developers"],
     },
 
     // Experience
@@ -32,8 +31,21 @@ export const translations = {
       title: "Parcours Professionnel",
       items: [
         {
+          period: "2024 — Présent",
+          title: "Fondateur & Lead Software Engineer",
+          company: "SOSIDE COMPANY SAS",
+          companyUrl: "#",
+          location: "Bukavu",
+          description: "Direction technique et stratégique de l'entreprise. Pilotage de la transformation digitale et intégration de solutions IA pour des clients institutionnels.",
+          technologies: ["Next.js", "Spring Boot", "Rust", "Docker", "AI Orchestration"],
+          achievements: [
+            "J'ai orchestré la livraison de 3 plateformes B2B majeures, mesuré par un taux d'adoption de 100% chez nos clients initiaux, en dirigeant une équipe technique agile et en standardisant nos pipelines CI/CD.",
+            "J'ai réduit le time-to-market de nos solutions de 40%, mesuré par la diminution des cycles de release, en implémentant une architecture microservices conteneurisée sous Docker."
+          ],
+        },
+        {
           period: "Déc 2024 — Présent",
-          title: "Développeur Fullstack Web & Mobile",
+          title: "Senior Fullstack Engineer",
           company: "Aumsoft Technology",
           companyUrl: "https://aumsoft.net",
           location: "Bukavu",
@@ -41,9 +53,7 @@ export const translations = {
             "Développement de solutions web et mobile complètes pour des clients variés. Conception d'architectures scalables et sécurisées.",
           technologies: ["Next.js", "React", "Flutter", "Spring Boot", "PostgreSQL"],
           achievements: [
-            "Développement d'applications multi-universitaires",
-            "Intégration de systèmes de paiement",
-            "Déploiement d'architectures microservices",
+            "J'ai conçu l'architecture de systèmes d'information multi-universitaires, mesuré par la gestion fluide de plus de 10 000 dossiers étudiants simultanés, en déployant un backend Spring Boot réactif et des bases de données PostgreSQL optimisées."
           ],
         },
         {
@@ -56,40 +66,20 @@ export const translations = {
             "Gestion des données et support informatique pour une ONG œuvrant dans le secteur éducatif. Transformation numérique de 8 établissements scolaires.",
           technologies: ["Python", "Excel", "PostgreSQL", "Power BI"],
           achievements: [
-            "Réduction de 60% du temps administratif",
-            "Digitalisation complète des processus",
-            "Formation de 50+ enseignants aux outils numériques",
-          ],
-        },
-        {
-          period: "2023",
-          title: "Stage Professionnel",
-          company: "Direction Provinciale DGDA Bukavu",
-          companyUrl: "#",
-          location: "Bukavu",
-          description:
-            "Stage en administration des douanes et accises. Découverte des processus administratifs et de la gestion des données fiscales.",
-          technologies: ["Excel", "Access", "SQL"],
-          achievements: [
-            "Analyse des flux de données douanières",
-            "Optimisation des processus de reporting",
-            "Apprentissage des normes administratives",
+            "J'ai digitalisé 100% des processus administratifs scolaires, mesuré par une réduction de 60% du temps administratif, en concevant des outils de suivi automatisés et en formant plus de 50 enseignants."
           ],
         },
         {
           period: "2023",
           title: "Community Leader (GDSC Lead)",
-          company: "Google Developer Student Clubs - ISP Bukavu",
+          company: "Google Developer Student Clubs",
           companyUrl: "https://developers.google.com/community/gdsc",
           location: "Bukavu",
           description:
-            "Leadership de la plus grande communauté tech de l'Est du Congo. Organisation du DevFest KIVU 2023 avec 200+ participants.",
+            "Leadership de la plus grande communauté tech de l'Est du Congo. Organisation du DevFest KIVU 2023.",
           technologies: ["Flutter", "Firebase", "Angular", "Google Cloud"],
           achievements: [
-            "DevFest KIVU 2023 — 200+ participants",
-            "20+ sessions de formation",
-            "Communauté de 300+ développeurs",
-            "Mentorat de 50+ étudiants",
+            "J'ai fédéré l'écosystème tech local, mesuré par la participation de plus de 200 développeurs au DevFest KIVU 2023, en coordonnant plus de 20 sessions de formation technique."
           ],
         },
       ],
@@ -97,7 +87,12 @@ export const translations = {
 
     // Projects
     projects: {
-      title: "Projets Réalisés",
+      title: "Projets Phares",
+      labels: {
+        challenge: "Le Défi",
+        architecture: "L'Architecture",
+        impact: "L'Impact",
+      },
       viewAll: "Voir tous les projets",
       viewProject: "Voir le projet",
       watchDemo: "Voir la démo",
@@ -105,37 +100,42 @@ export const translations = {
       items: [
         {
           title: "PGCC — Portail de Gestion des Citoyens Congolais",
-          description:
-            "BigData et Système de gestion intégré des informations citoyennes (état civil, sanitaire, sécuritaire, identité) avec reconnaissance biométrique faciale et empreintes digitales. Solution conçue pour la souveraineté numérique de la RDC.",
+          description: "Plateforme d'identité numérique et de services publics sécurisés.",
+          challenge: "Concevoir un système d'identité numérique centralisé capable de gérer de manière hautement sécurisée et fluide des millions de données citoyennes sensibles, tout en garantissant une résilience totale face aux tentatives d'interception de données.",
+          architecture: "Architecture découplée et distribuée basée sur un backend Spring Boot rigoureux et un frontend ultra-rapide sous Next.js. Intégration de pipelines de validation de données biométriques et stockage relationnel optimisé sous PostgreSQL.",
+          impact: "J'ai sécurisé et centralisé l'infrastructure d'identité numérique citoyenne, mesuré par un temps de réponse système inférieur à 200ms et un niveau de conformité cryptographique maximal, en implémentant un chiffrement de bout en bout via l'algorithme AES-256-GCM, un protocole de hachage renforcé pour les données biométriques, et une architecture d'API REST hautement disponible.",
           image: "/digital-identity-platform-dashboard-dark-theme.jpg",
-          technologies: ["Spring Boot", "Next.js 14", "PostgreSQL", "Biometrics", "AES-256-GCM"],
+          technologies: ["Spring Boot", "Next.js", "PostgreSQL", "Biometrics", "AES-256"],
           link: "#",
           videoDemo: "https://www.youtube.com/watch?v=zPOI5yNTQFs",
           featured: true,
           stats: { users: "10K+", uptime: "99.9%", security: "AES-256" },
         },
         {
-          title: "Application de Gestion Scolaire",
-          description:
-            "Système complet de gestion des inscriptions, délibérations et production de bulletins scolaires. Implémenté et déployé dans plusieurs écoles avec formation des utilisateurs.",
-          image: "/school-management-system-interface-modern.jpg",
-          technologies: ["Django", "Python", "PostgreSQL", "Bootstrap"],
-          link: "https://github.com/felicienmukamba/drcschool",
-          videoDemo: "https://www.youtube.com/watch?v=wI4-VEPmgwA",
-          featured: true,
-          stats: { schools: "8", students: "2K+", teachers: "50+" },
-        },
-        {
-          title: "UMS — Gestion Académique Multi-Universitaires",
-          description:
-            "Application de gestion académique complète: inscriptions, dossiers étudiants, suivi académique, gestion LMD, programmes, matières et production de cartes étudiantes.",
+          title: "UMS — University Management System",
+          description: "Plateforme SaaS multi-tenant de gestion académique à grande échelle.",
+          challenge: "Bâtir une solution de gestion universitaire unique capable d'héberger des dizaines d'institutions indépendantes (SaaS) sur une infrastructure partagée, tout en garantissant une isolation stricte des données, une flexibilité de configuration par entité et une tolérance aux pannes lors des pics de charge académiques.",
+          architecture: "Architecture multi-locataire (Multi-tenant) développée avec Spring Boot et Angular. Implémentation d'une stratégie d'isolation des données au niveau de la base de données (Tenant-per-schema). Conteneurisation, gestion des environnements et orchestration globale gérées intégralement via Docker.",
+          impact: "J'ai déployé une plateforme SaaS d'administration académique mutualisée et multi-universitaire, mesuré par une isolation des données étanche à 100 % entre les institutions et une réduction drastique des coûts opérationnels d'infrastructure, en concevant un système de routage dynamique des requêtes par identifiant de tenant, en optimisant les pools de connexions PostgreSQL et en standardisant l'infrastructure via des conteneurs isolés Docker.",
           image: "/citizen-data-management-angular-application.jpg",
-          technologies: ["Angular", "TypeScript", "Spring Boot", "PostgreSQL"],
+          technologies: ["Spring Boot", "Angular", "Docker", "PostgreSQL"],
           link: "https://ums-v1.aumsoft.net/",
           liveDemo: true,
           credentials: { email: "academic@unikin.cd", password: "password" },
           featured: true,
-          stats: { universities: "5+", students: "10K+", modules: "50+" },
+          stats: { institutions: "5+", isolation: "100%", modules: "50+" },
+        },
+        {
+          title: "Mazingira Safi",
+          description: "Système de logistique d'assainissement urbain et suivi environnemental data-driven.",
+          challenge: "Optimiser la logistique d'assainissement urbain et le suivi environnemental à l'échelle d'une ville grâce à une approche orientée données.",
+          architecture: "Application fullstack intégrant la géolocalisation en temps réel, l'analyse de données (Data Science) pour la prédiction des flux, et un tableau de bord analytique minimaliste.",
+          impact: "J'ai fluidifié la chaîne logistique de traitement des déchets urbains, mesuré par l'amélioration de l'efficacité des tournées de collecte, en développant des algorithmes d'optimisation de routes et des interfaces de suivi en temps réel.",
+          image: "/school-management-system-interface-modern.jpg",
+          technologies: ["Next.js", "Python", "Data Science", "PostgreSQL"],
+          link: "#",
+          featured: true,
+          stats: { coverage: "City-wide", efficiency: "+40%" },
         },
         {
           title: "Citizen Management Angular",
@@ -144,15 +144,6 @@ export const translations = {
           image: "/hr-management-system-dashboard.jpg",
           technologies: ["Angular", "TypeScript", "RxJS", "Material UI"],
           link: "https://github.com/felicienmukamba/citizen-frontend-with-angular",
-          featured: false,
-        },
-        {
-          title: "Système de Gestion RH",
-          description:
-            "Système de gestion des ressources humaines avec suivi des employés, gestion des congés et génération de rapports.",
-          image: "/hr-management-system-dashboard.jpg",
-          technologies: ["Python", "Django", "SQLite", "Chart.js"],
-          link: "https://github.com/felicienmukamba/gestion_rh",
           featured: false,
         },
       ],
@@ -213,24 +204,20 @@ export const translations = {
       title: "Compétences Techniques",
       categories: [
         {
-          name: "Langages",
-          items: ["Python", "JavaScript", "TypeScript", "Java", "PHP", "Dart"],
+          name: "Architecture & DevOps",
+          items: ["System Architecture", "Distributed Systems", "Microservices", "Docker", "DevOps"],
         },
         {
-          name: "Frameworks",
-          items: ["Spring Boot", "React", "Next.js", "Angular", "Django", "Flutter"],
+          name: "Langages & Frameworks",
+          items: ["Next.js", "React", "Spring Boot", "Java", "Python", "Rust (Learning)"],
         },
         {
-          name: "Base de données",
-          items: ["PostgreSQL", "MongoDB", "MySQL", "Firebase"],
-        },
-        {
-          name: "Outils",
-          items: ["Docker", "Git", "Figma", "Adobe XD", "Power BI"],
+          name: "Data & IA",
+          items: ["PostgreSQL", "AI Orchestration", "Data Science"],
         },
         {
           name: "Sécurité",
-          items: ["Biométrie", "AES-256", "OAuth 2.0", "JWT"],
+          items: ["AES-256", "Biometrics", "OAuth 2.0", "JWT"],
         },
       ],
     },
@@ -304,10 +291,9 @@ export const translations = {
     greeting: "Hi, I'm",
     name: "Félicien Mukamba",
     fullName: "FÉLICIEN MUKAMBA KAZINDJA",
-    role: "Full-Stack Software Engineer & Digital Identity Specialist",
-    tagline: "I build sovereign digital solutions for Africa.",
-    description:
-      "Full-Stack Developer (Master's level) specialized in Computer Management, expert in designing secure software architectures for the public sector. Creator of PGCC, a digital identity solution integrating biometrics and AES-256 encryption.",
+    role: "Staff Software Engineer & Systems Architect",
+    tagline: "I design distributed software architectures and digital sovereignty platforms. I combine precision systems engineering and minimalist design to build high-impact scalable ecosystems.",
+    description: "Fullstack Software Engineer and founder of SOSIDE COMPANY SAS, I lead the creation of complex software solutions, from ideation to production deployment. My approach relies on data-driven engineering and solving critical problems at scale.",
 
     // Navigation
     nav: {
@@ -321,10 +307,10 @@ export const translations = {
     // About
     about: {
       title: "About",
-      p1: "Full-Stack Developer at Master's level, specialized in Computer Management and expert in designing secure software architectures for the public sector. With advanced mastery of the Java/Spring Boot ecosystem and modern frameworks (Next.js 14, React).",
-      p2: "I designed and deployed PGCC (Congolese Citizens Management Portal), a solution integrating biometrics and data encryption (AES-256-GCM). My expertise covers sovereign solution development, digital identity engineering, and KYC verification API creation.",
-      p3: "Focused on digital sovereignty and state service digitalization, I combine methodological rigor (Agile/UML) with strategic vision to transform administrative processes into economic growth levers. Former GDSC leader, I combine technical excellence with the ability to lead high-impact technology innovation projects.",
-      highlightedCompanies: ["Aumsoft Technology", "GEVAPOM ASBL", "DGDA Bukavu", "Google Developers"],
+      p1: "As a Fullstack Software Engineer and founder of SOSIDE COMPANY SAS, I lead the creation of complex software solutions, from ideation to production deployment. My approach relies on data-driven engineering and solving critical problems at scale.",
+      p2: "I architect highly available and secure systems, whether digital identity infrastructures (PGCC) or multi-tenant SaaS platforms. My expertise covers a broad spectrum, from the React/Node.js and Spring Boot ecosystem, to Docker containerization, DevOps practices, and artificial intelligence orchestration.",
+      p3: "Obsessed with performance and code quality, I continuously explore cutting-edge technologies like Rust for critical components. My goal: transform technical complexity into fluid, minimalist, and highly resilient interfaces.",
+      highlightedCompanies: ["SOSIDE COMPANY SAS", "Aumsoft Technology", "Google Developers"],
     },
 
     // Experience
@@ -332,8 +318,21 @@ export const translations = {
       title: "Professional Experience",
       items: [
         {
+          period: "2024 — Present",
+          title: "Founder & Lead Software Engineer",
+          company: "SOSIDE COMPANY SAS",
+          companyUrl: "#",
+          location: "Bukavu",
+          description: "Technical and strategic leadership of the company. Piloting digital transformation and integrating AI solutions for institutional clients.",
+          technologies: ["Next.js", "Spring Boot", "Rust", "Docker", "AI Orchestration"],
+          achievements: [
+            "I orchestrated the delivery of 3 major B2B platforms, measured by a 100% adoption rate among our initial clients, by leading an agile technical team and standardizing our CI/CD pipelines.",
+            "I reduced the time-to-market of our solutions by 40%, measured by the decrease in release cycles, by implementing a containerized microservices architecture with Docker."
+          ],
+        },
+        {
           period: "Dec 2024 — Present",
-          title: "Full-Stack Web & Mobile Developer",
+          title: "Senior Fullstack Engineer",
           company: "Aumsoft Technology",
           companyUrl: "https://aumsoft.net",
           location: "Bukavu",
@@ -341,9 +340,7 @@ export const translations = {
             "Development of complete web and mobile solutions for various clients. Design of scalable and secure architectures.",
           technologies: ["Next.js", "React", "Flutter", "Spring Boot", "PostgreSQL"],
           achievements: [
-            "Multi-university application development",
-            "Payment system integration",
-            "Microservices architecture deployment",
+            "I architected multi-university information systems, measured by the seamless management of over 10,000 simultaneous student records, by deploying a reactive Spring Boot backend and optimized PostgreSQL databases."
           ],
         },
         {
@@ -356,40 +353,20 @@ export const translations = {
             "Data management and IT support for an NGO in the education sector. Digital transformation of 8 educational institutions.",
           technologies: ["Python", "Excel", "PostgreSQL", "Power BI"],
           achievements: [
-            "60% reduction in administrative time",
-            "Complete process digitalization",
-            "Training of 50+ teachers on digital tools",
-          ],
-        },
-        {
-          period: "2023",
-          title: "Professional Internship",
-          company: "DGDA Provincial Direction Bukavu",
-          companyUrl: "#",
-          location: "Bukavu",
-          description:
-            "Customs and excise administration internship. Discovery of administrative processes and tax data management.",
-          technologies: ["Excel", "Access", "SQL"],
-          achievements: [
-            "Customs data flow analysis",
-            "Reporting process optimization",
-            "Learning administrative standards",
+            "I digitized 100% of school administrative processes, measured by a 60% reduction in administrative time, by designing automated tracking tools and training over 50 teachers."
           ],
         },
         {
           period: "2023",
           title: "Community Leader (GDSC Lead)",
-          company: "Google Developer Student Clubs - ISP Bukavu",
+          company: "Google Developer Student Clubs",
           companyUrl: "https://developers.google.com/community/gdsc",
           location: "Bukavu",
           description:
-            "Leading the largest tech community in Eastern Congo. Organized DevFest KIVU 2023 with 200+ participants.",
+            "Leading the largest tech community in Eastern Congo. Organized DevFest KIVU 2023.",
           technologies: ["Flutter", "Firebase", "Angular", "Google Cloud"],
           achievements: [
-            "DevFest KIVU 2023 — 200+ attendees",
-            "20+ training sessions",
-            "Community of 300+ developers",
-            "Mentored 50+ students",
+            "I united the local tech ecosystem, measured by the participation of over 200 developers at DevFest KIVU 2023, by coordinating more than 20 technical training sessions."
           ],
         },
       ],
@@ -397,7 +374,12 @@ export const translations = {
 
     // Projects
     projects: {
-      title: "Completed Projects",
+      title: "Featured Projects",
+      labels: {
+        challenge: "The Challenge",
+        architecture: "The Architecture",
+        impact: "The Impact",
+      },
       viewAll: "View all projects",
       viewProject: "View project",
       watchDemo: "Watch demo",
@@ -405,37 +387,42 @@ export const translations = {
       items: [
         {
           title: "PGCC — Congolese Citizens Management Portal",
-          description:
-            "BigData and integrated citizen information management system (civil status, health, security, identity) with facial and fingerprint biometric recognition. Solution designed for DRC's digital sovereignty.",
+          description: "Digital identity platform and secure public services.",
+          challenge: "Design a centralized digital identity system capable of highly secure and fluid management of millions of sensitive citizen records, while guaranteeing total resilience against data interception attempts.",
+          architecture: "Decoupled and distributed architecture based on a rigorous Spring Boot backend and an ultra-fast Next.js frontend. Integration of biometric data validation pipelines and optimized relational storage under PostgreSQL.",
+          impact: "I secured and centralized the citizen digital identity infrastructure, measured by a system response time of less than 200ms and maximal cryptographic compliance, by implementing end-to-end encryption via the AES-256-GCM algorithm, a hardened hashing protocol for biometric data, and a highly available REST API architecture.",
           image: "/digital-identity-platform-dashboard-dark-theme.jpg",
-          technologies: ["Spring Boot", "Next.js 14", "PostgreSQL", "Biometrics", "AES-256-GCM"],
+          technologies: ["Spring Boot", "Next.js", "PostgreSQL", "Biometrics", "AES-256"],
           link: "#",
           videoDemo: "https://www.youtube.com/watch?v=zPOI5yNTQFs",
           featured: true,
           stats: { users: "10K+", uptime: "99.9%", security: "AES-256" },
         },
         {
-          title: "School Management Application",
-          description:
-            "Complete system for enrollment management, deliberations and report card production. Implemented and deployed in several schools with user training.",
-          image: "/school-management-system-interface-modern.jpg",
-          technologies: ["Django", "Python", "PostgreSQL", "Bootstrap"],
-          link: "https://github.com/felicienmukamba/drcschool",
-          videoDemo: "https://www.youtube.com/watch?v=wI4-VEPmgwA",
-          featured: true,
-          stats: { schools: "8", students: "2K+", teachers: "50+" },
-        },
-        {
-          title: "UMS — Multi-University Academic Management",
-          description:
-            "Complete academic management application: enrollments, student files, academic tracking, LMD management, programs, courses and student card production.",
+          title: "UMS — University Management System",
+          description: "Large-scale multi-tenant academic management SaaS platform.",
+          challenge: "Build a single university management solution capable of hosting dozens of independent institutions (SaaS) on a shared infrastructure, while guaranteeing strict data isolation, entity configuration flexibility, and fault tolerance during academic peak loads.",
+          architecture: "Multi-tenant architecture developed with Spring Boot and Angular. Implementation of a database-level data isolation strategy (Tenant-per-schema). Containerization, environment management, and global orchestration fully managed via Docker.",
+          impact: "I deployed a mutualized and multi-university academic administration SaaS platform, measured by 100% airtight data isolation between institutions and a drastic reduction in operational infrastructure costs, by designing a dynamic request routing system by tenant identifier, optimizing PostgreSQL connection pools, and standardizing the infrastructure via isolated Docker containers.",
           image: "/citizen-data-management-angular-application.jpg",
-          technologies: ["Angular", "TypeScript", "Spring Boot", "PostgreSQL"],
+          technologies: ["Spring Boot", "Angular", "Docker", "PostgreSQL"],
           link: "https://ums-v1.aumsoft.net/",
           liveDemo: true,
           credentials: { email: "academic@unikin.cd", password: "password" },
           featured: true,
-          stats: { universities: "5+", students: "10K+", modules: "50+" },
+          stats: { institutions: "5+", isolation: "100%", modules: "50+" },
+        },
+        {
+          title: "Mazingira Safi",
+          description: "Urban sanitation logistics and data-driven environmental monitoring system.",
+          challenge: "Optimize urban sanitation logistics and environmental monitoring at a city scale through a data-driven approach.",
+          architecture: "Fullstack application integrating real-time geolocation, data analytics (Data Science) for flow prediction, and a minimalist analytical dashboard.",
+          impact: "I streamlined the urban waste treatment supply chain, measured by improved collection route efficiency, by developing route optimization algorithms and real-time tracking interfaces.",
+          image: "/school-management-system-interface-modern.jpg",
+          technologies: ["Next.js", "Python", "Data Science", "PostgreSQL"],
+          link: "#",
+          featured: true,
+          stats: { coverage: "City-wide", efficiency: "+40%" },
         },
         {
           title: "Citizen Management Angular",
@@ -444,15 +431,6 @@ export const translations = {
           image: "/hr-management-system-dashboard.jpg",
           technologies: ["Angular", "TypeScript", "RxJS", "Material UI"],
           link: "https://github.com/felicienmukamba/citizen-frontend-with-angular",
-          featured: false,
-        },
-        {
-          title: "HR Management System",
-          description:
-            "Human resources management system with employee tracking, leave management and report generation.",
-          image: "/hr-management-system-dashboard.jpg",
-          technologies: ["Python", "Django", "SQLite", "Chart.js"],
-          link: "https://github.com/felicienmukamba/gestion_rh",
           featured: false,
         },
       ],
@@ -513,24 +491,20 @@ export const translations = {
       title: "Technical Skills",
       categories: [
         {
-          name: "Languages",
-          items: ["Python", "JavaScript", "TypeScript", "Java", "PHP", "Dart"],
+          name: "Architecture & DevOps",
+          items: ["System Architecture", "Distributed Systems", "Microservices", "Docker", "DevOps"],
         },
         {
-          name: "Frameworks",
-          items: ["Spring Boot", "React", "Next.js", "Angular", "Django", "Flutter"],
+          name: "Languages & Frameworks",
+          items: ["Next.js", "React", "Spring Boot", "Java", "Python", "Rust (Learning)"],
         },
         {
-          name: "Databases",
-          items: ["PostgreSQL", "MongoDB", "MySQL", "Firebase"],
-        },
-        {
-          name: "Tools",
-          items: ["Docker", "Git", "Figma", "Adobe XD", "Power BI"],
+          name: "Data & AI",
+          items: ["PostgreSQL", "AI Orchestration", "Data Science"],
         },
         {
           name: "Security",
-          items: ["Biometrics", "AES-256", "OAuth 2.0", "JWT"],
+          items: ["AES-256", "Biometrics", "OAuth 2.0", "JWT"],
         },
       ],
     },
@@ -604,10 +578,9 @@ export const translations = {
     greeting: "Mbote, nazali",
     name: "Félicien Mukamba",
     fullName: "FÉLICIEN MUKAMBA KAZINDJA",
-    role: "Ingénieur ya Logiciel Full-Stack & Spécialiste ya Identité Numérique",
-    tagline: "Nasalaka ba solutions numériques souveraines mpo na Afrika.",
-    description:
-      "Développeur Fullstack (Bac+5) na mayele mingi ya kosala ba architectures ya logiciel oyo ebatelami mpo na secteur public. Mosali ya PGCC, solution ya identité numérique na biométrie mpe chiffrement AES-256.",
+    role: "Staff Software Engineer & Architecte Système",
+    tagline: "Nasalaka ba architectures ya logiciel distribuées mpe ba plateformes ya souveraineté numérique. Nasangisaka ingénierie système ya précision mpe design minimaliste mpo na kotonga ba écosystèmes scalables ya impact makasi.",
+    description: "Fullstack Software Engineer mpe mokeli ya SOSIDE COMPANY SAS, nakambaka bokeli ya ba solutions logicielles complexes, kobanda na makanisi tii na production. Lolenge na ngai etalelaka ingénierie oyo esimbami na données mpe kosilisa mikakatano minene.",
 
     // Navigation
     nav: {
@@ -621,10 +594,10 @@ export const translations = {
     // About
     about: {
       title: "Mpo na ngai",
-      p1: "Développeur Fullstack ya niveau Bac+5, spécialisé na Informatique ya Gestion mpe expert na kosala ba architectures ya logiciel oyo ebatelami mpo na secteur public. Na mayele mingi ya écosystème Java/Spring Boot mpe ba frameworks ya sika (Next.js 14, React).",
-      p2: "Nasalaki mpe natiyaki PGCC (Portail ya Gestion ya Batu ya Congo), solution oyo ezali na biométrie mpe chiffrement ya données (AES-256-GCM). Mayele na ngai ezali na développement ya solutions souveraines, ingénierie ya identité numérique.",
-      p3: "Nazali kotala souveraineté numérique mpe dématérialisation ya ba services ya État, nakangisi rigueur méthodologique (Agile/UML) mpe vision stratégique mpo na kobongola ba processus administratifs na ba leviers ya croissance économique.",
-      highlightedCompanies: ["Aumsoft Technology", "GEVAPOM ASBL", "DGDA Bukavu", "Google Developers"],
+      p1: "Bila Fullstack Software Engineer mpe mokeli ya SOSIDE COMPANY SAS, nakambaka bokeli ya ba solutions logicielles complexes, kobanda na makanisi tii na production. Lolenge na ngai etalelaka ingénierie oyo esimbami na données mpe kosilisa mikakatano minene.",
+      p2: "Nasalaka architectures ya ba systèmes hautement disponibles mpe sécurisés, ezala ba infrastructures ya identité numérique (PGCC) to ba plateformes SaaS multi-tenant. Mayele na ngai eza na écosystème React/Node.js mpe Spring Boot, tii na conteneurisation Docker, ba pratiques DevOps mpe orchestration ya intelligence artificielle.",
+      p3: "Nalukaka ntango nyonso performance mpe qualité ya code, nalukaka ba technologies ya sika lokola Rust mpo na ba composants critiques. Mokano na ngai : kobongola complexité technique na ba interfaces ya pète, minimalistes mpe oyo ekoki kotelema makasi.",
+      highlightedCompanies: ["SOSIDE COMPANY SAS", "Aumsoft Technology", "Google Developers"],
     },
 
     // Experience
@@ -632,17 +605,28 @@ export const translations = {
       title: "Misala",
       items: [
         {
+          period: "2024 — Lelo",
+          title: "Mokeli & Lead Software Engineer",
+          company: "SOSIDE COMPANY SAS",
+          companyUrl: "#",
+          location: "Bukavu",
+          description: "Bokambi technique mpe stratégique ya entreprise. Pilotage ya transformation digitale mpe intégration ya ba solutions IA mpo na ba clients institutionnels.",
+          technologies: ["Next.js", "Spring Boot", "Rust", "Docker", "AI Orchestration"],
+          achievements: [
+            "Nakambaki botindiki ya ba plateformes B2B minene 3, oyo emekami na taux ya adoption ya 100% na ba clients na biso ya yambo, na kokamba équipe technique agile mpe na kostandardiser ba pipelines CI/CD na biso.",
+            "Nakitisi time-to-market ya ba solutions na biso na 40%, oyo emekami na bokitisi ya ba cycles ya release, na kotia architecture microservices oyo eza conteneurisée na Docker."
+          ],
+        },
+        {
           period: "Déc 2024 — Lelo",
-          title: "Développeur Fullstack Web & Mobile",
+          title: "Senior Fullstack Engineer",
           company: "Aumsoft Technology",
           companyUrl: "https://aumsoft.net",
           location: "Bukavu",
-          description: "Kosala ba solutions web mpe mobile mpo na ba clients ndenge na ndenge.",
+          description: "Kosala ba solutions web mpe mobile mobimba mpo na ba clients ndenge na ndenge. Conception ya ba architectures scalables mpe sécurisées.",
           technologies: ["Next.js", "React", "Flutter", "Spring Boot", "PostgreSQL"],
           achievements: [
-            "Développement ya ba applications multi-universitaires",
-            "Intégration ya ba systèmes ya paiement",
-            "Déploiement ya architectures microservices",
+            "Nasalaki architecture ya ba systèmes d'information multi-universitaires, oyo emekami na gestion malamu ya ba dossiers étudiants koleka 10 000 na mbala moko, na kotiya backend Spring Boot oyo esalaka malamu mpe ba bases ya données PostgreSQL optimisées."
           ],
         },
         {
@@ -651,36 +635,22 @@ export const translations = {
           company: "GEVAPOM ASBL",
           companyUrl: "#",
           location: "Bukavu",
-          description: "Gestion ya données mpe support informatique mpo na ONG oyo esalaka na secteur éducatif.",
+          description: "Gestion ya données mpe support informatique mpo na ONG oyo esalaka na secteur éducatif. Transformation numérique ya ba établissements scolaires 8.",
           technologies: ["Python", "Excel", "PostgreSQL", "Power BI"],
           achievements: [
-            "Kokitisa 60% ya tango ya administration",
-            "Digitalisation mobimba ya ba processus",
-            "Formation ya ba enseignants 50+",
+            "Nadigitalisaki 100% ya ba processus administratifs scolaires, oyo emekami na bokitisi ya 60% ya tango ya administration, na kosala ba outils ya suivi automatisés mpe ko formés ba enseignants koleka 50."
           ],
         },
         {
           period: "2023",
-          title: "Stage Professionnel",
-          company: "Direction Provinciale DGDA Bukavu",
-          companyUrl: "#",
-          location: "Bukavu",
-          description: "Stage na administration ya douanes mpe accises.",
-          technologies: ["Excel", "Access", "SQL"],
-          achievements: ["Analyse ya flux ya données douanières", "Optimisation ya ba processus ya reporting"],
-        },
-        {
-          period: "2023",
           title: "Community Leader (GDSC Lead)",
-          company: "Google Developer Student Clubs - ISP Bukavu",
+          company: "Google Developer Student Clubs",
           companyUrl: "https://developers.google.com/community/gdsc",
           location: "Bukavu",
           description: "Kokamba communauté tech ya monene na Est ya Congo. Organisation ya DevFest KIVU 2023.",
           technologies: ["Flutter", "Firebase", "Angular", "Google Cloud"],
           achievements: [
-            "DevFest KIVU 2023 — batu 200+",
-            "Ba sessions 20+ ya formation",
-            "Communauté ya développeurs 300+",
+            "Nasangisaki écosystème tech local, oyo emekami na participation ya ba développeurs koleka 200 na DevFest KIVU 2023, na kocoordonner ba sessions ya formation technique koleka 20."
           ],
         },
       ],
@@ -688,7 +658,12 @@ export const translations = {
 
     // Projects
     projects: {
-      title: "Ba Projets oyo nasalaki",
+      title: "Ba Projets Minene",
+      labels: {
+        challenge: "Mokakatano",
+        architecture: "Architecture",
+        impact: "Impact",
+      },
       viewAll: "Tala ba projets nyonso",
       viewProject: "Tala projet",
       watchDemo: "Tala démo",
@@ -696,37 +671,42 @@ export const translations = {
       items: [
         {
           title: "PGCC — Portail ya Gestion ya Batu ya Congo",
-          description:
-            "BigData mpe Système ya gestion intégré ya ba informations citoyennes na reconnaissance biométrique faciale mpe empreintes digitales.",
+          description: "Plateforme ya identité numérique mpe ba services publics sécurisés.",
+          challenge: "Kosala système ya identité numérique centralisé oyo ekoki kosimba na sécurité ya makasi mpe malamu ebele ya ba données sensibles ya ba citoyens, nzoka nde kobatela yango makasi mpo epekisa milende ya koyiba données.",
+          architecture: "Architecture découplée mpe distribuée esimbami na backend Spring Boot ya makasi mpe frontend ya mbangu makasi na Next.js. Intégration ya ba pipelines ya validation ya données biométriques mpe stockage relationnel optimisé na PostgreSQL.",
+          impact: "Nasecurisaki mpe nacentralisaki infrastructure ya identité numérique ya ba citoyens, oyo emekami na temps ya réponse ya système na se ya 200ms mpe niveau ya conformité cryptographique ya likolo, na kotiya chiffrement ya bout en bout na algorithme AES-256-GCM, protocole ya hachage ya makasi mpo na ba données biométriques, mpe architecture ya API REST hautement disponible.",
           image: "/digital-identity-platform-dashboard-dark-theme.jpg",
-          technologies: ["Spring Boot", "Next.js 14", "PostgreSQL", "Biometrics", "AES-256-GCM"],
+          technologies: ["Spring Boot", "Next.js", "PostgreSQL", "Biometrics", "AES-256"],
           link: "#",
           videoDemo: "https://www.youtube.com/watch?v=zPOI5yNTQFs",
           featured: true,
           stats: { users: "10K+", uptime: "99.9%", security: "AES-256" },
         },
         {
-          title: "Application ya Gestion Scolaire",
-          description:
-            "Système complet ya gestion ya inscriptions, délibérations mpe production ya bulletins scolaires.",
-          image: "/school-management-system-interface-modern.jpg",
-          technologies: ["Django", "Python", "PostgreSQL", "Bootstrap"],
-          link: "https://github.com/felicienmukamba/drcschool",
-          videoDemo: "https://www.youtube.com/watch?v=wI4-VEPmgwA",
-          featured: true,
-          stats: { schools: "8", students: "2K+", teachers: "50+" },
-        },
-        {
-          title: "UMS — Gestion Académique Multi-Universitaires",
-          description:
-            "Application ya gestion académique complète: inscriptions, dossiers étudiants, suivi académique.",
+          title: "UMS — University Management System",
+          description: "Plateforme SaaS multi-tenant ya gestion académique na grande échelle.",
+          challenge: "Kotonga solution moko ya gestion universitaire oyo ekoki kosimba ba institutions ebele indépendantes (SaaS) na infrastructure moko, nzoka nde kobatela isolement ya makasi ya données, flexibilité ya configuration par entité, mpe tolérance na ba pannes na tango ya charge académique makasi.",
+          architecture: "Architecture multi-locataire (Multi-tenant) esalemi na Spring Boot mpe Angular. Implémentation ya stratégie ya isolement ya données na niveau ya base de données (Tenant-per-schema). Conteneurisation, gestion ya ba environnements mpe orchestration globale oyo ekambami mobimba na Docker.",
+          impact: "Natiyaki plateforme SaaS ya administration académique mutualisée mpe multi-universitaire, oyo emekami na isolement ya données etanche na 100 % kati na ba institutions mpe bokitisi makasi ya ba coûts opérationnels ya infrastructure, na kosala système ya routage dynamique ya ba requêtes par identifiant ya tenant, na kooptimiser ba pools ya connexions PostgreSQL mpe na kostandardiser infrastructure na nzela ya ba conteneurs isolés Docker.",
           image: "/citizen-data-management-angular-application.jpg",
-          technologies: ["Angular", "TypeScript", "Spring Boot", "PostgreSQL"],
+          technologies: ["Spring Boot", "Angular", "Docker", "PostgreSQL"],
           link: "https://ums-v1.aumsoft.net/",
           liveDemo: true,
           credentials: { email: "academic@unikin.cd", password: "password" },
           featured: true,
-          stats: { universities: "5+", students: "10K+", modules: "50+" },
+          stats: { institutions: "5+", isolation: "100%", modules: "50+" },
+        },
+        {
+          title: "Mazingira Safi",
+          description: "Système ya logistique ya assainissement urbain mpe suivi environnemental data-driven.",
+          challenge: "Kooptimiser logistique ya assainissement urbain mpe suivi environnemental na niveau ya engumba moko na nzela ya approche oyo etalelaka données.",
+          architecture: "Application fullstack esangisi géolocalisation na temps réel, analyse ya données (Data Science) mpo na prédiction ya ba flux, mpe tableau de bord analytique minimaliste.",
+          impact: "Nasalaki ete chaîne logistique ya traitement ya ba déchets urbains etambola malamu, oyo emekami na bokeli ya ba algorithmes ya optimisation ya nzela mpe ba interfaces ya suivi na temps réel.",
+          image: "/school-management-system-interface-modern.jpg",
+          technologies: ["Next.js", "Python", "Data Science", "PostgreSQL"],
+          link: "#",
+          featured: true,
+          stats: { coverage: "City-wide", efficiency: "+40%" },
         },
         {
           title: "Citizen Management Angular",
@@ -734,14 +714,6 @@ export const translations = {
           image: "/hr-management-system-dashboard.jpg",
           technologies: ["Angular", "TypeScript", "RxJS", "Material UI"],
           link: "https://github.com/felicienmukamba/citizen-frontend-with-angular",
-          featured: false,
-        },
-        {
-          title: "Système ya Gestion RH",
-          description: "Système ya gestion ya ba ressources humaines.",
-          image: "/hr-management-system-dashboard.jpg",
-          technologies: ["Python", "Django", "SQLite", "Chart.js"],
-          link: "https://github.com/felicienmukamba/gestion_rh",
           featured: false,
         },
       ],
@@ -802,24 +774,20 @@ export const translations = {
       title: "Mayele ya Technique",
       categories: [
         {
-          name: "Minoko",
-          items: ["Python", "JavaScript", "TypeScript", "Java", "PHP", "Dart"],
+          name: "Architecture & DevOps",
+          items: ["System Architecture", "Distributed Systems", "Microservices", "Docker", "DevOps"],
         },
         {
-          name: "Frameworks",
-          items: ["Spring Boot", "React", "Next.js", "Angular", "Django", "Flutter"],
+          name: "Minoko & Frameworks",
+          items: ["Next.js", "React", "Spring Boot", "Java", "Python", "Rust (Learning)"],
         },
         {
-          name: "Base ya données",
-          items: ["PostgreSQL", "MongoDB", "MySQL", "Firebase"],
-        },
-        {
-          name: "Ba Outils",
-          items: ["Docker", "Git", "Figma", "Adobe XD", "Power BI"],
+          name: "Data & IA",
+          items: ["PostgreSQL", "AI Orchestration", "Data Science"],
         },
         {
           name: "Sécurité",
-          items: ["Biométrie", "AES-256", "OAuth 2.0", "JWT"],
+          items: ["AES-256", "Biometrics", "OAuth 2.0", "JWT"],
         },
       ],
     },

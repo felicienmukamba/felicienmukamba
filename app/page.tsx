@@ -383,7 +383,28 @@ export default function Portfolio() {
                             </a>
                           </h3>
 
-                          <p className="mt-2 text-sm leading-normal text-muted-foreground">{project.description}</p>
+                          {project.description && (
+                            <p className="mt-2 text-sm leading-normal text-muted-foreground">{project.description}</p>
+                          )}
+                          {/* Case Study Fields */}
+                          {(project as any).challenge && (
+                            <div className="mt-4">
+                              <h4 className="text-[10px] font-bold text-foreground uppercase tracking-widest mb-1">Le Défi</h4>
+                              <p className="text-sm leading-normal text-muted-foreground">{(project as any).challenge}</p>
+                            </div>
+                          )}
+                          {(project as any).architecture && (
+                            <div className="mt-3">
+                              <h4 className="text-[10px] font-bold text-foreground uppercase tracking-widest mb-1">L'Architecture</h4>
+                              <p className="text-sm leading-normal text-muted-foreground">{(project as any).architecture}</p>
+                            </div>
+                          )}
+                          {(project as any).impact && (
+                            <div className="mt-3">
+                              <h4 className="text-[10px] font-bold text-foreground uppercase tracking-widest mb-1">L'Impact</h4>
+                              <p className="text-sm leading-normal text-muted-foreground">{(project as any).impact}</p>
+                            </div>
+                          )}
 
                           {/* Stats */}
                           {project.featured && project.stats && (
