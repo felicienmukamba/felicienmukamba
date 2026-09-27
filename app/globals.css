@@ -4,125 +4,83 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ═══════════════════════════════════════════════════════════════
-   LIGHT MODE — Clean, bright, Apple-like
+   Design tokens
+   Light is the fallback; the site ships in dark by default.
    ═══════════════════════════════════════════════════════════════ */
 :root {
-  /* Fonds & Textes - Contraste adouci pour la lecture */
-  --background: oklch(0.99 0 0);
-  /* Presque blanc pur */
-  --foreground: oklch(0.15 0.01 250);
-  /* Gris ardoise très foncé, moins agressif que le noir pur */
+  --background: oklch(0.985 0.003 280);
+  --foreground: oklch(0.2 0.02 280);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.965 0.006 280);
+  --muted-foreground: oklch(0.46 0.02 280);
+  --subtle-foreground: oklch(0.58 0.015 280);
+  --line: oklch(0.2 0.02 280 / 0.1);
+  --line-strong: oklch(0.2 0.02 280 / 0.18);
 
-  /* Surfaces (Cartes, Modales) */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.01 250);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.01 250);
-
-  /* Couleurs d'action */
-  --primary: oklch(0.15 0.01 250);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.01 250);
-  --secondary-foreground: oklch(0.15 0.01 250);
-  --muted: oklch(0.96 0.01 250);
-  --muted-foreground: oklch(0.55 0.02 250);
-
-  /* Accents & États */
-  --accent: oklch(0.55 0.18 265);
-  /* Un beau bleu-violet vibrant */
+  --accent: oklch(0.52 0.21 285);
+  --accent-2: oklch(0.56 0.12 205);
+  --accent-soft: oklch(0.52 0.21 285 / 0.1);
   --accent-foreground: oklch(0.99 0 0);
+  --success: oklch(0.62 0.16 155);
+
+  --shadow-card: 0 1px 2px oklch(0.2 0.02 280 / 0.05), 0 12px 32px -12px oklch(0.2 0.02 280 / 0.12);
+
+  /* shadcn/ui compatibility */
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface);
+  --popover-foreground: var(--foreground);
+  --primary: var(--foreground);
+  --primary-foreground: var(--background);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface-2);
   --destructive: oklch(0.6 0.2 25);
-  /* Rouge plus élégant */
   --destructive-foreground: oklch(0.99 0 0);
-
-  /* Structure */
-  --border: oklch(0.92 0.01 250);
-  /* Bordures très douces */
-  --input: oklch(0.92 0.01 250);
-  --ring: oklch(0.55 0.18 265);
-  --radius: 0.75rem;
-  /* Un poil plus arrondi pour la modernité (12px) */
-
-  /* Custom accent palette */
-  --accent-blue: oklch(0.55 0.18 265);
-  --accent-teal: oklch(0.62 0.14 180);
-  --accent-green: oklch(0.58 0.14 155);
-  --accent-violet: oklch(0.55 0.2 290);
-
-  /* Charts & Sidebar (Ajustés pour s'intégrer parfaitement) */
-  --chart-1: oklch(0.6 0.2 40);
-  --chart-2: oklch(0.6 0.12 185);
-  --chart-3: oklch(0.4 0.07 227);
-  --chart-4: oklch(0.8 0.19 84);
-  --chart-5: oklch(0.7 0.19 70);
-  --sidebar: oklch(0.98 0 0);
-  --sidebar-foreground: oklch(0.15 0.01 250);
-  --sidebar-primary: oklch(0.15 0.01 250);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.95 0.01 250);
-  --sidebar-accent-foreground: oklch(0.15 0.01 250);
-  --sidebar-border: oklch(0.92 0.01 250);
-  --sidebar-ring: oklch(0.55 0.18 265);
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--accent);
+  --radius: 0.875rem;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   DARK MODE — Premium, façon Linear / Vercel (Deep Slate & Depth)
-   ═══════════════════════════════════════════════════════════════ */
 .dark {
-  /* Ultra deep background for maximum contrast (OLED style) */
-  --background: oklch(0.08 0.005 260);
-  --foreground: oklch(0.98 0 0); /* Pure white text for crispness */
+  --background: oklch(0.14 0.008 280);
+  --foreground: oklch(0.97 0.004 280);
+  --surface: oklch(0.18 0.01 280);
+  --surface-2: oklch(0.215 0.012 280);
+  --muted-foreground: oklch(0.74 0.014 280);
+  --subtle-foreground: oklch(0.6 0.014 280);
+  --line: oklch(1 0 0 / 0.08);
+  --line-strong: oklch(1 0 0 / 0.14);
 
-  /* Elevation cards */
-  --card: oklch(0.12 0.005 260);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.12 0.005 260);
-  --popover-foreground: oklch(0.98 0 0);
+  --accent: oklch(0.74 0.15 285);
+  --accent-2: oklch(0.8 0.12 195);
+  --accent-soft: oklch(0.74 0.15 285 / 0.12);
+  --accent-foreground: oklch(0.16 0.02 280);
+  --success: oklch(0.78 0.16 155);
 
-  --primary: oklch(0.98 0 0);
-  --primary-foreground: oklch(0.08 0.005 260);
-  --secondary: oklch(0.15 0.01 260);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.15 0.01 260);
-  --muted-foreground: oklch(0.65 0.01 260);
-
-  /* Deep vibrant accent */
-  --accent: oklch(0.65 0.25 265);
-  --accent-foreground: oklch(1 0 0);
-
-  /* Super subtle borders */
-  --border: oklch(0.20 0.01 260);
-  --input: oklch(0.20 0.01 260);
-  --ring: oklch(0.65 0.25 265);
-
-  /* Dark mode accent palette */
-  --accent-blue: oklch(0.65 0.25 265);
-  --accent-teal: oklch(0.72 0.16 180);
-  --accent-green: oklch(0.68 0.16 155);
-  --accent-violet: oklch(0.65 0.25 290);
-
-  --chart-1: oklch(0.5 0.2 264);
-  --chart-2: oklch(0.7 0.15 162);
-  --chart-3: oklch(0.75 0.18 70);
-  --chart-4: oklch(0.6 0.25 303);
-  --chart-5: oklch(0.65 0.24 16);
-
-  --sidebar: oklch(0.08 0.005 260);
-  --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.65 0.25 265);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.15 0.01 260);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.20 0.01 260);
-  --sidebar-ring: oklch(0.65 0.25 265);
+  --shadow-card: 0 1px 0 oklch(1 0 0 / 0.04) inset, 0 20px 40px -24px oklch(0 0 0 / 0.6);
 }
 
-@theme {
-  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-mono: "Space Grotesk", "JetBrains Mono", "SF Mono", Monaco, Consolas, monospace;
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle-foreground: var(--subtle-foreground);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -132,194 +90,214 @@
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  --animate-dash: dash 1.6s linear infinite;
 }
 
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  80%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+/* Hero entrance runs in CSS so it plays before hydration (better LCP than JS-driven reveals). */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes word {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Base
+   ═══════════════════════════════════════════════════════════════ */
 @layer base {
   * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
-    letter-spacing: -0.015em;
-    /* Légèrement resserré pour un look premium */
+    @apply border-border;
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    @apply bg-accent/25 text-foreground;
-    /* Contraste amélioré sur la sélection */
+    background: var(--accent);
+    color: var(--accent-foreground);
   }
-}
 
-@layer utilities {
-  .text-balance {
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1,
+  h2,
+  h3 {
     text-wrap: balance;
   }
 
-  /* ── Gradient text ── */
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Utilities
+   ═══════════════════════════════════════════════════════════════ */
+@layer utilities {
+  .container-page {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
   .text-gradient {
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
+    background: linear-gradient(100deg, var(--accent) 10%, var(--accent-2) 90%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: transparent;
   }
 
-  /* ── Glass effect (Amélioré façon Apple avec inner-border) ── */
   .glass {
-    background: color-mix(in srgb, var(--background) 75%, transparent);
-    backdrop-filter: blur(24px) saturate(1.8);
-    -webkit-backdrop-filter: blur(24px) saturate(1.8);
-    border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
-    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--background) 40%, transparent), 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    background: color-mix(in oklch, var(--background) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
   }
 
-  /* ── Background dot grid ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Radial grid that fades toward the edges. */
   .bg-grid {
-    background-image: radial-gradient(circle,
-        color-mix(in srgb, var(--foreground) 10%, transparent) 1px,
-        transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  /* ── Background line grid ── */
-  .bg-grid-lines {
     background-image:
-      linear-gradient(oklch(from var(--foreground) l c h / 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(from var(--foreground) l c h / 0.05) 1px, transparent 1px);
-    background-size: 48px 48px;
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 75%);
   }
 
-  /* ── Fading mask for grids (Plus fluide) ── */
-  .bg-grid-fade {
-    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
-    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
-  }
-
-  /* ── Subtle grain texture (Mieux fondu avec mix-blend) ── */
-  .grain {
+  /* Pointer-following highlight. Position is written by <Spotlight />. */
+  .spotlight {
     position: relative;
     isolation: isolate;
   }
 
-  .grain::after {
+  .spotlight::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.035;
-    mix-blend-mode: overlay;
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  /* ── Premium Border effect ── */
-  .premium-border {
-    position: relative;
-    border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
-  }
-  .premium-border::before {
-    content: "";
-    position: absolute;
-    inset: -1px;
+    z-index: -1;
     border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--foreground) 15%, transparent) 0%, transparent 50%, color-mix(in srgb, var(--foreground) 5%, transparent) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    background: radial-gradient(
+      480px circle at var(--spot-x, 50%) var(--spot-y, 0%),
+      var(--accent-soft),
+      transparent 60%
+    );
+    opacity: var(--spot-opacity, 0);
+    transition: opacity 0.4s var(--ease-out-expo);
     pointer-events: none;
   }
 
-  /* ── Hover lift effect (Ombres adoucies et plus réalistes) ── */
-  .hover-lift {
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  .mask-fade-x {
+    mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
   }
 
-  .hover-lift:hover {
-    transform: translateY(-6px);
-    box-shadow:
-      0 12px 24px -8px color-mix(in srgb, var(--foreground) 15%, transparent),
-      0 4px 8px -4px color-mix(in srgb, var(--foreground) 10%, transparent);
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  /* En dark mode, on remplace l'ombre classique par un léger "Glow" de bordure pour l'effet Lift */
-  .dark .hover-lift:hover {
-    box-shadow: 0 0 30px -5px color-mix(in srgb, var(--accent) 30%, transparent);
-  }
-
-  /* ── Line animation ── */
-  .line-animate {
-    position: relative;
-    text-decoration: none;
-  }
-
-  .line-animate::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1.5px;
-    background: currentColor;
-    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  }
-
-  .line-animate:hover::after {
-    width: 100%;
-  }
-
-  /* ── Massive hero text (Ajustement de l'espacement) ── */
-  .hero-massive {
-    font-size: clamp(3.5rem, 10vw, 8rem);
-    font-weight: 800;
-    /* Légèrement moins lourd que 900 pour plus d'élégance */
-    line-height: 0.9;
-    letter-spacing: -0.05em;
-    color: oklch(from var(--foreground) l c h / 0.06);
-  }
-
-  .dark .hero-massive {
-    color: oklch(from var(--foreground) l c h / 0.08);
-  }
-
-  /* ── Glow effect for dark mode (Plus diffus et subtil) ── */
-  .glow-accent {
-    box-shadow: 0 0 30px -5px oklch(from var(--accent) l c h / 0.25);
-  }
-
-  .dark .glow-accent {
-    box-shadow: 0 0 50px -10px oklch(from var(--accent) l c h / 0.2);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
