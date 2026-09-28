@@ -10,7 +10,7 @@ import { CvDownloadButton, type CvLabels } from "@/components/cv-download-button
 import { localeCookie, localeMeta, locales, type Locale } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
-export type NavKey = "about" | "ai" | "experience" | "projects" | "skills" | "contact"
+export type NavKey = "about" | "ai" | "experience" | "projects" | "skills" | "lab" | "contact"
 
 type HeaderLabels = {
   nav: Record<NavKey, string>
@@ -22,7 +22,7 @@ type HeaderLabels = {
   cv: CvLabels
 }
 
-const sections: NavKey[] = ["about", "ai", "experience", "projects", "skills", "contact"]
+const sections: NavKey[] = ["about", "ai", "experience", "projects", "skills", "lab", "contact"]
 
 function rememberLocale(locale: Locale) {
   document.cookie = `${localeCookie}=${locale}; path=/; max-age=31536000; samesite=lax`
@@ -73,13 +73,13 @@ function ThemeToggle({ label }: { label: string }) {
   )
 }
 
-function LanguageSwitch({ lang, hash, label }: { lang: Locale; hash: string; label: string }) {
+function LanguageSwitch({ lang, hash, path, label }: { lang: Locale; hash: string; path: string; label: string }) {
   return (
     <div role="group" aria-label={label} className="flex items-center rounded-full border border-line p-0.5">
       {locales.map((l) => (
         <Link
           key={l}
-          href={`/${l}${hash}`}
+          href={`/${l}${path}${hash}`}
           hrefLang={localeMeta[l].bcp47}
           lang={localeMeta[l].bcp47}
           onClick={() => rememberLocale(l)}
@@ -97,7 +97,12 @@ function LanguageSwitch({ lang, hash, label }: { lang: Locale; hash: string; lab
   )
 }
 
-export function SiteHeader({ lang, labels }: { lang: Locale; labels: HeaderLabels }) {
+/**
+ * `path` is the part of the URL after the locale ("" on the home page, "/lab/svg" on a tool):
+ * section links then point back to the home page and the language switch keeps the page.
+ */
+export function SiteHeader({ lang, labels, path = "" }: { lang: Locale; labels: HeaderLabels; path?: string }) {
+  const base = path ? `/${lang}` : ""
   const active = useActiveSection()
   const [scrolled, setScrolled] = useState(false)
   const { scrollYProgress } = useScroll()
@@ -144,7 +149,7 @@ export function SiteHeader({ lang, labels }: { lang: Locale; labels: HeaderLabel
                     />
                   )}
                   <a
-                    href={`#${key}`}
+                    href={`${base}#${key}`}
                     aria-current={active === key ? "location" : undefined}
                     className={cn(
                       "relative block rounded-full px-3.5 py-1.5 text-[13px] transition-colors",
@@ -160,7 +165,7 @@ export function SiteHeader({ lang, labels }: { lang: Locale; labels: HeaderLabel
 
           <div className="flex items-center gap-2">
             <div className="hidden md:block">
-              <LanguageSwitch lang={lang} hash={hash} label={labels.language} />
+              <LanguageSwitch lang={lang} hash={path ? "" : hash} path={path} label={labels.language} />
             </div>
             <ThemeToggle label={labels.toggleTheme} />
             <div className="hidden md:block">
@@ -196,7 +201,7 @@ export function SiteHeader({ lang, labels }: { lang: Locale; labels: HeaderLabel
                       <li key={key}>
                         <DrawerClose asChild>
                           <a
-                            href={`#${key}`}
+                            href={`${base}#${key}`}
                             className={cn(
                               "flex items-baseline gap-4 rounded-xl px-3 py-3 text-2xl tracking-tight transition-colors",
                               active === key ? "text-foreground" : "text-muted-foreground",
@@ -211,7 +216,7 @@ export function SiteHeader({ lang, labels }: { lang: Locale; labels: HeaderLabel
                   </ul>
                 </nav>
                 <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line px-6 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
-                  <LanguageSwitch lang={lang} hash={hash} label={labels.language} />
+                  <LanguageSwitch lang={lang} hash={path ? "" : hash} path={path} label={labels.language} />
                   <CvDownloadButton lang={lang} labels={labels.cv} variant="compact" />
                 </div>
               </DrawerContent>

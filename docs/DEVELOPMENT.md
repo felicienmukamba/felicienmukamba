@@ -61,3 +61,38 @@ lib/
   site.ts                   Language-independent data
 proxy.ts                    Redirects `/` to the visitor's language
 ```
+
+## Private portal (`/portal`)
+
+A password-protected area with the **CV studio**: pick a profile (Big Tech, AI Engineer, Project Manager, Startup, NGO — IT & digital transformation, NGO — Data / M&E…), switch language, then edit everything — layout (modern, classic ATS, coloured sidebar), accent colour, photo, sections and their order, every experience bullet, projects, skills, references. It also scores a pasted job offer against the CV, ranks the profiles for that offer, saves named versions in the browser and exports PDF, JSON or plain text.
+
+| What                         | Where                                      |
+| ---------------------------- | ------------------------------------------ |
+| CV profiles (hard-coded)     | `lib/portal/profiles.ts`                   |
+| Account name + password hash | `lib/portal/credentials.ts`                |
+| CV model / PDF templates     | `lib/cv/*`, `components/cv-pdf.tsx`        |
+| Studio UI                    | `components/portal/cv-studio.tsx`          |
+
+### Setting it up
+
+1. Set the password (stores only a scrypt hash in `lib/portal/credentials.ts`):
+
+   ```bash
+   npm run portal:password
+   ```
+
+2. In production, add a `PORTAL_SECRET` environment variable (32+ random characters, e.g. `openssl rand -hex 32`). It signs the session cookie; without it the portal refuses logins.
+3. Optional: set `PORTAL_PASSWORD_HASH` in the environment instead of committing the hash (`npm run portal:password -- --print`).
+
+Sessions last 7 days. Every portal page is `noindex`, `no-store`, checked in `proxy.ts` and again in the layout. References' contact details are only ever stored in the browser (studio versions), never in the repository.
+
+## Lab (`/[lang]/lab`)
+
+Public tools, all running client-side:
+
+- **Brand kit & marketplace** — logo + colours → brand chart, tints, WCAG checks, design tokens (CSS / Tailwind / JSON), 14 marketplace/social/print visuals (PNG, JPG, WebP at 1–3×, or SVG), and seeded demo catalogue data (JSON, CSV, SQL).
+- **SVG generator** — blobs (filled, outlined or morphing), waves, patterns (+ CSS background), mesh gradients, Bauhaus grids, topographic contours.
+- **Motion toolkit** — draggable cubic-Bézier editor, spring simulator with CSS `linear()` export, keyframe builder with stagger, intensity and direction.
+- **Design utilities** — harmonies and 50–950 scales, contrast checker with auto-fix and colour-blindness simulation, layered shadows, gradients, fluid type scale, glassmorphism.
+
+UI strings live in `lib/lab/i18n.ts` (Lingala reuses French).

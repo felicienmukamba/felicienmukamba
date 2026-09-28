@@ -7,10 +7,12 @@ import { Education } from "@/components/sections/education"
 import { Experience } from "@/components/sections/experience"
 import { Footer } from "@/components/sections/footer"
 import { Hero } from "@/components/sections/hero"
+import { LabTeaser } from "@/components/sections/lab"
 import { Projects } from "@/components/sections/projects"
 import { Skills } from "@/components/sections/skills"
 import { Marquee } from "@/components/ui-kit"
 import { getDictionary } from "@/lib/dictionaries"
+import { headerLabels } from "@/lib/header-labels"
 import { isLocale } from "@/lib/i18n"
 import { stack } from "@/lib/site"
 
@@ -21,18 +23,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
   return (
     <>
-      <SiteHeader
-        lang={lang}
-        labels={{
-          nav: t.nav,
-          openMenu: t.a11y.openMenu,
-          closeMenu: t.a11y.closeMenu,
-          toggleTheme: t.a11y.toggleTheme,
-          language: t.a11y.language,
-          primaryNav: t.a11y.primaryNav,
-          cv: { download: t.cv.download, generating: t.cv.generating, error: t.cv.error },
-        }}
-      />
+      <SiteHeader lang={lang} labels={headerLabels(t)} />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero lang={lang} t={t} />
         <div className="container-page mt-16 md:mt-20">
@@ -44,6 +35,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <Projects t={t} />
         <Skills t={t} />
         <Education t={t} />
+        <LabTeaser lang={lang} t={t} />
         <Contact lang={lang} t={t} />
       </main>
       <Footer t={t} />

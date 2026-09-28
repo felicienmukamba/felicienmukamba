@@ -61,11 +61,13 @@ export function Experience({ t }: { t: Dictionary }) {
                       </li>
                     ))}
                   </ul>
-                  <ul className="mt-6 flex flex-wrap gap-1.5" aria-label="Stack">
-                    {job.tech.map((tech) => (
-                      <Tag key={tech}>{tech}</Tag>
-                    ))}
-                  </ul>
+                  {job.tech && (
+                    <ul className="mt-6 flex flex-wrap gap-1.5" aria-label="Stack">
+                      {job.tech.map((tech) => (
+                        <Tag key={tech}>{tech}</Tag>
+                      ))}
+                    </ul>
+                  )}
                 </Reveal>
               </li>
             )

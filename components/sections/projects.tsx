@@ -115,13 +115,15 @@ function FeaturedProject({ project, index, t }: { project: ProjectMeta; index: n
               </dl>
             )}
 
-            <ul className="mt-6 flex flex-wrap gap-1.5" aria-label="Stack">
-              {project.tech.map((tech) => (
-                <Tag key={tech} tone="accent">
-                  {tech}
-                </Tag>
-              ))}
-            </ul>
+            {project.tech && (
+              <ul className="mt-6 flex flex-wrap gap-1.5" aria-label="Stack">
+                {project.tech.map((tech) => (
+                  <Tag key={tech} tone="accent">
+                    {tech}
+                  </Tag>
+                ))}
+              </ul>
+            )}
 
             <div className="mt-7">
               <ProjectLinks project={project} t={t} />
@@ -174,11 +176,13 @@ export function Projects({ t }: { t: Dictionary }) {
                     </h3>
                     {project.led && <MyRole t={t} />}
                     <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{item.challenge}</p>
-                    <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Stack">
-                      {project.tech.map((tech) => (
-                        <Tag key={tech}>{tech}</Tag>
-                      ))}
-                    </ul>
+                    {project.tech && (
+                      <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Stack">
+                        {project.tech.map((tech) => (
+                          <Tag key={tech}>{tech}</Tag>
+                        ))}
+                      </ul>
+                    )}
                     <div className="mt-auto pt-5">
                       <ProjectLinks project={project} t={t} />
                     </div>

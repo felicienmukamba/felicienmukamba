@@ -39,6 +39,7 @@ export const fr: Dictionary = {
     experience: "Parcours",
     projects: "Projets",
     skills: "Compétences",
+    lab: "Lab",
     contact: "Contact",
   },
 
@@ -72,7 +73,7 @@ export const fr: Dictionary = {
     titleAccent: "inspire confiance.",
     paragraphs: [
       "Je suis le fondateur de SOSIDE COMPANY SAS et ingénieur full-stack senior chez Aumsoft Technology. Je mène des produits complexes du premier croquis au tableau blanc jusqu'à la production — et je reste responsable de leur comportement ensuite.",
-      "Mon travail se situe là où la fiabilité compte le plus : identité citoyenne (PGCC), gestion hospitalière (HMS Elite), SaaS multi-tenant pour les universités (UMS) et commerce avec une caisse qui fonctionne hors ligne (Maago). Je travaille avec Laravel, Spring Boot, React, Next.js, Flutter, PostgreSQL et Docker, et j'explore Rust pour les composants critiques.",
+      "Mon travail se situe là où la fiabilité compte le plus : identité citoyenne (PGCC), gestion hospitalière (HMS Elite), SaaS multi-tenant pour les universités (UMS) et commerce avec une caisse qui fonctionne hors ligne (Maago). Je travaille avec Spring Boot, React, Next.js, PostgreSQL et Docker, et j'explore Rust pour les composants critiques.",
       "Aujourd'hui, j'investis pleinement l'ingénierie IA : livrer des fonctionnalités LLM solides en production, et piloter des équipes d'agents IA avec la même rigueur que mes systèmes distribués — rôles clairs, observabilité et supervision humaine.",
     ],
     facts: [
@@ -148,7 +149,7 @@ export const fr: Dictionary = {
           "Je mène les produits du cahier des charges à la production : pilotage et livraison, design system, architecture système et modélisation des bases de données.",
         achievements: [
           "Direction de bout en bout de HMS Elite (gestion hospitalière), Maago (marketplace et caisse hors ligne) et Sili Kivu Hub (plateforme communautaire) — design system, architecture système et modélisation des bases de données pour chacun.",
-          "Architecture de systèmes d'information multi-universitaires gérant plus de 10 000 dossiers étudiants simultanés, avec un backend Spring Boot réactif et PostgreSQL optimisé.",
+          "Architecture de systèmes d'information multi-universitaires gérant plus de 10 000 dossiers étudiants simultanés, avec un backend réactif et une couche de données optimisée.",
         ],
       },
       gevapom: {
@@ -212,7 +213,7 @@ export const fr: Dictionary = {
         challenge:
           "Offrir aux cliniques et hôpitaux un système unique et sécurisé pour tout le parcours patient — admission, consultations, laboratoire, facturation et personnel — interopérable avec les logiciels médicaux existants et l'écosystème national ANICNS.",
         architecture:
-          "Laravel avec Inertia et React, mises à jour en temps réel via Laravel Reverb, isolation multi-tenant avec contrôle d'accès par attributs (ABAC), et passerelles HL7 / FHIR et REST vers le dossier médical, le laboratoire (LIS) et la facturation.",
+          "Une plateforme multi-tenant avec mises à jour en temps réel, contrôle d'accès par attributs (ABAC), et passerelles HL7 / FHIR et REST vers le dossier médical, le laboratoire (LIS) et la facturation.",
         impact:
           "Les soignants travaillent sur un dossier patient unifié et la direction sur des tableaux de bord en temps réel, avec chiffrement AES-256 au repos, TLS 1.3 en transit et une traçabilité immuable de chaque action.",
       },
@@ -222,7 +223,7 @@ export const fr: Dictionary = {
         challenge:
           "Mettre en ligne les boutiques locales en RDC — et donner aux commerçants des outils qui continuent de vendre malgré les coupures réseau, en plusieurs devises et avec le mobile money.",
         architecture:
-          "Une plateforme Laravel, Inertia et React pour la marketplace et le back-office marchand, avec des événements en temps réel via Laravel Echo, et une caisse desktop Flutter qui fonctionne hors ligne et se synchronise au retour du réseau.",
+          "Une plateforme web pour la marketplace et le back-office marchand avec des événements en temps réel, et une caisse desktop qui fonctionne hors ligne et se synchronise au retour du réseau.",
         impact:
           "Les commerçants suivent le stock par boutique et par extension, émettent des tickets avec TVA et des ventes à crédit, et affichent leurs prix en USD, CDF ou EUR au taux qu'ils fixent ; les clients paient par M-Pesa, Orange Money ou Airtel Money. La caisse est en service ; la marketplace ouvre très bientôt.",
       },
@@ -230,7 +231,7 @@ export const fr: Dictionary = {
         title: "Sili Kivu Hub",
         subtitle: "Plateforme de gestion de communautés",
         challenge: "Donner aux organisations un seul espace pour animer leur communauté : membres, rôles, discussions, événements et ressources partagées.",
-        architecture: "Laravel, Inertia et React avec des rôles d'accès pour membres, administrateurs, invités et coopératives.",
+        architecture: "Des rôles d'accès pour membres, administrateurs, invités et coopératives, avec des discussions en temps réel.",
         impact: "Un hub communautaire à l'image de l'organisation, de l'inscription jusqu'aux événements.",
       },
       ums: {
@@ -239,7 +240,7 @@ export const fr: Dictionary = {
         challenge:
           "Héberger de nombreuses universités indépendantes sur une même plateforme — avec une isolation stricte des données, une configuration par institution et une résilience lors des pics d'inscriptions et d'examens.",
         architecture:
-          "Spring Boot et Angular sur un modèle PostgreSQL « un schéma par tenant ». Les requêtes sont routées dynamiquement par identifiant de tenant, et chaque environnement est conteneurisé avec Docker.",
+          "Un modèle de données « un schéma par tenant » : les requêtes sont routées dynamiquement par identifiant de tenant, et chaque environnement est conteneurisé.",
         impact:
           "Isolation des données à 100 % entre institutions et forte baisse des coûts d'infrastructure, grâce au routage dynamique par tenant, à l'optimisation des pools de connexions et à des conteneurs standardisés.",
       },
@@ -381,6 +382,35 @@ export const fr: Dictionary = {
     communityCaption: "Session de formation pratique à Bukavu",
   },
 
+  lab: {
+    kicker: "Lab",
+    title: "Des outils",
+    titleAccent: "pour créer plus vite.",
+    intro:
+      "Des outils gratuits issus de mon propre workflow — kits de marque pour marketplaces, générateur SVG, outils de motion et de design. Tout fonctionne dans votre navigateur.",
+    open: "Ouvrir le Lab",
+    openTool: "Ouvrir l'outil",
+    back: "Tous les outils",
+    tools: {
+      "brand-kit": {
+        name: "Brand kit & marketplace",
+        description: "Déposez un logo et vos couleurs : charte graphique, visuels de boutique, posts sociaux et données de catalogue de démo.",
+      },
+      svg: {
+        name: "Générateur SVG",
+        description: "Blobs, vagues en couches, motifs répétables et dégradés maillés avec grain — export SVG, PNG ou CSS.",
+      },
+      motion: {
+        name: "Boîte à outils motion",
+        description: "Dessinez des courbes d'easing, réglez des ressorts, orchestrez des keyframes — copiez le CSS ou le Framer Motion.",
+      },
+      design: {
+        name: "Outils design",
+        description: "Palettes perceptuelles, contraste WCAG avec correction automatique, ombres en couches et dégradés.",
+      },
+    },
+  },
+
   contact: {
     kicker: "Contact",
     title: "Construisons",
@@ -408,13 +438,14 @@ export const fr: Dictionary = {
     headline: "Ingénieur Logiciel & IA · Chef de projet · AI Agent Manager",
     profileTitle: "Profil",
     profile:
-      "Fondateur de SOSIDE COMPANY SAS, chef de projet et ingénieur logiciel & IA chez Aumsoft Technology, où je conçois les design systems, l'architecture système et la modélisation des bases de données. Je conçois des plateformes distribuées sécurisées — identité numérique (PGCC), logiciel hospitalier (HMS Elite), SaaS universitaire (UMS), commerce et caisse hors ligne (Maago) — et je mets en production des fonctionnalités LLM et des agents IA avec évaluation, garde-fous et supervision humaine. Laravel, Spring Boot, React, Next.js, Flutter, PostgreSQL, Docker.",
+      "Fondateur de SOSIDE COMPANY SAS, chef de projet et ingénieur logiciel & IA chez Aumsoft Technology, où je conçois les design systems, l'architecture système et la modélisation des bases de données. Je conçois des plateformes distribuées sécurisées — identité numérique (PGCC), logiciel hospitalier (HMS Elite), SaaS universitaire (UMS), commerce et caisse hors ligne (Maago) — et je mets en production des fonctionnalités LLM et des agents IA avec évaluation, garde-fous et supervision humaine. Spring Boot, React, Next.js, PostgreSQL, Docker.",
     experienceTitle: "Expérience",
     projectsTitle: "Projets phares",
     skillsTitle: "Compétences",
     educationTitle: "Formation",
     certificationsTitle: "Certifications",
     languagesTitle: "Langues",
+    referencesTitle: "Références",
     references: "Références disponibles sur demande.",
   },
 

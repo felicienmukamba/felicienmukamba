@@ -37,6 +37,7 @@ export const ln: Dictionary = {
     experience: "Misala",
     projects: "Ba projets",
     skills: "Mayele",
+    lab: "Lab",
     contact: "Kosolola",
   },
 
@@ -70,7 +71,7 @@ export const ln: Dictionary = {
     titleAccent: "epesaka confiance.",
     paragraphs: [
       "Nazali mokeli ya SOSIDE COMPANY SAS mpe ingénieur full-stack senior na Aumsoft Technology. Nakambaka ba produits ya makasi kobanda na likanisi ya liboso tii na production — mpe nazalaka responsable ya ndenge esalaka sima.",
-      "Mosala na ngai ezali esika fiabilité eleki ntina: identité ya ba citoyens (PGCC), kokamba ba lopitalo (HMS Elite), SaaS multi-tenant mpo na ba universités (UMS) mpe mombongo na caisse oyo esalaka sans internet (Maago). Nasalaka na Laravel, Spring Boot, React, Next.js, Flutter, PostgreSQL mpe Docker, mpe nazali koyekola Rust mpo na ba composants critiques.",
+      "Mosala na ngai ezali esika fiabilité eleki ntina: identité ya ba citoyens (PGCC), kokamba ba lopitalo (HMS Elite), SaaS multi-tenant mpo na ba universités (UMS) mpe mombongo na caisse oyo esalaka sans internet (Maago). Nasalaka na Spring Boot, React, Next.js, PostgreSQL mpe Docker, mpe nazali koyekola Rust mpo na ba composants critiques.",
       "Lelo, natii makasi na ingénierie IA: kotinda ba fonctionnalités LLM oyo etelemaka malamu na production, mpe kokamba ba équipes ya ba agents IA na rigueur moko lokola ba systèmes distribués — ba rôles polele, observabilité mpe bokengeli ya bato.",
     ],
     facts: [
@@ -146,7 +147,7 @@ export const ln: Dictionary = {
           "Nakambaka ba produits kobanda na cahier des charges tii na production: bokambi, design system, architecture système mpe modélisation ya ba bases de données.",
         achievements: [
           "Nakambaki HMS Elite (lopitalo), Maago (marketplace mpe caisse) mpe Sili Kivu Hub (communauté) mobimba — design system, architecture système mpe modélisation ya ba bases de données.",
-          "Nasalaki architecture ya ba systèmes d'information multi-universitaires oyo esimbaka ba dossiers ya bayekoli koleka 10 000 na mbala moko, na backend Spring Boot réactif mpe PostgreSQL optimisé.",
+          "Nasalaki architecture ya ba systèmes d'information multi-universitaires oyo esimbaka ba dossiers ya bayekoli koleka 10 000 na mbala moko, na backend réactif mpe couche ya données optimisée.",
         ],
       },
       gevapom: {
@@ -210,7 +211,7 @@ export const ln: Dictionary = {
         challenge:
           "Kopesa ba cliniques mpe ba lopitalo système moko ya sécurité mpo na nzela mobimba ya mobeli — admission, consultations, laboratoire, facturation mpe basali — oyo esalaka elongo na ba logiciels médicaux mpe écosystème ANICNS.",
         architecture:
-          "Laravel na Inertia mpe React, ba mises à jour na temps réel na Laravel Reverb, isolation multi-tenant na contrôle ya accès (ABAC), mpe ba passerelles HL7 / FHIR mpe REST.",
+          "Plateforme multi-tenant na ba mises à jour na temps réel, contrôle ya accès (ABAC), mpe ba passerelles HL7 / FHIR mpe REST.",
         impact:
           "Ba soignants basalaka na dossier moko ya mobeli mpe bakambi na ba tableaux de bord na temps réel, na chiffrement AES-256, TLS 1.3 mpe traçabilité ya likambo nyonso.",
       },
@@ -220,7 +221,7 @@ export const ln: Dictionary = {
         challenge:
           "Kotia ba boutiques ya RDC na internet — mpe kopesa ba commerçants ba outils oyo ekobi koteka ata réseau ekati, na ba devises ebele mpe mobile money.",
         architecture:
-          "Plateforme Laravel, Inertia mpe React mpo na marketplace mpe back-office, na ba événements temps réel na Laravel Echo, mpe caisse desktop Flutter oyo esalaka sans internet mpe e-synchroniser soki réseau ezongi.",
+          "Plateforme web mpo na marketplace mpe back-office na ba événements na temps réel, mpe caisse desktop oyo esalaka sans internet mpe e-synchroniser soki réseau ezongi.",
         impact:
           "Ba commerçants balandaka stock na boutique moko na moko, babimisaka ba tickets na TVA mpe ba ventes à crédit, na USD, CDF to EUR; ba clients bafutaka na M-Pesa, Orange Money to Airtel Money. Caisse ezali kosala; marketplace ekofungwama noki.",
       },
@@ -228,7 +229,7 @@ export const ln: Dictionary = {
         title: "Sili Kivu Hub",
         subtitle: "Plateforme ya kokamba ba communautés",
         challenge: "Kopesa ba organisations esika moko ya kokamba communauté na bango: ba membres, ba rôles, masolo, ba événements mpe ba ressources.",
-        architecture: "Laravel, Inertia mpe React na ba rôles ya accès mpo na ba membres, ba admins, ba invités mpe ba coopératives.",
+        architecture: "Ba rôles ya accès mpo na ba membres, ba admins, ba invités mpe ba coopératives, na masolo na temps réel.",
         impact: "Hub communautaire na elilingi ya organisation, kobanda na inscription tii na ba événements.",
       },
       ums: {
@@ -237,7 +238,7 @@ export const ln: Dictionary = {
         challenge:
           "Kosimba ba universités ebele indépendantes na plateforme moko — na isolation makasi ya ba données, configuration mpo na institution moko na moko, mpe bokasi na tango ya ba inscriptions mpe ba examens.",
         architecture:
-          "Spring Boot mpe Angular na modèle PostgreSQL « schéma moko mpo na tenant moko ». Ba requêtes etambolaka na identifiant ya tenant, mpe environnement nyonso ezali na Docker.",
+          "Modèle ya données « schéma moko mpo na tenant moko »: ba requêtes etambolaka na identifiant ya tenant, mpe environnement nyonso ezali conteneurisé.",
         impact:
           "Isolation ya ba données 100% kati na ba institutions mpe bokitisi makasi ya ba coûts ya infrastructure, na routage dynamique, ba pools ya connexions optimisés mpe ba conteneurs standardisés.",
       },
@@ -379,6 +380,35 @@ export const ln: Dictionary = {
     communityCaption: "Session ya formation na Bukavu",
   },
 
+  lab: {
+    kicker: "Lab",
+    title: "Ba outils",
+    titleAccent: "mpo na kosala noki.",
+    intro:
+      "Ba outils ya ofele oyo nasalelaka ngai moko — kits ya marque mpo na ba marketplaces, générateur SVG, ba outils ya motion mpe design. Nyonso esalaka na navigateur na yo.",
+    open: "Fungola Lab",
+    openTool: "Fungola outil",
+    back: "Ba outils nyonso",
+    tools: {
+      "brand-kit": {
+        name: "Brand kit & marketplace",
+        description: "Tia logo mpe ba langi na yo: charte graphique, ba visuels ya boutique, ba posts mpe ba données ya démo.",
+      },
+      svg: {
+        name: "Générateur SVG",
+        description: "Ba blobs, ba vagues, ba motifs mpe ba dégradés — export SVG, PNG to CSS.",
+      },
+      motion: {
+        name: "Ba outils ya motion",
+        description: "Salá ba courbes ya easing, ba ressorts mpe ba keyframes — kopia CSS to Framer Motion.",
+      },
+      design: {
+        name: "Ba outils ya design",
+        description: "Ba palettes, contraste WCAG, ba ombres mpe ba dégradés.",
+      },
+    },
+  },
+
   contact: {
     kicker: "Kosolola",
     title: "Totonga",
@@ -406,13 +436,14 @@ export const ln: Dictionary = {
     headline: "Software & AI Engineer · Mokambi ya projet · AI Agent Manager",
     profileTitle: "Profil",
     profile:
-      "Mokeli ya SOSIDE COMPANY SAS, mokambi ya projet mpe software & AI engineer na Aumsoft Technology, esika nasalaka design system, architecture système mpe modélisation ya ba bases de données. Natongaka ba plateformes distribuées sécurisées — identité numérique (PGCC), logiciel ya lopitalo (HMS Elite), SaaS universitaire (UMS), mombongo mpe caisse (Maago) — mpe natiaka ba fonctionnalités LLM na ba agents IA na production na évaluation, ba garde-fous mpe bokengeli ya bato. Laravel, Spring Boot, React, Next.js, Flutter, PostgreSQL, Docker.",
+      "Mokeli ya SOSIDE COMPANY SAS, mokambi ya projet mpe software & AI engineer na Aumsoft Technology, esika nasalaka design system, architecture système mpe modélisation ya ba bases de données. Natongaka ba plateformes distribuées sécurisées — identité numérique (PGCC), logiciel ya lopitalo (HMS Elite), SaaS universitaire (UMS), mombongo mpe caisse (Maago) — mpe natiaka ba fonctionnalités LLM na ba agents IA na production na évaluation, ba garde-fous mpe bokengeli ya bato. Spring Boot, React, Next.js, PostgreSQL, Docker.",
     experienceTitle: "Misala",
     projectsTitle: "Ba projets minene",
     skillsTitle: "Mayele",
     educationTitle: "Boyekoli",
     certificationsTitle: "Ba certifications",
     languagesTitle: "Minoko",
+    referencesTitle: "Ba références",
     references: "Ba références ezali soki osengi.",
   },
 

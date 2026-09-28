@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { defaultLocale, isLocale, localeCookie, locales, type Locale } from "@/lib/i18n"
+import { SESSION_COOKIE, verifySessionToken } from "@/lib/portal/session"
 
 /** Picks the best supported locale from the saved choice, then Accept-Language. */
 function preferredLocale(request: NextRequest): Locale {
@@ -18,8 +19,32 @@ function preferredLocale(request: NextRequest): Locale {
   return ranked.find((entry) => isLocale(entry.lang))?.lang as Locale | undefined ?? defaultLocale
 }
 
-export function proxy(request: NextRequest) {
+/** The private portal: never indexed, and every page except login needs a valid session. */
+async function guardPortal(request: NextRequest) {
   const { pathname } = request.nextUrl
+  const isLogin = pathname === "/portal/login"
+  const session = await verifySessionToken(request.cookies.get(SESSION_COOKIE)?.value)
+
+  let response: NextResponse
+  if (!session && !isLogin) {
+    const url = request.nextUrl.clone()
+    url.pathname = "/portal/login"
+    url.search = pathname === "/portal" ? "" : `?next=${encodeURIComponent(pathname)}`
+    response = NextResponse.redirect(url, 307)
+  } else if (session && isLogin) {
+    response = NextResponse.redirect(new URL("/portal", request.url), 307)
+  } else {
+    response = NextResponse.next()
+  }
+  response.headers.set("X-Robots-Tag", "noindex, nofollow")
+  response.headers.set("Cache-Control", "private, no-store")
+  return response
+}
+
+export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl
+  if (pathname === "/portal" || pathname.startsWith("/portal/")) return guardPortal(request)
+
   const hasLocale = locales.some((l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`))
   if (hasLocale) return
 

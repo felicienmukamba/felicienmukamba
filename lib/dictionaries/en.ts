@@ -37,6 +37,7 @@ export const en = {
     experience: "Experience",
     projects: "Work",
     skills: "Skills",
+    lab: "Lab",
     contact: "Contact",
   },
 
@@ -70,7 +71,7 @@ export const en = {
     titleAccent: "earns trust.",
     paragraphs: [
       "I'm the founder of SOSIDE COMPANY SAS and a senior full-stack engineer at Aumsoft Technology. I take complex products from the first whiteboard sketch to production — and stay accountable for how they behave afterwards.",
-      "My work sits where reliability matters most: citizen identity (PGCC), hospital operations (HMS Elite), multi-tenant SaaS for universities (UMS) and commerce with an offline-first point of sale (Maago). I work across Laravel, Spring Boot, React, Next.js, Flutter, PostgreSQL and Docker, with a growing focus on Rust for performance-critical components.",
+      "My work sits where reliability matters most: citizen identity (PGCC), hospital operations (HMS Elite), multi-tenant SaaS for universities (UMS) and commerce with an offline-first point of sale (Maago). I work across Spring Boot, React, Next.js, PostgreSQL and Docker, with a growing focus on Rust for performance-critical components.",
       "Today I'm doubling down on AI engineering: shipping LLM features that hold up in production, and managing teams of AI agents with the same rigor I bring to distributed systems — clear roles, observability and human oversight.",
     ],
     facts: [
@@ -146,7 +147,7 @@ export const en = {
           "I lead products from brief to production: planning and delivery, the design system, the system architecture and the database models.",
         achievements: [
           "Led HMS Elite (hospital operations), Maago (marketplace and offline POS) and Sili Kivu Hub (community platform) end to end — owning the design system, system architecture and database modeling for each.",
-          "Architected multi-university information systems handling 10,000+ concurrent student records with a reactive Spring Boot backend and tuned PostgreSQL.",
+          "Architected multi-university information systems handling 10,000+ concurrent student records with a reactive backend and a tuned database layer.",
         ],
       },
       gevapom: {
@@ -210,7 +211,7 @@ export const en = {
         challenge:
           "Give clinics and hospitals one secure system for the whole patient journey — admission, consultations, lab, billing and staff — while staying interoperable with existing medical software and the national ANICNS ecosystem.",
         architecture:
-          "Laravel with Inertia and React, real-time updates over Laravel Reverb, multi-tenant isolation with attribute-based access control, and HL7 / FHIR and REST bridges to records, lab (LIS) and billing systems.",
+          "A multi-tenant platform with real-time updates, attribute-based access control, and HL7 / FHIR and REST bridges to medical records, the lab (LIS) and billing.",
         impact:
           "Care teams work from one unified patient record and executives from live dashboards, on a platform with AES-256 encryption at rest, TLS 1.3 in transit and an immutable audit trail of every action.",
       },
@@ -220,7 +221,7 @@ export const en = {
         challenge:
           "Bring local shops in DR Congo online — and give merchants tools that keep selling through network outages, across several currencies and with mobile money.",
         architecture:
-          "A Laravel, Inertia and React platform for the marketplace and merchant back-office, with real-time events over Laravel Echo, plus a Flutter desktop POS that works offline and syncs when the network returns.",
+          "A web platform for the marketplace and merchant back-office with real-time events, plus a desktop point of sale that works offline and syncs when the network returns.",
         impact:
           "Merchants track stock per shop and branch, issue VAT receipts and credit sales, and price in USD, CDF or EUR at their own rate; buyers pay with M-Pesa, Orange Money or Airtel Money. The POS is live; the marketplace opens soon.",
       },
@@ -228,7 +229,7 @@ export const en = {
         title: "Sili Kivu Hub",
         subtitle: "Community management platform",
         challenge: "Give organizations one place to run their community: members, roles, discussions, events and shared resources.",
-        architecture: "Laravel, Inertia and React with role-based access for members, admins, guests and co-ops.",
+        architecture: "Role-based access for members, admins, guests and co-ops, with real-time discussions.",
         impact: "A branded community hub an organization can launch end to end — from sign-up to events.",
       },
       ums: {
@@ -237,7 +238,7 @@ export const en = {
         challenge:
           "Host many independent universities on one shared platform — with strict data isolation, per-institution configuration and resilience during enrolment and exam peaks.",
         architecture:
-          "Spring Boot and Angular on a tenant-per-schema PostgreSQL model. Requests are routed dynamically by tenant ID, and every environment is containerized with Docker.",
+          "A tenant-per-schema database model: requests are routed dynamically by tenant ID, and every environment is containerized.",
         impact:
           "100% data isolation between institutions and a sharp drop in infrastructure costs, thanks to dynamic tenant routing, tuned connection pools and standardized containers.",
       },
@@ -379,6 +380,35 @@ export const en = {
     communityCaption: "Hands-on training session in Bukavu",
   },
 
+  lab: {
+    kicker: "Lab",
+    title: "Tools I build",
+    titleAccent: "for makers.",
+    intro:
+      "Free tools from my own workflow — brand kits for marketplaces, SVG generators, motion and design utilities. Everything runs in your browser.",
+    open: "Open the Lab",
+    openTool: "Open tool",
+    back: "All tools",
+    tools: {
+      "brand-kit": {
+        name: "Brand kit & marketplace",
+        description: "Drop a logo and colors: get a brand chart, store visuals, social posts and demo catalogue data.",
+      },
+      svg: {
+        name: "SVG generator",
+        description: "Blobs, layered waves, seamless patterns and grainy mesh gradients — export SVG, PNG or CSS.",
+      },
+      motion: {
+        name: "Motion toolkit",
+        description: "Draw easing curves, tune springs and stage keyframes with stagger — copy CSS or Framer Motion.",
+      },
+      design: {
+        name: "Design utilities",
+        description: "Perceptual palettes, WCAG contrast with auto-fix, layered shadows and gradients.",
+      },
+    },
+  },
+
   contact: {
     kicker: "Contact",
     title: "Let's build",
@@ -406,13 +436,14 @@ export const en = {
     headline: "Software & AI Engineer · Project Manager · AI Agent Manager",
     profileTitle: "Profile",
     profile:
-      "Founder of SOSIDE COMPANY SAS, and project manager and software & AI engineer at Aumsoft Technology, where I own design systems, system architecture and database modeling. I design secure distributed platforms — digital identity (PGCC), hospital software (HMS Elite), university SaaS (UMS), commerce and offline POS (Maago) — and bring LLM features and AI agents into production with evaluation, guardrails and human oversight. Laravel, Spring Boot, React, Next.js, Flutter, PostgreSQL, Docker.",
+      "Founder of SOSIDE COMPANY SAS, and project manager and software & AI engineer at Aumsoft Technology, where I own design systems, system architecture and database modeling. I design secure distributed platforms — digital identity (PGCC), hospital software (HMS Elite), university SaaS (UMS), commerce and offline POS (Maago) — and bring LLM features and AI agents into production with evaluation, guardrails and human oversight. Spring Boot, React, Next.js, PostgreSQL, Docker.",
     experienceTitle: "Experience",
     projectsTitle: "Selected projects",
     skillsTitle: "Skills",
     educationTitle: "Education",
     certificationsTitle: "Certifications",
     languagesTitle: "Languages",
+    referencesTitle: "References",
     references: "References available on request.",
   },
 

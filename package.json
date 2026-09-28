@@ -6,6 +6,7 @@
     "build": "next build",
     "dev": "next dev",
     "typecheck": "tsc --noEmit",
+    "portal:password": "node scripts/portal-password.mjs",
     "start": "next start"
   },
   "dependencies": {

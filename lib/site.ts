@@ -49,7 +49,8 @@ export type ProjectMeta = {
   id: ProjectId
   /** Company the product was built at, when known. */
   org?: string
-  tech: string[]
+  /** Omitted for Aumsoft products: their stack is not disclosed. */
+  tech?: string[]
   /** Real product screenshots. Projects without any get a drawn cover. */
   screenshots?: Screenshot[]
   cover: "identity" | "saas" | "city" | "records"
@@ -65,7 +66,6 @@ export const projects: ProjectMeta[] = [
     id: "hms",
     led: true,
     org: "Aumsoft Technology",
-    tech: ["Laravel", "Inertia", "React", "Laravel Reverb", "HL7 / FHIR", "Multi-tenant"],
     screenshots: [{ src: "/images/projects/hms.jpg", kind: "landing", url: "hms.aumsoft.net" }],
     cover: "saas",
     links: { live: "https://hms.aumsoft.net/" },
@@ -80,7 +80,6 @@ export const projects: ProjectMeta[] = [
     id: "maago",
     led: true,
     org: "Aumsoft Technology",
-    tech: ["Laravel", "Inertia", "React", "Laravel Echo", "Flutter Desktop", "Offline-first"],
     screenshots: [
       { src: "/images/projects/maago.jpg", kind: "landing", url: "maago.aumsoft.net" },
       { src: "/images/projects/maago-dashboard.jpg", kind: "dashboard", url: "maago.aumsoft.net/products" },
@@ -97,7 +96,6 @@ export const projects: ProjectMeta[] = [
   {
     id: "ums",
     org: "Aumsoft Technology",
-    tech: ["Spring Boot", "Angular", "PostgreSQL", "Docker", "Multi-tenant"],
     screenshots: [{ src: "/images/projects/ums.jpg", kind: "landing", url: "umsaap.com" }],
     cover: "saas",
     links: { live: "https://umsaap.com" },
@@ -124,7 +122,6 @@ export const projects: ProjectMeta[] = [
     id: "silikivu",
     led: true,
     org: "Aumsoft Technology",
-    tech: ["Laravel", "Inertia", "React", "RBAC"],
     screenshots: [
       { src: "/images/projects/silikivu.jpg", kind: "landing", url: "silikivu.aumsoft.net" },
       { src: "/images/projects/silikivu-login.jpg", kind: "login", url: "silikivu.aumsoft.net/login" },
@@ -152,7 +149,7 @@ export const projects: ProjectMeta[] = [
 
 export type ExperienceId = "soside" | "aumsoft" | "gevapom" | "gdsc"
 
-export const experience: { id: ExperienceId; company: string; url?: string; tech: string[] }[] = [
+export const experience: { id: ExperienceId; company: string; url?: string; tech?: string[] }[] = [
   {
     id: "soside",
     company: "SOSIDE COMPANY SAS",
@@ -162,7 +159,6 @@ export const experience: { id: ExperienceId; company: string; url?: string; tech
     id: "aumsoft",
     company: "Aumsoft Technology",
     url: "https://aumsoft.net",
-    tech: ["Laravel", "React", "Next.js", "Flutter", "Spring Boot", "PostgreSQL"],
   },
   {
     id: "gevapom",
