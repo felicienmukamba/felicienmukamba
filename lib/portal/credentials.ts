@@ -7,5 +7,5 @@
  */
 export const portalAccount = {
   username: "felicienmukamba",
-  passwordHash: "scrypt:32768:8:1:YZRkhYGpHR2QYOADKm1kww==:kYDs5BTpVh4igAeRQ70GLNNqYgMGZmG+lmB2H9bj6B8D5xcvyYaMc4N0fFe+NZUDf95R7E1tG9XSbrGsg65wFw==",
+  passwordHash: "scrypt:32768:8:1:aGn2LuHJraBoUa/iOlptbw==:F1x9RkpsDmHVCU7vI90xCU/MlRLxLJjpvfr+zHQaIBDy2+C2JU5jS4hd84ABBwbqEWzDtpiijC/8vH8nucO/qQ==",
 }
