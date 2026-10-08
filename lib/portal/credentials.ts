@@ -6,6 +6,6 @@
  * The PORTAL_PASSWORD_HASH environment variable, when set, takes precedence.
  */
 export const portalAccount = {
-  username: "felicien",
-  passwordHash: "scrypt:32768:8:1:XhZCo7D1zNy0JxSfugTNNw==:K6yHdhijvFHzOYSTIt070hxXzHnpkwqW1Yo954HRb2QfNW9Bcs4dI80hXsIsKg0hOaoRY1bM2N9b5vhK3oOB6g==",
+  username: "felicienmukamba",
+  passwordHash: "scrypt:32768:8:1:YZRkhYGpHR2QYOADKm1kww==:kYDs5BTpVh4igAeRQ70GLNNqYgMGZmG+lmB2H9bj6B8D5xcvyYaMc4N0fFe+NZUDf95R7E1tG9XSbrGsg65wFw==",
 }
