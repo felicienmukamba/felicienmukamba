@@ -253,10 +253,22 @@ export function TargetRolesView({ compact = false }: { compact?: boolean }) {
         </div>
 
         <div className="grid gap-5">
-          {filteredRoles.map((role) => (
+          {(compact ? filteredRoles.slice(0, 6) : filteredRoles).map((role) => (
             <RoleCard key={role.id} role={role} />
           ))}
         </div>
+
+        {compact && filteredRoles.length > 6 && (
+          <div className="text-center pt-3">
+            <Link
+              href="/portal/postes"
+              className="inline-flex items-center gap-2 rounded-xl border border-line bg-surface px-5 py-2.5 text-[13px] font-semibold text-foreground hover:bg-surface-2 transition"
+            >
+              <span>Découvrir les {filteredRoles.length - 6} autres postes cibles</span>
+              <ArrowUpRight className="size-4" aria-hidden />
+            </Link>
+          </div>
+        )}
 
         {filteredRoles.length === 0 && (
           <div className="card rounded-2xl p-10 text-center">
@@ -313,12 +325,26 @@ function RoleCard({ role }: { role: TargetRole }) {
           <h4 className="text-[17px] font-bold tracking-tight text-foreground pt-1">{role.title}</h4>
         </div>
 
-        <Link
-          href={`/portal/cv?profile=${role.recommendedProfileId}`}
-          className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-accent/40 bg-accent/10 px-3.5 py-2 text-[12.5px] font-medium text-accent hover:bg-accent hover:text-accent-foreground transition-colors"
-        >
-          <FileText className="size-3.5" aria-hidden /> Générer ce CV adapté <ArrowUpRight className="size-3" aria-hidden />
-        </Link>
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href={`/portal/candidatures?role=${encodeURIComponent(role.title)}`}
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-line bg-surface px-3 py-2 text-[12px] font-medium text-muted-foreground hover:bg-surface-2 hover:text-foreground transition-colors"
+          >
+            <FolderKanban className="size-3.5" aria-hidden /> Suivre
+          </Link>
+          <Link
+            href={`/portal/lettre?role=${role.id}`}
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-line bg-surface px-3 py-2 text-[12px] font-medium text-foreground hover:bg-surface-2 transition-colors"
+          >
+            <FileText className="size-3.5" aria-hidden /> Rédiger la lettre
+          </Link>
+          <Link
+            href={`/portal/cv?profile=${role.recommendedProfileId}`}
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-accent/40 bg-accent/10 px-3.5 py-2 text-[12px] font-semibold text-accent hover:bg-accent hover:text-accent-foreground transition-colors"
+          >
+            <Sparkles className="size-3.5" aria-hidden /> CV adapté <ArrowUpRight className="size-3" aria-hidden />
+          </Link>
+        </div>
       </div>
 
       <div className="mt-4 border-t border-line/70 pt-4">

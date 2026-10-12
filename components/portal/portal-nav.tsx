@@ -6,8 +6,10 @@ import { cn } from "@/lib/utils"
 
 const links = [
   { href: "/portal", label: "Tableau de bord" },
-  { href: "/portal/cv", label: "Studio CV" },
+  { href: "/portal/candidatures", label: "Candidatures" },
   { href: "/portal/postes", label: "Postes visés" },
+  { href: "/portal/lettre", label: "Lettres & Pitchs" },
+  { href: "/portal/cv", label: "Studio CV" },
   { href: "/portal/references", label: "Références" },
   { href: "/portal/formations", label: "Formations" },
   { href: "/fr/lab", label: "Lab" },

@@ -10,6 +10,7 @@ import { cvToText } from "@/lib/cv/text"
 import type { CvDoc, CvTemplate, SectionId } from "@/lib/cv/types"
 import { localeMeta, locales, type Locale } from "@/lib/i18n"
 import { downloadBlob, downloadText, slugify } from "@/lib/kit/download"
+import { PORTAL_REFERENCES } from "@/lib/portal/directory"
 import type { CvProfile } from "@/lib/portal/profiles"
 import { cn } from "@/lib/utils"
 
@@ -462,14 +463,72 @@ function ContentTab({ doc, patch }: { doc: CvDoc; patch: PatchFn }) {
       <Panel
         title="Références"
         actions={
-          <Button size="sm" onClick={() => patch((d) => void d.references.push({ key: crypto.randomUUID(), visible: true, name: "", role: "", contact: "" }))}>
-            <Plus className="size-3.5" aria-hidden /> Ajouter
-          </Button>
+          <div className="flex items-center gap-1.5">
+            <Button
+              size="sm"
+              onClick={() => {
+                patch((d) => {
+                  d.references = PORTAL_REFERENCES.map((r) => ({
+                    key: r.id,
+                    visible: ["ref-bivunga", "ref-ibucwa", "ref-mbilizi"].includes(r.id),
+                    name: r.name,
+                    role: `${r.role}, ${r.organization}`,
+                    contact: r.cvContact,
+                  }))
+                })
+              }}
+            >
+              Pack ONG
+            </Button>
+            <Button
+              size="sm"
+              onClick={() => {
+                patch((d) => {
+                  d.references = PORTAL_REFERENCES.map((r) => ({
+                    key: r.id,
+                    visible: ["ref-muhindo", "ref-mbilizi"].includes(r.id),
+                    name: r.name,
+                    role: `${r.role}, ${r.organization}`,
+                    contact: r.cvContact,
+                  }))
+                })
+              }}
+            >
+              Pack Tech
+            </Button>
+            <Button
+              size="sm"
+              onClick={() =>
+                patch((d) => void d.references.push({ key: crypto.randomUUID(), visible: true, name: "", role: "", contact: "" }))
+              }
+            >
+              <Plus className="size-3.5" aria-hidden /> Ajouter
+            </Button>
+          </div>
         }
       >
-        <p className="text-[11px] text-subtle-foreground">
-          Les coordonnées de vos références restent dans ce navigateur (versions sauvegardées) et ne sont jamais publiées dans le code. Sans référence, le CV affiche « {doc.referencesNote} ».
-        </p>
+        <div className="flex items-center justify-between gap-2 border-b border-line pb-2.5">
+          <p className="text-[11px] text-subtle-foreground">
+            {doc.references.filter((r) => r.visible).length} référence(s) active(s) sur le CV. Sans référence cochée, le CV affiche « {doc.referencesNote} ».
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              patch((d) => {
+                d.references = PORTAL_REFERENCES.map((r) => ({
+                  key: r.id,
+                  visible: true,
+                  name: r.name,
+                  role: `${r.role}, ${r.organization}`,
+                  contact: r.cvContact,
+                }))
+              })
+            }}
+            className="text-[11px] font-medium text-accent hover:underline shrink-0"
+          >
+            Activer les 7
+          </button>
+        </div>
         {doc.references.length > 0 && (
           <ItemList
             removable

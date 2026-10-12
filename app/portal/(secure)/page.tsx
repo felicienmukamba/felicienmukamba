@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowUpRight, Award, Building2, ChevronRight, Compass, FileText, HeartHandshake, Layers, Palette, Shapes, Sparkles, UserCheck, Waves, Zap } from "lucide-react"
+import { ArrowUpRight, Award, Building2, ChevronRight, Compass, FileText, FolderKanban, HeartHandshake, Layers, MessageSquare, Palette, Shapes, Sparkles, UserCheck, Waves, Zap } from "lucide-react"
 import { ReferencesManager } from "@/components/portal/references-manager"
 import { TargetRolesView } from "@/components/portal/target-roles-view"
 import { TrainingsView } from "@/components/portal/trainings-view"
@@ -33,73 +33,105 @@ export default async function PortalHome() {
           Bonjour {session.user.charAt(0).toUpperCase() + session.user.slice(1)}.
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground">
-          Espace centralisé pour gérer vos candidatures : 5 domaines d'intervention ciblés, CVs sur mesure, personnes de référence vérifiées et formations certifiées.
+          Espace centralisé pour gérer vos candidatures : pipeline Kanban, 25 postes cibles, générateur de lettres de motivation, studio CV, références et formations certifiées.
         </p>
 
         {/* Quick stat cards */}
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          <Link
+            href="/portal/candidatures"
+            className="card flex flex-col justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
+          >
+            <div className="flex items-center justify-between">
+              <span className="grid size-9 place-items-center rounded-xl bg-blue-500/15 text-blue-400">
+                <FolderKanban className="size-4" aria-hidden />
+              </span>
+              <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
+            </div>
+            <div className="mt-3">
+              <p className="text-[14px] font-semibold">Candidatures</p>
+              <p className="text-[12px] text-muted-foreground">Pipeline & relances</p>
+            </div>
+          </Link>
+
           <Link
             href="/portal/postes"
-            className="card flex items-center justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
+            className="card flex flex-col justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between">
               <span className="grid size-9 place-items-center rounded-xl bg-amber-500/15 text-amber-400">
                 <Compass className="size-4" aria-hidden />
               </span>
-              <div>
-                <p className="text-[14px] font-semibold">{totalRolesCount} Postes Cibles</p>
-                <p className="text-[12px] text-muted-foreground">5 domaines clés</p>
-              </div>
+              <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
             </div>
-            <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
+            <div className="mt-3">
+              <p className="text-[14px] font-semibold">{totalRolesCount} Postes Cibles</p>
+              <p className="text-[12px] text-muted-foreground">Tech & ONG</p>
+            </div>
+          </Link>
+
+          <Link
+            href="/portal/lettre"
+            className="card flex flex-col justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
+          >
+            <div className="flex items-center justify-between">
+              <span className="grid size-9 place-items-center rounded-xl bg-rose-500/15 text-rose-400">
+                <MessageSquare className="size-4" aria-hidden />
+              </span>
+              <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
+            </div>
+            <div className="mt-3">
+              <p className="text-[14px] font-semibold">Lettres & Pitchs</p>
+              <p className="text-[12px] text-muted-foreground">Studio sur-mesure</p>
+            </div>
           </Link>
 
           <Link
             href="/portal/cv"
-            className="card flex items-center justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
+            className="card flex flex-col justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between">
               <span className="grid size-9 place-items-center rounded-xl bg-accent/15 text-accent">
                 <FileText className="size-4" aria-hidden />
               </span>
-              <div>
-                <p className="text-[14px] font-semibold">{cvProfiles.length} Profils CV</p>
-                <p className="text-[12px] text-muted-foreground">Studio & export PDF</p>
-              </div>
+              <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
             </div>
-            <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
+            <div className="mt-3">
+              <p className="text-[14px] font-semibold">{cvProfiles.length} Profils CV</p>
+              <p className="text-[12px] text-muted-foreground">Export PDF & ATS</p>
+            </div>
           </Link>
 
           <Link
             href="/portal/references"
-            className="card flex items-center justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
+            className="card flex flex-col justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between">
               <span className="grid size-9 place-items-center rounded-xl bg-emerald-500/15 text-emerald-400">
                 <UserCheck className="size-4" aria-hidden />
               </span>
-              <div>
-                <p className="text-[14px] font-semibold">{PORTAL_REFERENCES.length} Références</p>
-                <p className="text-[12px] text-muted-foreground">Contacts vérifiés</p>
-              </div>
+              <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
             </div>
-            <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
+            <div className="mt-3">
+              <p className="text-[14px] font-semibold">{PORTAL_REFERENCES.length} Références</p>
+              <p className="text-[12px] text-muted-foreground">Contacts vérifiés</p>
+            </div>
           </Link>
 
           <Link
             href="/portal/formations"
-            className="card flex items-center justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
+            className="card flex flex-col justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between">
               <span className="grid size-9 place-items-center rounded-xl bg-purple-500/15 text-purple-400">
                 <Award className="size-4" aria-hidden />
               </span>
-              <div>
-                <p className="text-[14px] font-semibold">Package ERM</p>
-                <p className="text-[12px] text-muted-foreground">OCHA & REACH 2026</p>
-              </div>
+              <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
             </div>
-            <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
+            <div className="mt-3">
+              <p className="text-[14px] font-semibold">Package ERM</p>
+              <p className="text-[12px] text-muted-foreground">OCHA & REACH</p>
+            </div>
           </Link>
         </div>
       </div>
@@ -126,6 +158,63 @@ export default async function PortalHome() {
 
         <div className="mt-6">
           <TargetRolesView compact />
+        </div>
+      </section>
+
+      {/* Pipeline de Candidatures & Outils de Recrutement */}
+      <section className="grid gap-5 md:grid-cols-2">
+        <div className="card rounded-3xl p-6 sm:p-7 border border-line bg-gradient-to-br from-blue-500/10 via-surface to-background flex flex-col justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="grid size-9 place-items-center rounded-xl bg-blue-500/20 text-blue-400">
+                <FolderKanban className="size-4" aria-hidden />
+              </span>
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-blue-400">
+                Tableau de bord de suivi
+              </span>
+            </div>
+            <h3 className="mt-4 text-xl font-bold tracking-tight text-foreground">
+              Pipeline des Candidatures
+            </h3>
+            <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+              Suivez l'état d'avancement de vos démarches (Tech & ONG) en mode Kanban ou tableau : brouillons, candidatures transmises, entretiens techniques et offres reçues.
+            </p>
+          </div>
+
+          <Link
+            href="/portal/candidatures"
+            className="mt-6 inline-flex items-center justify-between rounded-xl border border-blue-500/30 bg-blue-500/10 px-4 py-2.5 text-[13px] font-semibold text-blue-400 hover:bg-blue-500/20 transition-colors"
+          >
+            <span>Accéder au suivi des candidatures</span>
+            <ArrowUpRight className="size-4" aria-hidden />
+          </Link>
+        </div>
+
+        <div className="card rounded-3xl p-6 sm:p-7 border border-line bg-gradient-to-br from-rose-500/10 via-surface to-background flex flex-col justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="grid size-9 place-items-center rounded-xl bg-rose-500/20 text-rose-400">
+                <MessageSquare className="size-4" aria-hidden />
+              </span>
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-rose-400">
+                Générateur Intelligent
+              </span>
+            </div>
+            <h3 className="mt-4 text-xl font-bold tracking-tight text-foreground">
+              Lettres de Motivation & Pitchs
+            </h3>
+            <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+              Générez instantanément des lettres de motivation personnalisées (FR/EN) et des pitchs d'accroche pour LinkedIn / RH, adaptées au poste visé et intégrant vos 7 références.
+            </p>
+          </div>
+
+          <Link
+            href="/portal/lettre"
+            className="mt-6 inline-flex items-center justify-between rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-2.5 text-[13px] font-semibold text-rose-400 hover:bg-rose-500/20 transition-colors"
+          >
+            <span>Rédiger une lettre ou un pitch</span>
+            <ArrowUpRight className="size-4" aria-hidden />
+          </Link>
         </div>
       </section>
 
