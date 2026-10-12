@@ -367,7 +367,13 @@ export const fr: Dictionary = {
     ],
     certificationsTitle: "Formations & certifications",
     certifications: [
+      {
+        name: "Package ERM (Évaluation Rapide Multisectorielle) — Ehtools, PSEA, AAP, Échantillonnage & Analyse",
+        provider: "OCHA & REACH Initiative",
+        year: "2026",
+      },
       { name: "Gestion de projet — Agile, UML, GitHub, Merise", provider: "OpenClassrooms", year: "2024" },
+      { name: "Jeune Ambassadeur de la Paix — Consolidation de la paix & médiation", provider: "UNICEF", year: "2023" },
       { name: "Leadership & community management", provider: "Google Developer Student Clubs", year: "2023" },
       { name: "Analyse de données, UI/UX design", provider: "Coursera", year: "2023" },
       { name: "Programmation — Angular, React, JavaScript, Python, Django", provider: "OpenClassrooms", year: "2022" },

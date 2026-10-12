@@ -1,5 +1,6 @@
 import { getDictionary } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
+import { PORTAL_REFERENCES } from "@/lib/portal/directory"
 import { experience, projects, site } from "@/lib/site"
 import { SECTION_IDS, SKILL_KEYS, type CvDoc } from "./types"
 
@@ -81,7 +82,13 @@ export function buildBaseCv(lang: Locale): CvDoc {
       meta: `${c.provider} · ${c.year}`,
     })),
     languages: t.education.languages.map((l, i) => ({ key: `lang-${i}`, visible: true, name: l.name, level: l.level })),
-    references: [],
+    references: PORTAL_REFERENCES.map((r) => ({
+      key: r.id,
+      visible: false,
+      name: r.name,
+      role: `${r.role}, ${r.organization}`,
+      contact: r.cvContact,
+    })),
     referencesNote: t.cv.references,
   }
 }

@@ -54,5 +54,9 @@ export function applyProfile(profile: CvProfile, lang: Locale): CvDoc {
     return items ? { ...skill, items: pick(items, lang) } : skill
   })
 
+  if (profile.references) {
+    doc.references = arrange(doc.references, profile.references)
+  }
+
   return doc
 }

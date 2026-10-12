@@ -33,6 +33,8 @@ export type CvProfile = {
   skills?: SkillKey[]
   /** Replaces a skill category's items (comma-separated). */
   skillItems?: Partial<Record<SkillKey, Localized>>
+  /** References to show, in order. Unlisted ones are hidden. */
+  references?: string[]
 }
 
 export const cvProfiles: CvProfile[] = [
@@ -47,6 +49,7 @@ export const cvProfiles: CvProfile[] = [
     density: "comfortable",
     accent: "#5a4bd6",
     showPhoto: false,
+    references: ["ref-muhindo", "ref-bivunga", "ref-ibucwa", "ref-mbilizi", "ref-raymond", "ref-dede", "ref-lukungukilwa"],
   },
 
   // ─── Companies ───────────────────────────────────────────────────────────
@@ -73,6 +76,7 @@ export const cvProfiles: CvProfile[] = [
     experience: [{ id: "aumsoft" }, { id: "soside" }, { id: "gdsc" }, { id: "gevapom" }],
     projects: ["ums", "pgcc", "hms", "maago"],
     skills: ["languages", "architecture", "ai", "agents", "data", "security"],
+    references: ["ref-muhindo", "ref-mbilizi"],
   },
   {
     id: "ai-engineer",
@@ -117,6 +121,7 @@ export const cvProfiles: CvProfile[] = [
     ],
     projects: ["hms", "maago", "pgcc", "ums"],
     skills: ["ai", "agents", "architecture", "languages", "data", "security"],
+    references: ["ref-muhindo", "ref-mbilizi"],
   },
   {
     id: "project-manager",
@@ -154,6 +159,7 @@ export const cvProfiles: CvProfile[] = [
     ],
     projects: ["hms", "maago", "ums", "silikivu"],
     skills: ["product", "architecture", "ai", "languages", "data"],
+    references: ["ref-muhindo", "ref-bivunga", "ref-mbilizi"],
   },
   {
     id: "startup-fullstack",
@@ -178,6 +184,7 @@ export const cvProfiles: CvProfile[] = [
     experience: [{ id: "soside" }, { id: "aumsoft" }, { id: "gdsc" }],
     projects: ["maago", "hms", "ums", "silikivu"],
     skills: ["languages", "architecture", "product", "data", "ai"],
+    references: ["ref-muhindo", "ref-mbilizi"],
   },
 
   // ─── NGOs ────────────────────────────────────────────────────────────────
@@ -234,6 +241,7 @@ export const cvProfiles: CvProfile[] = [
     ],
     projects: ["maago", "hms", "ums", "mazingira"],
     skills: ["product", "data", "architecture", "security", "ai"],
+    references: ["ref-bivunga", "ref-ibucwa", "ref-mbilizi"],
   },
   {
     id: "ngo-data",
@@ -284,5 +292,152 @@ export const cvProfiles: CvProfile[] = [
         fr: "PostgreSQL, Modélisation de bases de données, Power BI, Excel avancé, Python (analyse de données), Tableaux de bord, Qualité des données",
       },
     },
+    references: ["ref-bivunga", "ref-ibucwa", "ref-mbilizi"],
+  },
+  {
+    id: "ngo-meal",
+    audience: "ngo",
+    name: "ONG — MEAL / Information Management Officer (IMO)",
+    target: "Clusters humanitaires, agences ONU, ONG internationales (MEAL, IM)",
+    description: "Centré sur la gestion de l'information humanitaire, KoboCollect, Ehtools, tableaux de bord interactifs (Power BI) et redevabilité (AAP/PSEA).",
+    lang: "fr",
+    template: "sidebar",
+    density: "comfortable",
+    accent: "#0284c7",
+    showPhoto: true,
+    headline: {
+      en: "Information Management Officer (IMO) · MEAL Officer",
+      fr: "Information Management Officer (IMO) · Chargé MEAL & Données Humanitaires",
+    },
+    summary: {
+      en: "Information Management and MEAL professional with a software engineering background. Trained on the ERM package by OCHA and REACH Initiative, I own the full data lifecycle: mobile data collection (KoboCollect, Google Forms), automated cleaning and analysis (Python, Pandas, Excel), interactive dashboards (Power BI) and strict integration of accountability (AAP) and protection (PSEA) mechanisms. Former Data Manager for an education NGO covering 8 schools.",
+      fr: "Spécialiste de la gestion de l'information (IMO) et du suivi-évaluation (MEAL) alliant ingénierie logicielle et expérience terrain. Formé au package ERM par OCHA et REACH Initiative, je maîtrise le cycle complet de la donnée : collecte mobile (KoboCollect, Google Forms), nettoyage et analyse automatisés (Python, Pandas, Excel avancé), tableaux de bord décisionnels (Power BI) et intégration stricte de la redevabilité (AAP) et de la protection (PSEA). Ancien Data Manager en ONG couvrant 8 écoles.",
+    },
+    sections: ["summary", "experience", "skills", "projects", "certifications", "education", "languages", "references"],
+    experience: [
+      {
+        id: "gevapom",
+        role: { en: "Data Manager & M&E Lead", fr: "Data Manager & Responsable Suivi-Évaluation" },
+        bullets: [
+          {
+            en: "Designed automated data collection tools and interactive monitoring dashboards covering 8 schools.",
+            fr: "Conception d'outils de collecte automatisés et de tableaux de bord de suivi couvrant 8 établissements scolaires.",
+          },
+          {
+            en: "Ensured 100% data quality, confidentiality and integrity across 10,000+ records.",
+            fr: "Garantie de la qualité, de la confidentialité et de l'intégrité des données sur plus de 10 000 dossiers.",
+          },
+          {
+            en: "Trained 50+ field staff and teachers in digital data collection and reporting.",
+            fr: "Formation de plus de 50 acteurs de terrain et enseignants aux outils de collecte et de rapportage.",
+          },
+        ],
+      },
+      { id: "aumsoft" },
+      { id: "soside" },
+    ],
+    projects: ["mazingira", "ums", "hms", "pgcc"],
+    skills: ["data", "product", "security", "ai", "architecture"],
+    skillItems: {
+      data: {
+        en: "KoboToolbox, Ehtools, Power BI, Python (Pandas), Advanced Excel, PostgreSQL, Sampling, Data Quality, AAP/PSEA",
+        fr: "KoboToolbox, Ehtools, Power BI, Python (Pandas), Excel avancé, PostgreSQL, Échantillonnage, Qualité des données, AAP/PSEA",
+      },
+    },
+    references: ["ref-bivunga", "ref-ibucwa", "ref-mbilizi"],
+  },
+  {
+    id: "ngo-emergency",
+    audience: "ngo",
+    name: "ONG — Évaluation Rapide & Urgence (ERM Assessor)",
+    target: "Équipes de réponse rapide, mécanismes d'urgence, évaluations multisectorielles",
+    description: "Taillé pour les déploiements d'urgence : package ERM OCHA/REACH, outil Ehtools, enquêtes terrain, échantillonnage et rapports d'alerte.",
+    lang: "fr",
+    template: "sidebar",
+    density: "comfortable",
+    accent: "#dc2626",
+    showPhoto: true,
+    headline: {
+      en: "Multi-Sector Rapid Assessment Specialist (ERM Assessor) · Field Officer",
+      fr: "Spécialiste Évaluation Rapide Multisectorielle (ERM Assessor) · Officier de Terrain",
+    },
+    summary: {
+      en: "Rapid response and field assessment specialist certified on the new ERM package by OCHA and REACH Initiative (Bukavu, 2026). Operational for emergency deployments: crisis context analysis, sampling, field household surveys, Ehtools mastery, rapid report drafting, and systematic mainstreaming of PSEA, AAP, Gender and Disability indicators.",
+      fr: "Spécialiste des interventions d'urgence et de l'évaluation rapide de terrain, certifié sur le nouveau package ERM par OCHA et REACH Initiative (Bukavu, 2026). Immédiatement opérationnel pour les déploiements d'urgence : analyse du contexte de crise, échantillonnage statistique, enquêtes ménages terrain, maîtrise de l'outil Ehtools, rédaction de rapports d'alerte et intégration systématique des indicateurs PSEA, AAP, Genre et Handicap.",
+    },
+    sections: ["summary", "certifications", "experience", "skills", "projects", "education", "languages", "references"],
+    experience: [
+      {
+        id: "gevapom",
+        role: { en: "Field Data & Operations Support", fr: "Appui aux opérations de terrain & Données" },
+        bullets: [
+          {
+            en: "Conducted field surveys and assessments in vulnerable communities in South Kivu.",
+            fr: "Conduite d'enquêtes terrain et d'évaluations diagnostiques auprès des communautés vulnérables au Sud-Kivu.",
+          },
+          {
+            en: "Deployed mobile data collection tools under low connectivity constraints.",
+            fr: "Déploiement d'outils de collecte mobile adaptés aux contraintes d'accès et de faible connectivité.",
+          },
+          {
+            en: "Produced rapid quantitative briefs for program coordinators.",
+            fr: "Production de synthèses quantitatives rapides pour la coordination des programmes.",
+          },
+        ],
+      },
+      { id: "aumsoft" },
+      { id: "gdsc" },
+    ],
+    projects: ["mazingira", "ums", "hms"],
+    skills: ["data", "product", "security", "architecture"],
+    skillItems: {
+      data: {
+        en: "Package ERM OCHA/REACH, Ehtools, KoboCollect, Statistical Sampling, Emergency Reporting, PSEA, AAP",
+        fr: "Package ERM OCHA/REACH, Ehtools, KoboCollect, Échantillonnage statistique, Rapports d'urgence, PSEA, AAP",
+      },
+    },
+    references: ["ref-ibucwa", "ref-bivunga", "ref-mbilizi"],
+  },
+  {
+    id: "peace-comm",
+    audience: "ngo",
+    name: "ONG — Communication, Plaidoyer & Consolidation de la Paix",
+    target: "Programmes jeunesse, cohésion sociale, plaidoyer, agences de développement (UNICEF, PNUD)",
+    description: "Met en avant le titre de Jeune Ambassadeur de la Paix UNICEF, la médiation communautaire, le leadership GDSC et la création de contenus visuels d'impact.",
+    lang: "fr",
+    template: "sidebar",
+    density: "comfortable",
+    accent: "#7c3aed",
+    showPhoto: true,
+    headline: {
+      en: "Communications, Advocacy & Peacebuilding Officer · Youth Peace Ambassador",
+      fr: "Chargé de Communication, Plaidoyer & Consolidation de la Paix · Jeune Ambassadeur UNICEF",
+    },
+    summary: {
+      en: "Communications, advocacy and community engagement professional certified as Youth Peace Ambassador by UNICEF. I combine visual storytelling skills (UI/UX, graphic design, video) with proven community mobilization leadership (DevFest Kivu organizer, GDSC Lead, community coordination with A Rocha and TRAFFED). Committed to conflict mediation, youth empowerment and amplifying program impact.",
+      fr: "Professionnel de la communication, du plaidoyer et de l'engagement communautaire, certifié Jeune Ambassadeur de la Paix par l'UNICEF. J'associe des compétences visuelles de haut niveau (UI/UX, infographie, multimédia) à une solide expérience de mobilisation citoyenne (organisateur du DevFest Kivu, Lead GDSC, animation de projets chez A Rocha et TRAFFED). Engagé pour la médiation des conflits, la cohésion sociale et la valorisation de l'impact des projets auprès des bailleurs.",
+    },
+    sections: ["summary", "experience", "skills", "projects", "certifications", "education", "languages", "references"],
+    experience: [
+      {
+        id: "gdsc",
+        role: { en: "Community Lead & Youth Organizer", fr: "Community Lead & Organisateur Jeunesse" },
+        bullets: [
+          {
+            en: "Mobilized 200+ youth and developers for DevFest Kivu, coordinating 20+ technical and soft-skill workshops.",
+            fr: "Mobilisation de plus de 200 jeunes et développeurs pour le DevFest Kivu, avec plus de 20 ateliers techniques et citoyens.",
+          },
+          {
+            en: "Led peace and digital inclusion campaigns across universities and youth clubs.",
+            fr: "Pilotage de campagnes de cohésion sociale et d'inclusion numérique auprès des universités et cercles de jeunes.",
+          },
+        ],
+      },
+      { id: "gevapom" },
+      { id: "soside" },
+    ],
+    projects: ["mazingira", "silikivu", "ums"],
+    skills: ["product", "data", "security", "ai"],
+    references: ["ref-ibucwa", "ref-bivunga", "ref-mbilizi"],
   },
 ]

@@ -365,7 +365,13 @@ export const en = {
     ],
     certificationsTitle: "Training & certifications",
     certifications: [
+      {
+        name: "ERM Package (Multi-Sector Rapid Assessment) — Ehtools, PSEA, AAP, Sampling & Analysis",
+        provider: "OCHA & REACH Initiative",
+        year: "2026",
+      },
       { name: "Project management — Agile, UML, GitHub, Merise", provider: "OpenClassrooms", year: "2024" },
+      { name: "Youth Peace Ambassador — Peacebuilding & Mediation", provider: "UNICEF", year: "2023" },
       { name: "Leadership & community management", provider: "Google Developer Student Clubs", year: "2023" },
       { name: "Data analysis, UI/UX design", provider: "Coursera", year: "2023" },
       { name: "Programming — Angular, React, JavaScript, Python, Django", provider: "OpenClassrooms", year: "2022" },

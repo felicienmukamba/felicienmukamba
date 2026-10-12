@@ -1,7 +1,12 @@
 import Link from "next/link"
-import { ArrowUpRight, Building2, FileText, HeartHandshake, Layers, Palette, Shapes, Sparkles, Waves } from "lucide-react"
+import { ArrowUpRight, Award, Building2, ChevronRight, Compass, FileText, HeartHandshake, Layers, Palette, Shapes, Sparkles, UserCheck, Waves, Zap } from "lucide-react"
+import { ReferencesManager } from "@/components/portal/references-manager"
+import { TargetRolesView } from "@/components/portal/target-roles-view"
+import { TrainingsView } from "@/components/portal/trainings-view"
 import { requireSession } from "@/lib/portal/auth"
+import { PORTAL_REFERENCES } from "@/lib/portal/directory"
 import { cvProfiles } from "@/lib/portal/profiles"
+import { TARGET_CATEGORIES } from "@/lib/portal/roles"
 
 const tools = [
   { href: "/fr/lab/brand-kit", label: "Brand kit & marketplace", description: "Logo + couleurs → charte, visuels boutique, données de démo.", Icon: Palette },
@@ -13,55 +18,221 @@ const tools = [
 export default async function PortalHome() {
   const session = await requireSession()
   const groups = [
-    { title: "Entreprises", Icon: Building2, items: cvProfiles.filter((p) => p.audience !== "ngo") },
-    { title: "ONG", Icon: HeartHandshake, items: cvProfiles.filter((p) => p.audience === "ngo") },
+    { title: "Entreprises & Tech", Icon: Building2, items: cvProfiles.filter((p) => p.audience !== "ngo") },
+    { title: "ONG & Développement", Icon: HeartHandshake, items: cvProfiles.filter((p) => p.audience === "ngo") },
   ]
 
-  return (
-    <main className="mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-14">
-      <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-subtle-foreground">Portail privé</p>
-      <h1 className="mt-3 text-3xl font-semibold tracking-[-0.04em] md:text-5xl">
-        Bonjour {session.user.charAt(0).toUpperCase() + session.user.slice(1)}.
-      </h1>
-      <p className="mt-3 max-w-xl text-muted-foreground">Choisissez un profil pour générer un CV adapté au poste, puis personnalisez chaque détail dans le studio.</p>
+  const totalRolesCount = TARGET_CATEGORIES.reduce((acc, cat) => acc + cat.roles.length, 0)
 
-      <section className="mt-10 grid gap-5 md:grid-cols-2">
-        {groups.map(({ title, Icon, items }) => (
-          <div key={title} className="card rounded-3xl p-6">
-            <h2 className="flex items-center gap-2 text-[15px] font-semibold">
-              <Icon className="size-4 text-accent" aria-hidden /> CV — {title}
-            </h2>
-            <ul className="mt-4 divide-y divide-line">
-              {items.map((p) => (
-                <li key={p.id}>
-                  <Link href={`/portal/cv?profile=${p.id}`} className="group flex items-center gap-3 py-3">
-                    <span className="size-2.5 shrink-0 rounded-full" style={{ backgroundColor: p.accent }} aria-hidden />
-                    <span className="min-w-0 flex-1">
-                      <span className="block truncate text-[14px] font-medium group-hover:text-accent">{p.name}</span>
-                      <span className="block truncate text-[12px] text-muted-foreground">{p.target}</span>
-                    </span>
-                    <ArrowUpRight className="size-4 shrink-0 text-subtle-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-                  </Link>
-                </li>
-              ))}
-            </ul>
+  return (
+    <main className="mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-14 space-y-14">
+      {/* Welcome header & summary badges */}
+      <div>
+        <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-subtle-foreground">Portail privé</p>
+        <h1 className="mt-3 text-3xl font-semibold tracking-[-0.04em] md:text-5xl">
+          Bonjour {session.user.charAt(0).toUpperCase() + session.user.slice(1)}.
+        </h1>
+        <p className="mt-3 max-w-2xl text-muted-foreground">
+          Espace centralisé pour gérer vos candidatures : 5 domaines d'intervention ciblés, CVs sur mesure, personnes de référence vérifiées et formations certifiées.
+        </p>
+
+        {/* Quick stat cards */}
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <Link
+            href="/portal/postes"
+            className="card flex items-center justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
+          >
+            <div className="flex items-center gap-3">
+              <span className="grid size-9 place-items-center rounded-xl bg-amber-500/15 text-amber-400">
+                <Compass className="size-4" aria-hidden />
+              </span>
+              <div>
+                <p className="text-[14px] font-semibold">{totalRolesCount} Postes Cibles</p>
+                <p className="text-[12px] text-muted-foreground">5 domaines clés</p>
+              </div>
+            </div>
+            <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
+          </Link>
+
+          <Link
+            href="/portal/cv"
+            className="card flex items-center justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
+          >
+            <div className="flex items-center gap-3">
+              <span className="grid size-9 place-items-center rounded-xl bg-accent/15 text-accent">
+                <FileText className="size-4" aria-hidden />
+              </span>
+              <div>
+                <p className="text-[14px] font-semibold">{cvProfiles.length} Profils CV</p>
+                <p className="text-[12px] text-muted-foreground">Studio & export PDF</p>
+              </div>
+            </div>
+            <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
+          </Link>
+
+          <Link
+            href="/portal/references"
+            className="card flex items-center justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
+          >
+            <div className="flex items-center gap-3">
+              <span className="grid size-9 place-items-center rounded-xl bg-emerald-500/15 text-emerald-400">
+                <UserCheck className="size-4" aria-hidden />
+              </span>
+              <div>
+                <p className="text-[14px] font-semibold">{PORTAL_REFERENCES.length} Références</p>
+                <p className="text-[12px] text-muted-foreground">Contacts vérifiés</p>
+              </div>
+            </div>
+            <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
+          </Link>
+
+          <Link
+            href="/portal/formations"
+            className="card flex items-center justify-between rounded-2xl p-4 transition-colors hover:border-accent/40"
+          >
+            <div className="flex items-center gap-3">
+              <span className="grid size-9 place-items-center rounded-xl bg-purple-500/15 text-purple-400">
+                <Award className="size-4" aria-hidden />
+              </span>
+              <div>
+                <p className="text-[14px] font-semibold">Package ERM</p>
+                <p className="text-[12px] text-muted-foreground">OCHA & REACH 2026</p>
+              </div>
+            </div>
+            <ChevronRight className="size-4 text-subtle-foreground" aria-hidden />
+          </Link>
+        </div>
+      </div>
+
+      {/* Postes Visés & Stratégie de Carrière */}
+      <section id="postes">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <Compass className="size-5 text-amber-400" aria-hidden />
+              <h2 className="text-xl font-bold tracking-tight md:text-2xl">Profils & Postes Visés</h2>
+            </div>
+            <p className="mt-1 text-[13.5px] text-muted-foreground">
+              Vos 5 familles de métiers (IM & MEAL, T4D / ICT, ERM Urgence, Paix & Communication, Gestion de Projet) et pitchs associés.
+            </p>
           </div>
-        ))}
+          <Link
+            href="/portal/postes"
+            className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent hover:underline"
+          >
+            Guide complet de candidature <ArrowUpRight className="size-3.5" aria-hidden />
+          </Link>
+        </div>
+
+        <div className="mt-6">
+          <TargetRolesView compact />
+        </div>
       </section>
 
-      <Link
-        href="/portal/cv"
-        className="mt-5 flex items-center gap-4 rounded-3xl border border-accent/30 bg-accent-soft p-6 transition-colors hover:border-accent/60"
-      >
-        <FileText className="size-6 shrink-0 text-accent" aria-hidden />
-        <span className="flex-1">
-          <span className="block text-[15px] font-semibold">Ouvrir le studio CV</span>
-          <span className="block text-[13px] text-muted-foreground">Reprend votre dernier brouillon : mise en page, contenu, analyse d'offre, versions.</span>
-        </span>
-        <Sparkles className="size-5 text-accent" aria-hidden />
-      </Link>
+      {/* CV Profiles selection */}
+      <section id="cv">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-bold tracking-tight md:text-2xl">Profils CV adaptés dans le Studio</h2>
+            <p className="text-[13px] text-muted-foreground">Sélectionnez un profil préconfiguré avec les sections, mots-clés et références pertinentes.</p>
+          </div>
+          <Link
+            href="/portal/cv"
+            className="hidden items-center gap-1.5 text-[13px] font-semibold text-accent hover:underline sm:inline-flex"
+          >
+            Ouvrir le studio <ArrowUpRight className="size-3.5" aria-hidden />
+          </Link>
+        </div>
 
-      <section className="mt-12">
+        <div className="mt-6 grid gap-5 md:grid-cols-2">
+          {groups.map(({ title, Icon, items }) => (
+            <div key={title} className="card rounded-3xl p-6">
+              <h3 className="flex items-center gap-2 text-[15px] font-semibold">
+                <Icon className="size-4 text-accent" aria-hidden /> CV — {title}
+              </h3>
+              <ul className="mt-4 divide-y divide-line">
+                {items.map((p) => (
+                  <li key={p.id}>
+                    <Link href={`/portal/cv?profile=${p.id}`} className="group flex items-center gap-3 py-3">
+                      <span className="size-2.5 shrink-0 rounded-full" style={{ backgroundColor: p.accent }} aria-hidden />
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate text-[14px] font-medium group-hover:text-accent">{p.name}</span>
+                        <span className="block truncate text-[12px] text-muted-foreground">{p.target}</span>
+                      </span>
+                      <ArrowUpRight className="size-4 shrink-0 text-subtle-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <Link
+          href="/portal/cv"
+          className="mt-5 flex items-center gap-4 rounded-3xl border border-accent/30 bg-accent-soft p-6 transition-colors hover:border-accent/60"
+        >
+          <FileText className="size-6 shrink-0 text-accent" aria-hidden />
+          <span className="flex-1">
+            <span className="block text-[15px] font-semibold">Ouvrir le studio CV</span>
+            <span className="block text-[13px] text-muted-foreground">Personnalisez votre mise en page, contenu, références, analyse d'offre d'emploi et exportez votre PDF.</span>
+          </span>
+          <Sparkles className="size-5 text-accent" aria-hidden />
+        </Link>
+      </section>
+
+      {/* Personnes de Références */}
+      <section id="references">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <UserCheck className="size-5 text-emerald-400" aria-hidden />
+              <h2 className="text-xl font-bold tracking-tight md:text-2xl">Personnes de Références</h2>
+            </div>
+            <p className="mt-1 text-[13.5px] text-muted-foreground">
+              Coordonnées directes de vos répondants professionnels, académiques et institutionnels.
+            </p>
+          </div>
+          <Link
+            href="/portal/references"
+            className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent hover:underline"
+          >
+            Voir le carnet complet <ArrowUpRight className="size-3.5" aria-hidden />
+          </Link>
+        </div>
+
+        <div className="mt-6">
+          <ReferencesManager compact />
+        </div>
+      </section>
+
+      {/* Formations & Certifications */}
+      <section id="formations">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <Award className="size-5 text-purple-400" aria-hidden />
+              <h2 className="text-xl font-bold tracking-tight md:text-2xl">Formations & Certifications</h2>
+            </div>
+            <p className="mt-1 text-[13.5px] text-muted-foreground">
+              Dernière session : Package ERM conjoint OCHA & REACH Initiative (Bukavu), Jeune Ambassadeur UNICEF et certifications techniques.
+            </p>
+          </div>
+          <Link
+            href="/portal/formations"
+            className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-accent hover:underline"
+          >
+            Tous les détails & modules <ArrowUpRight className="size-3.5" aria-hidden />
+          </Link>
+        </div>
+
+        <div className="mt-6">
+          <TrainingsView compact />
+        </div>
+      </section>
+
+      {/* Lab Tools */}
+      <section>
         <h2 className="text-[15px] font-semibold">Outils du Lab</h2>
         <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {tools.map(({ href, label, description, Icon }) => (
