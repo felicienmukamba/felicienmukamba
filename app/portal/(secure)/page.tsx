@@ -113,7 +113,7 @@ export default async function PortalHome() {
               <h2 className="text-xl font-bold tracking-tight md:text-2xl">Profils & Postes Visés</h2>
             </div>
             <p className="mt-1 text-[13.5px] text-muted-foreground">
-              Vos 5 familles de métiers (IM & MEAL, T4D / ICT, ERM Urgence, Paix & Communication, Gestion de Projet) et pitchs associés.
+              Vos opportunités cibles : Entreprises Tech (Fullstack Senior, Architecte, Tech Lead, DevOps) et Secteur Humanitaire (IM/MEAL, T4D, ERM Urgence, Paix & Communication).
             </p>
           </div>
           <Link

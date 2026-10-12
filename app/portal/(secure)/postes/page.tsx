@@ -27,7 +27,7 @@ export default async function PostesPage() {
             Profils & Postes Visés
           </h1>
           <p className="mt-2 max-w-2xl text-[14px] text-muted-foreground">
-            Cartographie complète de vos 5 domaines d'intervention, postes cibles (IM/MEAL, ICT/T4D, ERM Urgence, Paix & Communication, Gestion de Projet), pitchs prêts à l'emploi et CVs associés.
+            Cartographie complète de vos opportunités à très forte valeur ajoutée : Entreprises Tech (Fullstack Senior, Architecte, Tech Lead, DevOps, FinTech, ESN) et Secteur Humanitaire (IM/MEAL, T4D, ERM Urgence OCHA/REACH, Paix & Communication UNICEF).
           </p>
         </div>
 
