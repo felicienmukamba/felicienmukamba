@@ -50,7 +50,7 @@ export async function proxy(request: NextRequest) {
 
   const url = request.nextUrl.clone()
   url.pathname = `/${preferredLocale(request)}${pathname === "/" ? "" : pathname}`
-  const response = NextResponse.redirect(url, 307)
+  const response = NextResponse.rewrite(url)
   response.headers.set("Vary", "Accept-Language, Cookie")
   return response
 }
