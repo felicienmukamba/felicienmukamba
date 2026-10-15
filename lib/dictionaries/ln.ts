@@ -404,6 +404,10 @@ export const ln: Dictionary = {
         name: "Générateur d'icônes & logos ya application",
         description: "Moteur SOSIDE PAY na TypeScript: superellipse Apple, ba cartes ya mbongo, ba mascottes, multi-icônes mpe exports complets mpo na ba applications mobimba.",
       },
+      mascot: {
+        name: "Générateur ya Mascottes",
+        description: "Bongisa ba mascottes mpe ba avatars ya marque: ba styles ndenge na ndenge (3D, minimaliste, sketch, cyberpunk), bizaleli mpe compilation ya ba invites d'images.",
+      },
       svg: {
         name: "Générateur SVG",
         description: "Ba blobs, ba vagues, ba motifs mpe ba dégradés — export SVG, PNG to CSS.",

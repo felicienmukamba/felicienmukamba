@@ -5,6 +5,7 @@ import { ArrowLeft, ShieldCheck } from "lucide-react"
 import { AppIconStudio } from "@/components/lab/app-icon-studio"
 import { BrandKit } from "@/components/lab/brand-kit"
 import { DesignTools } from "@/components/lab/design-tools"
+import { MascotGenerator } from "@/components/lab/mascot-generator"
 import { MotionTools } from "@/components/lab/motion-tools"
 import { SvgGenerator } from "@/components/lab/svg-generator"
 import { Footer } from "@/components/sections/footer"
@@ -61,6 +62,7 @@ export default async function LabToolPage({ params }: PageProps<"/[lang]/lab/[to
         <div className="mt-10">
           {tool === "brand-kit" && <BrandKit t={strings} lang={lang === "en" ? "en" : "fr"} />}
           {tool === "app-icon" && <AppIconStudio t={strings} lang={lang === "en" ? "en" : "fr"} />}
+          {tool === "mascot" && <MascotGenerator t={strings} lang={lang === "en" ? "en" : "fr"} />}
           {tool === "svg" && <SvgGenerator t={strings} />}
           {tool === "motion" && <MotionTools t={strings} />}
           {tool === "design" && <DesignTools t={strings} />}

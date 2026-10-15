@@ -404,6 +404,10 @@ export const en = {
         name: "App Icon & Logo Studio",
         description: "SOSIDE PAY engine ported to TypeScript: continuous Apple superellipse squircles, payment cards, mascots, multi-icon combiner, complete exports (iOS, Android, macOS, Web) & card motion.",
       },
+      mascot: {
+        name: "Mascot Generator",
+        description: "Design brand mascot avatars with diverse styles (minimalist, 3D render, artistic sketch, cyberpunk), customizable personality traits, AI image prompt compiler, and high-res asset exports.",
+      },
       svg: {
         name: "SVG generator",
         description: "Blobs, layered waves, seamless patterns and grainy mesh gradients — export SVG, PNG or CSS.",

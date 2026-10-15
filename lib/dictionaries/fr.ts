@@ -406,6 +406,10 @@ export const fr: Dictionary = {
         name: "Générateur d'icônes & logos d'application",
         description: "Moteur SOSIDE PAY en TypeScript : superellipse Apple continue, cartes bancaires, mascottes, multi-icônes, exports iOS / Android adaptatif / macOS / Web et motion design.",
       },
+      mascot: {
+        name: "Générateur de Mascottes",
+        description: "Créez des mascottes et avatars de marque : styles variés (3D Pixar, Minimaliste, Croquis, Cyberpunk, Kawaii), traits de personnalité, compilation d'invites d'IA et export haute résolution.",
+      },
       svg: {
         name: "Générateur SVG",
         description: "Blobs, vagues en couches, motifs répétables et dégradés maillés avec grain — export SVG, PNG ou CSS.",

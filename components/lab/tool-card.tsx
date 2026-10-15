@@ -1,9 +1,9 @@
 import Link from "next/link"
-import { ArrowUpRight, Layers, Palette, Shapes, Smartphone, Waves } from "lucide-react"
+import { ArrowUpRight, Bot, Layers, Palette, Shapes, Smartphone, Sparkles, Waves } from "lucide-react"
 import { Spotlight } from "@/components/motion"
 import type { LabToolId } from "@/lib/lab/tools"
 
-const icons = { "brand-kit": Palette, "app-icon": Smartphone, svg: Shapes, motion: Waves, design: Layers }
+const icons = { "brand-kit": Palette, "app-icon": Smartphone, mascot: Sparkles, svg: Shapes, motion: Waves, design: Layers }
 
 /** Mini preview drawn in CSS so the cards stay lightweight. */
 function Preview({ id }: { id: LabToolId }) {
@@ -30,6 +30,38 @@ function Preview({ id }: { id: LabToolId }) {
                 <div className="h-0.5 w-2 bg-[#CDDDF7] rounded" />
               </div>
             </div>
+          </div>
+        </div>
+      )
+    case "mascot":
+      return (
+        <div className="flex h-full items-center justify-center gap-3">
+          <div className="relative size-16 overflow-hidden rounded-2xl border border-accent/40 shadow-lg transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-105">
+            <img
+              src="/images/mascots/mascot-3d-robot.jpg"
+              alt="Mascot 3D"
+              referrerPolicy="no-referrer"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="relative size-18 overflow-hidden rounded-[26%] border-2 border-accent shadow-xl transition-transform duration-500 group-hover:scale-110 z-10">
+            <img
+              src="/images/mascots/mascot-minimalist-fox.jpg"
+              alt="Mascot Minimalist"
+              referrerPolicy="no-referrer"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute bottom-1 right-1 rounded-full bg-accent px-1.5 py-0.2 font-mono text-[8px] font-bold text-accent-foreground">
+              AI
+            </div>
+          </div>
+          <div className="relative size-16 overflow-hidden rounded-2xl border border-accent/40 shadow-lg transition-transform duration-500 group-hover:rotate-6 group-hover:scale-105">
+            <img
+              src="/images/mascots/mascot-sketch-owl.jpg"
+              alt="Mascot Sketch"
+              referrerPolicy="no-referrer"
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       )

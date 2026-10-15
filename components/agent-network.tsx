@@ -177,9 +177,18 @@ export default function AgentNetwork() {
   const container = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(true)
   const [reduced, setReduced] = useState(false)
+  const [hasWebGL, setHasWebGL] = useState(true)
   const [count, setCount] = useState(84)
 
   useEffect(() => {
+    try {
+      const canvas = document.createElement("canvas")
+      const gl = canvas.getContext("webgl2") || canvas.getContext("webgl")
+      if (!gl) setHasWebGL(false)
+    } catch {
+      setHasWebGL(false)
+    }
+
     const media = window.matchMedia("(prefers-reduced-motion: reduce)")
     const update = () => setReduced(media.matches)
     update()
@@ -196,6 +205,14 @@ export default function AgentNetwork() {
 
   const animate = visible && !reduced
 
+  if (!hasWebGL) {
+    return (
+      <div ref={container} className="absolute inset-0 opacity-40" aria-hidden>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--accent)_1px,transparent_1px)] [background-size:24px_24px]" />
+      </div>
+    )
+  }
+
   return (
     <div ref={container} className="absolute inset-0" aria-hidden>
       <Canvas
@@ -204,8 +221,6 @@ export default function AgentNetwork() {
         gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
         frameloop={animate ? "always" : "demand"}
         style={{ pointerEvents: "none" }}
-        eventSource={typeof document !== "undefined" ? document.body : undefined}
-        eventPrefix="client"
       >
         <Network count={count} animate={animate} />
       </Canvas>

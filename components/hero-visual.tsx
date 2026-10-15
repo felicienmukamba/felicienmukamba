@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { MapPin } from "lucide-react"
 import { site } from "@/lib/site"
@@ -56,7 +56,9 @@ export function HeroVisual({
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[34rem]">
       <div className="absolute inset-[-8%] rounded-full bg-[radial-gradient(closest-side,var(--accent-soft),transparent)]" />
-      <AgentNetwork />
+      <Suspense fallback={null}>
+        <AgentNetwork />
+      </Suspense>
 
       <div className="absolute inset-[19%] animate-[rise_1.2s_var(--ease-out-expo)_0.35s_both]">
         <div className="card relative h-full overflow-hidden rounded-[2rem] p-1.5">
