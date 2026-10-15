@@ -1,9 +1,9 @@
 import Link from "next/link"
-import { ArrowUpRight, Layers, Palette, Shapes, Waves } from "lucide-react"
+import { ArrowUpRight, Layers, Palette, Shapes, Smartphone, Waves } from "lucide-react"
 import { Spotlight } from "@/components/motion"
 import type { LabToolId } from "@/lib/lab/tools"
 
-const icons = { "brand-kit": Palette, svg: Shapes, motion: Waves, design: Layers }
+const icons = { "brand-kit": Palette, "app-icon": Smartphone, svg: Shapes, motion: Waves, design: Layers }
 
 /** Mini preview drawn in CSS so the cards stay lightweight. */
 function Preview({ id }: { id: LabToolId }) {
@@ -14,6 +14,23 @@ function Preview({ id }: { id: LabToolId }) {
           {["#0f7a5c", "#0b3b5b", "#f5a524", "#f8fafc"].map((c, i) => (
             <span key={c} className="h-16 w-10 rounded-lg shadow-md transition-transform duration-500 group-hover:-translate-y-1" style={{ backgroundColor: c, transitionDelay: `${i * 50}ms` }} />
           ))}
+        </div>
+      )
+    case "app-icon":
+      return (
+        <div className="flex h-full items-center justify-center">
+          <div className="relative size-20 rounded-2xl bg-gradient-to-br from-[#347CEC] to-[#0B3D91] shadow-xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+            {/* Carte arrière inclinée */}
+            <div className="absolute w-12 h-8 rounded bg-[#A8C8FF] [transform:rotate(-12deg)_translate(-2px,-3px)] shadow" />
+            {/* Carte avant */}
+            <div className="relative z-10 w-12 h-8 rounded bg-white shadow-md p-1 flex flex-col justify-between">
+              <div className="size-2 rounded-xs bg-[#FFCC00]" />
+              <div className="flex gap-0.5">
+                <div className="h-0.5 w-2 bg-[#CDDDF7] rounded" />
+                <div className="h-0.5 w-2 bg-[#CDDDF7] rounded" />
+              </div>
+            </div>
+          </div>
         </div>
       )
     case "svg":

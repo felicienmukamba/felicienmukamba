@@ -19,7 +19,7 @@ export function LabTeaser({ lang, t }: { lang: Locale; t: Dictionary }) {
           </Link>
         </Reveal>
       </div>
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {labTools.map((id, i) => (
           <Reveal key={id} delay={i * 0.06} className="h-full">
             <ToolCard id={id} href={`/${lang}/lab/${id}`} name={t.lab.tools[id].name} description={t.lab.tools[id].description} cta={t.lab.openTool} />

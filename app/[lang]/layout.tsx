@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { notFound } from "next/navigation"
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "next-themes"
 import { MotionProvider } from "@/components/motion"
 import { JsonLd } from "@/components/json-ld"
@@ -104,7 +103,6 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
           <MotionProvider>{children}</MotionProvider>
         </ThemeProvider>
         <JsonLd lang={lang} />
-        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   )

@@ -41,7 +41,7 @@ export default async function LabIndex({ params }: PageProps<"/[lang]/lab">) {
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">{t.lab.intro}</p>
           </Reveal>
-          <div className="mt-14 grid gap-5 sm:grid-cols-2">
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {labTools.map((id, i) => (
               <Reveal key={id} delay={i * 0.06} className="h-full">
                 <ToolCard id={id} href={`/${lang}/lab/${id}`} name={t.lab.tools[id].name} description={t.lab.tools[id].description} cta={t.lab.openTool} />

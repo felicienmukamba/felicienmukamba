@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft, ShieldCheck } from "lucide-react"
+import { AppIconStudio } from "@/components/lab/app-icon-studio"
 import { BrandKit } from "@/components/lab/brand-kit"
 import { DesignTools } from "@/components/lab/design-tools"
 import { MotionTools } from "@/components/lab/motion-tools"
@@ -59,6 +60,7 @@ export default async function LabToolPage({ params }: PageProps<"/[lang]/lab/[to
         </div>
         <div className="mt-10">
           {tool === "brand-kit" && <BrandKit t={strings} lang={lang === "en" ? "en" : "fr"} />}
+          {tool === "app-icon" && <AppIconStudio t={strings} lang={lang === "en" ? "en" : "fr"} />}
           {tool === "svg" && <SvgGenerator t={strings} />}
           {tool === "motion" && <MotionTools t={strings} />}
           {tool === "design" && <DesignTools t={strings} />}

@@ -1,7 +1,8 @@
 "use client"
 
 import { useMemo, useRef, useState } from "react"
-import { Download, ImagePlus, RefreshCw, Wand2, X } from "lucide-react"
+import Link from "next/link"
+import { ArrowUpRight, Download, ImagePlus, RefreshCw, Smartphone, Wand2, X } from "lucide-react"
 import { Button, CodeBlock, ColorField, Field, Panel, Segmented, Slider, TabBar, TextInput, Toggle } from "@/components/kit/controls"
 import { contrast, extractPalette, hexToOklch, oklchToHex, readableOn, scale, wcag } from "@/lib/lab/color"
 import { brandSheet, templates, type Brand, type TemplateGroup } from "@/lib/lab/brand-templates"
@@ -120,6 +121,22 @@ export function BrandKit({ t, lang }: { t: LabStrings; lang: DataLang }) {
   return (
     <div className="grid gap-6 lg:grid-cols-[360px_1fr]">
       <div className="space-y-4">
+        <Link
+          href={`/${lang}/lab/app-icon`}
+          className="group block rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 via-surface to-background p-4 transition-colors hover:border-accent"
+        >
+          <div className="flex items-center justify-between">
+            <span className="flex items-center gap-2 text-xs font-semibold text-accent">
+              <Smartphone className="size-4" />
+              Générateur d'icônes & logos d'application
+            </span>
+            <ArrowUpRight className="size-3.5 text-accent transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </div>
+          <p className="mt-1.5 text-[11px] text-muted-foreground leading-relaxed">
+            Moteur SOSIDE PAY : superellipse Apple, cartes bancaires, mascottes et exports complets (iOS, Android, Web).
+          </p>
+        </Link>
+
         <Panel title={s.brandPanel}>
           <Field label={s.name}>
             <TextInput value={brand.name} onChange={(e) => set("name", e.target.value)} />

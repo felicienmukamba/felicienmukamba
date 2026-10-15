@@ -1,0 +1,8 @@
+{
+  "name": "Félicien Mukamba Portfolio",
+  "description": "Portfolio, Design Lab & Private Career Portal of Félicien Mukamba, Fullstack & AI Systems Engineer.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

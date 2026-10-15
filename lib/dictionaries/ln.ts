@@ -400,6 +400,10 @@ export const ln: Dictionary = {
         name: "Brand kit & marketplace",
         description: "Tia logo mpe ba langi na yo: charte graphique, ba visuels ya boutique, ba posts mpe ba données ya démo.",
       },
+      "app-icon": {
+        name: "Générateur d'icônes & logos ya application",
+        description: "Moteur SOSIDE PAY na TypeScript: superellipse Apple, ba cartes ya mbongo, ba mascottes, multi-icônes mpe exports complets mpo na ba applications mobimba.",
+      },
       svg: {
         name: "Générateur SVG",
         description: "Ba blobs, ba vagues, ba motifs mpe ba dégradés — export SVG, PNG to CSS.",

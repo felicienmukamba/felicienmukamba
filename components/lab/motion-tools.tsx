@@ -7,18 +7,23 @@ import { fill, type LabStrings } from "@/lib/lab/i18n"
 import { EASINGS, EFFECTS, SPRING_PRESETS, bezierCss, fmt, framerVariants, keyframesCss, scaleFrames, simulateSpring, springToLinear, type Bezier, type Direction, type EffectId, type SpringPreset } from "@/lib/lab/motion"
 import { cn } from "@/lib/utils"
 
-type Tab = "easing" | "spring" | "keyframes"
+import { ArrowDownToLine, Check, Copy, CreditCard, Sparkles, Waves } from "lucide-react"
+import { DEFAULT_MOTION_CONFIG, generateAnimatedCardSvg, generateCssMotionCode, generateFlutterCode, generateFramerMotionCode, type MotionConfig, type MotionMode } from "@/lib/lab/card-motion"
+import { downloadText } from "@/lib/kit/download"
+
+type Tab = "easing" | "spring" | "keyframes" | "cards"
 
 export function MotionTools({ t }: { t: LabStrings }) {
   const [tab, setTab] = useState<Tab>("easing")
   return (
     <div className="space-y-6">
-      <div className="max-w-xl">
-        <TabBar label="Motion" value={tab} onChange={setTab} tabs={(["easing", "spring", "keyframes"] as const).map((v) => ({ value: v, label: t.motion.tabs[v] }))} />
+      <div className="max-w-2xl">
+        <TabBar label="Motion" value={tab} onChange={setTab} tabs={(["easing", "spring", "keyframes", "cards"] as const).map((v) => ({ value: v, label: t.motion.tabs[v] }))} />
       </div>
       {tab === "easing" && <EasingEditor t={t} />}
       {tab === "spring" && <SpringTool t={t} />}
       {tab === "keyframes" && <KeyframesTool t={t} />}
+      {tab === "cards" && <CardMotionTool t={t} />}
     </div>
   )
 }
@@ -301,3 +306,174 @@ function KeyframesTool({ t }: { t: LabStrings }) {
     </div>
   )
 }
+
+function CardMotionTool({ t }: { t: LabStrings }) {
+  const [config, setConfig] = useState<MotionConfig>(DEFAULT_MOTION_CONFIG)
+  const [isFlipped, setIsFlipped] = useState(false)
+  const [format, setFormat] = useState<"framer" | "flutter" | "css">("framer")
+
+  const animatedSvg = useMemo(() => generateAnimatedCardSvg("SOSIDE"), [])
+  const code = useMemo(() => {
+    if (format === "framer") return generateFramerMotionCode(config, "SOSIDE")
+    if (format === "flutter") return generateFlutterCode(config, "SOSIDE")
+    return generateCssMotionCode(config)
+  }, [config, format])
+
+  return (
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,420px)_1fr]">
+      <Panel className="space-y-4">
+        <div>
+          <span className="mb-1.5 block text-[12px] font-medium text-muted-foreground">Mode d'animation</span>
+          <Segmented
+            label="Mode"
+            value={config.mode}
+            onChange={(v) => setConfig({ ...config, mode: v as MotionMode })}
+            options={[
+              { value: "flip-3d", label: "Flip 3D" },
+              { value: "tap-nfc", label: "NFC Tap" },
+              { value: "parallax-float", label: "Parallaxe" },
+            ]}
+          />
+        </div>
+
+        <Slider
+          label="Raideur du ressort (Stiffness)"
+          value={config.springStiffness}
+          min={100}
+          max={500}
+          step={10}
+          onChange={(v) => setConfig({ ...config, springStiffness: v })}
+        />
+
+        <Slider
+          label="Amortissement (Damping)"
+          value={config.springDamping}
+          min={10}
+          max={50}
+          step={2}
+          onChange={(v) => setConfig({ ...config, springDamping: v })}
+        />
+
+        <Slider
+          label="Perspective 3D (px)"
+          value={config.perspective}
+          min={600}
+          max={2000}
+          step={50}
+          onChange={(v) => setConfig({ ...config, perspective: v })}
+          format={(v) => `${v}px`}
+        />
+
+        <div className="pt-2 border-t border-line">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="w-full"
+            onClick={() => downloadText(animatedSvg, "soside-animated-card.svg", "image/svg+xml")}
+          >
+            <ArrowDownToLine className="size-3.5" /> Télécharger SVG Animé (SMIL)
+          </Button>
+        </div>
+      </Panel>
+
+      <div className="min-w-0 space-y-4">
+        <Panel className="flex flex-col items-center justify-center p-8 min-h-[300px] bg-gradient-to-b from-surface to-surface-2/40 overflow-hidden relative">
+          {config.mode === "flip-3d" && (
+            <div
+              style={{ perspective: config.perspective }}
+              className="w-72 h-44 cursor-pointer select-none"
+              onClick={() => setIsFlipped(!isFlipped)}
+            >
+              <div
+                className={cn(
+                  "relative w-full h-full rounded-2xl shadow-2xl transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  isFlipped && "[transform:rotateY(180deg)]"
+                )}
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                {/* Recto */}
+                <div
+                  className="absolute inset-0 rounded-2xl p-5 text-white flex flex-col justify-between overflow-hidden shadow-xl"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    background: "linear-gradient(135deg, #347CEC 0%, #0B3D91 100%)",
+                  }}
+                >
+                  <div className="flex justify-between items-start">
+                    <span className="font-bold tracking-widest text-sm">SOSIDE PAY</span>
+                    <div className="w-8 h-6 rounded bg-amber-400 border border-amber-300" />
+                  </div>
+                  <div className="font-mono text-base tracking-widest">4289 •••• •••• 9901</div>
+                  <div className="flex justify-between text-[11px] text-blue-200">
+                    <span>SECOURS & TECH</span>
+                    <span>12/29</span>
+                  </div>
+                </div>
+
+                {/* Verso */}
+                <div
+                  className="absolute inset-0 rounded-2xl bg-slate-900 text-white flex flex-col justify-between overflow-hidden shadow-xl [transform:rotateY(180deg)]"
+                  style={{ backfaceVisibility: "hidden" }}
+                >
+                  <div className="w-full h-9 bg-black mt-4" />
+                  <div className="px-5 flex items-center justify-end">
+                    <div className="h-7 w-24 bg-white/90 rounded text-slate-900 text-right pr-2 font-mono text-xs font-bold flex items-center justify-end">
+                      CVV 842
+                    </div>
+                  </div>
+                  <div className="px-5 pb-4 text-[9px] text-slate-400 font-mono">
+                    SOSIDE PAY • Cliquez pour retourner
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {config.mode === "tap-nfc" && (
+            <div className="relative flex flex-col items-center justify-center p-6">
+              <div className="absolute size-40 rounded-full border border-blue-400/40 animate-ping opacity-60" />
+              <div className="z-10 w-64 h-40 rounded-2xl p-5 text-white shadow-2xl flex flex-col justify-between bg-gradient-to-br from-blue-600 to-indigo-950 animate-bounce">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-xs tracking-widest">SOSIDE</span>
+                  <span className="text-[10px] bg-emerald-400/20 text-emerald-300 px-2 py-0.5 rounded-full font-mono">
+                    NFC
+                  </span>
+                </div>
+                <div className="font-mono text-sm tracking-widest text-center">•••• 4289</div>
+                <div className="text-[10px] text-blue-200 text-center">Approchez du lecteur</div>
+              </div>
+            </div>
+          )}
+
+          {config.mode === "parallax-float" && (
+            <div className="relative w-64 h-40 flex items-center justify-center">
+              <div className="absolute w-56 h-36 rounded-xl bg-blue-400/60 shadow-lg [transform:rotate(-12deg)_translate(-8px,-8px)]" />
+              <div className="relative z-10 w-56 h-36 rounded-xl bg-white shadow-2xl p-4 flex flex-col justify-between text-slate-900 border border-slate-100">
+                <div className="flex justify-between items-start">
+                  <span className="font-bold text-xs text-blue-900">SOSIDE</span>
+                  <div className="w-6 h-4 rounded bg-amber-400" />
+                </div>
+                <div className="font-mono text-xs">4289 •••• •••• 9901</div>
+                <div className="h-1 w-12 rounded bg-slate-200" />
+              </div>
+            </div>
+          )}
+        </Panel>
+
+        <Segmented
+          label="Langage de code"
+          value={format}
+          onChange={(v) => setFormat(v as any)}
+          options={[
+            { value: "framer", label: "Framer Motion" },
+            { value: "flutter", label: "Flutter (Dart)" },
+            { value: "css", label: "CSS Keyframes" },
+          ]}
+        />
+
+        <CodeBlock code={code} copyLabel={t.common.copy} copiedLabel={t.common.copied} />
+      </div>
+    </div>
+  )
+}
+

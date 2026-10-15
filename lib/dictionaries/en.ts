@@ -400,6 +400,10 @@ export const en = {
         name: "Brand kit & marketplace",
         description: "Drop a logo and colors: get a brand chart, store visuals, social posts and demo catalogue data.",
       },
+      "app-icon": {
+        name: "App Icon & Logo Studio",
+        description: "SOSIDE PAY engine ported to TypeScript: continuous Apple superellipse squircles, payment cards, mascots, multi-icon combiner, complete exports (iOS, Android, macOS, Web) & card motion.",
+      },
       svg: {
         name: "SVG generator",
         description: "Blobs, layered waves, seamless patterns and grainy mesh gradients — export SVG, PNG or CSS.",

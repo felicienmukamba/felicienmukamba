@@ -138,7 +138,7 @@ const en = {
     copyCss: "Copy as CSS background",
   },
   motion: {
-    tabs: { easing: "Easing curve", spring: "Spring", keyframes: "Keyframes" },
+    tabs: { easing: "Easing curve", spring: "Spring", keyframes: "Keyframes", cards: "Card & App Motion" },
     presets: "Presets",
     duration: "Duration",
     replay: "Replay",
@@ -355,7 +355,7 @@ const fr: LabStrings = {
     copyCss: "Copier en fond CSS",
   },
   motion: {
-    tabs: { easing: "Courbe d'easing", spring: "Ressort", keyframes: "Keyframes" },
+    tabs: { easing: "Courbe d'easing", spring: "Ressort", keyframes: "Keyframes", cards: "Cartes & App Motion" },
     presets: "Préréglages",
     duration: "Durée",
     replay: "Rejouer",

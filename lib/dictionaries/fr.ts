@@ -402,6 +402,10 @@ export const fr: Dictionary = {
         name: "Brand kit & marketplace",
         description: "Déposez un logo et vos couleurs : charte graphique, visuels de boutique, posts sociaux et données de catalogue de démo.",
       },
+      "app-icon": {
+        name: "Générateur d'icônes & logos d'application",
+        description: "Moteur SOSIDE PAY en TypeScript : superellipse Apple continue, cartes bancaires, mascottes, multi-icônes, exports iOS / Android adaptatif / macOS / Web et motion design.",
+      },
       svg: {
         name: "Générateur SVG",
         description: "Blobs, vagues en couches, motifs répétables et dégradés maillés avec grain — export SVG, PNG ou CSS.",
