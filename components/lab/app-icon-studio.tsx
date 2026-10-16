@@ -1,20 +1,34 @@
 "use client"
 
-import { useId, useMemo, useRef, useState } from "react"
+import { useEffect, useId, useMemo, useRef, useState } from "react"
 import {
   ArrowDownToLine,
   Check,
   Code,
+  Compass,
   Copy,
+  Cpu,
   CreditCard,
+  Download,
+  ExternalLink,
   Eye,
+  FileText,
+  Flame,
+  Gem,
   Layers,
+  Layout,
+  Megaphone,
   Palette,
   Play,
+  Printer,
+  Rocket,
   RotateCw,
+  Share2,
+  Shield,
   Sliders,
   Sparkles,
   Smartphone,
+  Store,
   Tv,
   Upload,
   Waves,
@@ -38,6 +52,16 @@ import {
   type PrimaryGlyphType,
 } from "@/lib/lab/app-icon-generator"
 import {
+  DEFAULT_BRAND_INFO,
+  type BrandCharter,
+  type BrandInfo,
+  downloadCanvas,
+  drawBrochureCanvas,
+  drawBusinessCardCanvas,
+  drawFlyerCanvas,
+  drawSocialPostCanvas,
+} from "@/lib/lab/branding-generator"
+import {
   DEFAULT_MOTION_CONFIG,
   generateAnimatedCardSvg,
   generateCssMotionCode,
@@ -46,21 +70,33 @@ import {
   type MotionConfig,
   type MotionMode,
 } from "@/lib/lab/card-motion"
-import { downloadText } from "@/lib/kit/download"
+import { downloadText, slugify } from "@/lib/kit/download"
 import { Button, CodeBlock, ColorField, Field, Panel, Segmented, Slider, TabBar, TextInput } from "@/components/kit/controls"
 import { type LabStrings } from "@/lib/lab/i18n"
 import { cn } from "@/lib/utils"
 
-type MainTab = "studio" | "platforms" | "motion" | "code"
+type MainTab = "studio" | "collateral" | "platforms" | "motion" | "code"
 
 export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" }) {
   const [theme, setTheme] = useState<AppIconTheme>(DEFAULT_THEME)
+  const [brandInfo, setBrandInfo] = useState<BrandInfo>({
+    ...DEFAULT_BRAND_INFO,
+    name: DEFAULT_THEME.wordmark,
+    tagline: DEFAULT_THEME.tagline,
+  })
   const [mainTab, setMainTab] = useState<MainTab>("studio")
+  const [activeCollateral, setActiveCollateral] = useState<"flyer" | "brochure" | "card" | "social">("flyer")
+  const [cardSide, setCardSide] = useState<"front" | "back">("front")
+  const [exportFormat, setExportFormat] = useState<"png" | "jpeg" | "webp">("png")
+  const [isGeneratingAll, setIsGeneratingAll] = useState(false)
+  const [customLogoImg, setCustomLogoImg] = useState<HTMLImageElement | null>(null)
   const [motionConfig, setMotionConfig] = useState<MotionConfig>(DEFAULT_MOTION_CONFIG)
   const [isFlipped, setIsFlipped] = useState(false)
   const [activeCodeLang, setActiveCodeLang] = useState<"framer" | "flutter" | "css" | "svg">("framer")
   const [copied, setCopied] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const imageInputRef = useRef<HTMLInputElement>(null)
+  const collateralCanvasRef = useRef<HTMLCanvasElement>(null)
 
   const isFr = lang === "fr"
 
@@ -110,6 +146,67 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
     img.src = url
   }
 
+  const brandCharter: BrandCharter = useMemo(
+    () => ({
+      primary: theme.blueBottom,
+      primaryLight: theme.blueTop,
+      secondary: theme.cardBack,
+      accent: theme.accentYellow,
+      dark: theme.shadowColor || "#081630",
+      light: theme.cardWhite,
+      cardStripe: theme.stripeColor,
+      fontFamily: "sans",
+      superellipseN: theme.superellipseN,
+      glossOpacity: theme.glossOpacity,
+      shadowOpacity: theme.shadowOpacity,
+      iconStyle: theme.primaryType === "custom-svg" ? "custom" : "cards",
+      customLogoImage: customLogoImg,
+    }),
+    [theme, customLogoImg]
+  )
+
+  useEffect(() => {
+    if (mainTab !== "collateral" || !collateralCanvasRef.current) return
+    const canvas = collateralCanvasRef.current
+
+    if (activeCollateral === "flyer") {
+      drawFlyerCanvas(canvas, brandInfo, brandCharter)
+    } else if (activeCollateral === "brochure") {
+      drawBrochureCanvas(canvas, brandInfo, brandCharter)
+    } else if (activeCollateral === "card") {
+      drawBusinessCardCanvas(canvas, brandInfo, brandCharter, cardSide)
+    } else if (activeCollateral === "social") {
+      drawSocialPostCanvas(canvas, brandInfo, brandCharter)
+    }
+  }, [mainTab, activeCollateral, cardSide, brandInfo, brandCharter])
+
+  const handleDownloadCollateral = (format: "png" | "jpeg" | "webp" = exportFormat) => {
+    if (!collateralCanvasRef.current) return
+    const base = slugify(brandInfo.name || "brand")
+    const filename = `${base}-${activeCollateral}${activeCollateral === "card" ? `-${cardSide}` : ""}`
+    downloadCanvas(collateralCanvasRef.current, filename, format)
+  }
+
+  const handleDownloadAllCollateral = async () => {
+    setIsGeneratingAll(true)
+    const base = slugify(brandInfo.name || "brand")
+    const targets = [
+      { name: `${base}-flyer-a5`, draw: (c: HTMLCanvasElement) => drawFlyerCanvas(c, brandInfo, brandCharter) },
+      { name: `${base}-brochure-corporate-a4`, draw: (c: HTMLCanvasElement) => drawBrochureCanvas(c, brandInfo, brandCharter) },
+      { name: `${base}-business-card-recto`, draw: (c: HTMLCanvasElement) => drawBusinessCardCanvas(c, brandInfo, brandCharter, "front") },
+      { name: `${base}-business-card-verso`, draw: (c: HTMLCanvasElement) => drawBusinessCardCanvas(c, brandInfo, brandCharter, "back") },
+      { name: `${base}-social-post`, draw: (c: HTMLCanvasElement) => drawSocialPostCanvas(c, brandInfo, brandCharter) },
+    ]
+
+    for (const item of targets) {
+      const c = document.createElement("canvas")
+      item.draw(c)
+      downloadCanvas(c, item.name, exportFormat)
+      await new Promise((r) => setTimeout(r, 200))
+    }
+    setIsGeneratingAll(false)
+  }
+
   const handleSvgUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -125,8 +222,29 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
           customSvgPath: match[1],
         }))
       }
+      const img = new Image()
+      img.onload = () => {
+        setCustomLogoImg(img)
+      }
+      img.src = text.startsWith("data:") ? text : `data:image/svg+xml;charset=utf-8,${encodeURIComponent(text)}`
     }
     reader.readAsText(file)
+  }
+
+  const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      const dataUrl = event.target?.result as string
+      const img = new Image()
+      img.onload = () => {
+        setCustomLogoImg(img)
+        setTheme((prev) => ({ ...prev, primaryType: "custom-svg" }))
+      }
+      img.src = dataUrl
+    }
+    reader.readAsDataURL(file)
   }
 
   return (
@@ -138,10 +256,11 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
           value={mainTab}
           onChange={setMainTab}
           tabs={[
-            { value: "studio", label: isFr ? "1. Studio Icône & Logo" : "1. Icon & Logo Studio" },
-            { value: "platforms", label: isFr ? "2. Écosystème & Formats" : "2. Ecosystem & Formats" },
-            { value: "motion", label: isFr ? "3. Motion Design Cartes" : "3. Card Motion Design" },
-            { value: "code", label: isFr ? "4. Code & Manifestes" : "4. Code & Manifests" },
+            { value: "studio", label: isFr ? "1. Logo & Identité" : "1. Logo & Identity" },
+            { value: "collateral", label: isFr ? "2. Brochures, Flyers & Pubs" : "2. Brochures, Flyers & Ads" },
+            { value: "platforms", label: isFr ? "3. Écosystème & Formats" : "3. Ecosystem & Formats" },
+            { value: "motion", label: isFr ? "4. Motion Design Cartes" : "4. Card Motion Design" },
+            { value: "code", label: isFr ? "5. Code & Manifestes" : "5. Code & Manifests" },
           ]}
         />
         <div className="flex items-center gap-2">
@@ -240,14 +359,65 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
               <div className="grid grid-cols-2 gap-3">
                 <Field label={isFr ? "Nom (Wordmark)" : "Wordmark"}>
                   <TextInput
-                    value={theme.wordmark}
-                    onChange={(e) => setTheme({ ...theme, wordmark: e.target.value })}
+                    value={brandInfo.name}
+                    onChange={(e) => {
+                      const v = e.target.value
+                      setTheme((prev) => ({ ...prev, wordmark: v }))
+                      setBrandInfo((prev) => ({ ...prev, name: v }))
+                    }}
                   />
                 </Field>
                 <Field label={isFr ? "Signature (Tagline)" : "Tagline"}>
                   <TextInput
-                    value={theme.tagline}
-                    onChange={(e) => setTheme({ ...theme, tagline: e.target.value })}
+                    value={brandInfo.tagline}
+                    onChange={(e) => {
+                      const v = e.target.value
+                      setTheme((prev) => ({ ...prev, tagline: v }))
+                      setBrandInfo((prev) => ({ ...prev, tagline: v }))
+                    }}
+                  />
+                </Field>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <Field label={isFr ? "Catégorie / Activité" : "Category / Domain"}>
+                  <TextInput
+                    value={brandInfo.category}
+                    onChange={(e) => setBrandInfo((prev) => ({ ...prev, category: e.target.value }))}
+                  />
+                </Field>
+                <Field label={isFr ? "Badge Publicitaire" : "Promo Badge"}>
+                  <TextInput
+                    value={brandInfo.promoBadge}
+                    onChange={(e) => setBrandInfo((prev) => ({ ...prev, promoBadge: e.target.value }))}
+                  />
+                </Field>
+              </div>
+
+              <Field label={isFr ? "Slogan de la marque" : "Brand Slogan"}>
+                <TextInput
+                  value={brandInfo.slogan}
+                  onChange={(e) => setBrandInfo((prev) => ({ ...prev, slogan: e.target.value }))}
+                />
+              </Field>
+
+              <div className="grid grid-cols-3 gap-2">
+                <Field label={isFr ? "Site Web" : "Website"}>
+                  <TextInput
+                    value={brandInfo.website}
+                    onChange={(e) => setBrandInfo((prev) => ({ ...prev, website: e.target.value }))}
+                  />
+                </Field>
+                <Field label={isFr ? "Email" : "Email"}>
+                  <TextInput
+                    value={brandInfo.email}
+                    onChange={(e) => setBrandInfo((prev) => ({ ...prev, email: e.target.value }))}
+                  />
+                </Field>
+                <Field label={isFr ? "Téléphone" : "Phone"}>
+                  <TextInput
+                    value={brandInfo.phone}
+                    onChange={(e) => setBrandInfo((prev) => ({ ...prev, phone: e.target.value }))}
                   />
                 </Field>
               </div>
@@ -255,7 +425,7 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
               {/* Presets de couleurs */}
               <div>
                 <label className="text-[12px] font-medium text-muted-foreground block mb-2">
-                  {isFr ? "Palettes & Thèmes prédéfinis" : "Presets & Color themes"}
+                  {isFr ? "Charte Graphique & Palettes Prédéfinies" : "Graphic Charter & Color Palettes"}
                 </label>
                 <div className="grid grid-cols-3 gap-2">
                   {THEME_PRESETS.map((p) => (
@@ -307,10 +477,48 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
             <Panel className="p-5 space-y-5">
               <div className="flex items-center gap-2 font-semibold text-sm">
                 <Sparkles className="size-4 text-accent" />
-                <span>{isFr ? "Symbole, Mascotte & Multi-Icônes" : "Symbol, Mascot & Multi-Icons"}</span>
+                <span>{isFr ? "Icônes, Symboles & Importation" : "Icons, Symbols & Import"}</span>
               </div>
 
-              <Field label={isFr ? "Type de symbole central" : "Primary Symbol"}>
+              {/* Bibliothèque de symboles rapides */}
+              <div className="space-y-2">
+                <label className="text-[12px] font-medium text-muted-foreground block">
+                  {isFr ? "Symboles vectoriels prédéfinis" : "Preset Vector Symbols"}
+                </label>
+                <div className="grid grid-cols-4 gap-2">
+                  {[
+                    { id: "cards", label: "Cartes Pay", icon: CreditCard, type: "wallet-cards" as PrimaryGlyphType },
+                    { id: "shield", label: "Sécurité", icon: Shield, type: "wallet-cards" as PrimaryGlyphType },
+                    { id: "zap", label: "Énergie", icon: Zap, type: "wallet-cards" as PrimaryGlyphType },
+                    { id: "chip", label: "Puce IA", icon: Cpu, type: "wallet-cards" as PrimaryGlyphType },
+                    { id: "diamond", label: "Luxe", icon: Gem, type: "wallet-cards" as PrimaryGlyphType },
+                    { id: "rocket", label: "Fusée", icon: Rocket, type: "mascot" as PrimaryGlyphType },
+                    { id: "store", label: "Boutique", icon: Store, type: "wallet-cards" as PrimaryGlyphType },
+                    { id: "flame", label: "Impact", icon: Flame, type: "wallet-cards" as PrimaryGlyphType },
+                  ].map((sym) => (
+                    <button
+                      key={sym.id}
+                      type="button"
+                      onClick={() => {
+                        setTheme((prev) => ({
+                          ...prev,
+                          primaryType: sym.type,
+                          mascot: sym.id === "rocket" ? "rocket" : prev.mascot,
+                        }))
+                      }}
+                      className={cn(
+                        "rounded-xl border p-2 flex flex-col items-center justify-center gap-1 text-[11px] transition hover:border-accent",
+                        "border-line bg-surface hover:bg-surface-2"
+                      )}
+                    >
+                      <sym.icon className="size-4 text-accent" />
+                      <span className="truncate">{sym.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <Field label={isFr ? "Mode d'icône centrale" : "Center Icon Mode"}>
                 <Segmented
                   label={isFr ? "Type de symbole" : "Symbol Type"}
                   value={theme.primaryType}
@@ -318,10 +526,52 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
                   options={[
                     { value: "wallet-cards", label: isFr ? "Cartes Wallet" : "Wallet Cards" },
                     { value: "mascot", label: isFr ? "Mascotte" : "Mascot" },
-                    { value: "custom-svg", label: isFr ? "Import SVG" : "Custom SVG" },
+                    { value: "custom-svg", label: isFr ? "Import d'Icône" : "Custom Icon" },
                   ]}
                 />
               </Field>
+
+              {theme.primaryType === "custom-svg" && (
+                <div className="space-y-3 p-3 rounded-xl border border-line bg-surface-2/40">
+                  <div className="flex gap-2">
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      className="flex-1 text-xs"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      <Upload className="size-3.5" /> {isFr ? "Importer SVG" : "Upload SVG"}
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      className="flex-1 text-xs"
+                      onClick={() => imageInputRef.current?.click()}
+                    >
+                      <Upload className="size-3.5" /> {isFr ? "Importer PNG/JPG" : "Upload Image"}
+                    </Button>
+                  </div>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept=".svg"
+                    onChange={handleSvgUpload}
+                    className="hidden"
+                  />
+                  <input
+                    ref={imageInputRef}
+                    type="file"
+                    accept="image/png,image/jpeg,image/webp"
+                    onChange={handleImageFileChange}
+                    className="hidden"
+                  />
+                  <p className="text-[11px] text-muted-foreground">
+                    {isFr
+                      ? "Votre icône ou logo sera automatiquement centré, stylisé et adapté à tous les formats."
+                      : "Your icon or logo will be automatically centered, styled, and rendered across all formats."}
+                  </p>
+                </div>
+              )}
 
               {theme.primaryType === "mascot" && (
                 <Field label={isFr ? "Choix de la mascotte" : "Choose Mascot"}>
@@ -435,7 +685,224 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
       )}
 
       {/* =========================================================================
-          ONGLET 2 : FORMATS & ÉCOSYSTÈMES (iOS, Android, macOS, Web)
+          ONGLET 2 : BROCHURES, FLYERS & SUPPORTS PUBLICITAIRES
+         ========================================================================= */}
+      {mainTab === "collateral" && (
+        <div className="space-y-8">
+          {/* Barre supérieure : Sélecteur de support, sélecteur de format & boutons d'export */}
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between rounded-2xl border border-line bg-surface p-4">
+            <div className="flex flex-wrap items-center gap-2">
+              {[
+                { id: "flyer", label: isFr ? "Flyer Promo A5" : "Promo Flyer A5", icon: FileText, dims: "1200×1600" },
+                { id: "brochure", label: isFr ? "Brochure Corporate A4" : "Corporate Brochure A4", icon: Layout, dims: "1400×1000" },
+                { id: "card", label: isFr ? "Carte de Visite Pro" : "Business Card Pro", icon: CreditCard, dims: "1050×600" },
+                { id: "social", label: isFr ? "Post Réseaux Sociaux" : "Social Ad Post", icon: Share2, dims: "1080×1080" },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setActiveCollateral(item.id as any)}
+                  className={cn(
+                    "flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-semibold transition",
+                    activeCollateral === item.id
+                      ? "bg-accent text-accent-foreground shadow-md ring-2 ring-accent/30"
+                      : "bg-surface-2 text-muted-foreground hover:bg-surface-2/80 hover:text-foreground border border-line"
+                  )}
+                >
+                  <item.icon className="size-4 shrink-0" />
+                  <span>{item.label}</span>
+                  <span className="font-mono text-[10px] opacity-70">({item.dims})</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              {/* Sélecteur de format d'export */}
+              <div className="flex items-center rounded-xl bg-surface-2 p-1 border border-line">
+                {(["png", "jpeg", "webp"] as const).map((fmt) => (
+                  <button
+                    key={fmt}
+                    type="button"
+                    onClick={() => setExportFormat(fmt)}
+                    className={cn(
+                      "px-2.5 py-1 text-[11px] rounded-lg font-mono uppercase font-bold transition",
+                      exportFormat === fmt ? "bg-accent text-accent-foreground shadow" : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    {fmt}
+                  </button>
+                ))}
+              </div>
+
+              {activeCollateral === "card" && (
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  onClick={() => setCardSide((prev) => (prev === "front" ? "back" : "front"))}
+                >
+                  <RotateCw className="size-3.5" />
+                  <span>{cardSide === "front" ? (isFr ? "Voir Verso" : "View Back") : (isFr ? "Voir Recto" : "View Front")}</span>
+                </Button>
+              )}
+
+              <Button
+                size="sm"
+                onClick={() => handleDownloadCollateral()}
+              >
+                <Download className="size-3.5" />
+                <span>{isFr ? `Télécharger (${exportFormat.toUpperCase()})` : `Download (${exportFormat.toUpperCase()})`}</span>
+              </Button>
+
+              <Button
+                size="sm"
+                variant="secondary"
+                disabled={isGeneratingAll}
+                onClick={handleDownloadAllCollateral}
+              >
+                <Layers className="size-3.5" />
+                <span>{isGeneratingAll ? (isFr ? "Génération..." : "Generating...") : (isFr ? "Pack Complet (5 fichiers)" : "Full Pack (5 assets)")}</span>
+              </Button>
+            </div>
+          </div>
+
+          {/* Grille principale : Aperçu Canvas haute fidélité & Panneau d'édition des textes */}
+          <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
+            {/* Visualiseur Canvas interactif */}
+            <Panel className="flex flex-col items-center justify-center p-6 sm:p-10 bg-gradient-to-b from-surface to-surface-2/60 overflow-hidden relative min-h-[580px]">
+              <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+
+              <div className="relative max-w-full flex items-center justify-center">
+                <canvas
+                  ref={collateralCanvasRef}
+                  className="max-h-[640px] max-w-full rounded-2xl shadow-2xl border border-line object-contain transition-all duration-300"
+                />
+              </div>
+
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
+                <span className="inline-flex items-center gap-1 font-mono">
+                  <Check className="size-3.5 text-success" /> Rendu Canvas Ultra-HD
+                </span>
+                <span>•</span>
+                <span className="font-mono">
+                  {activeCollateral === "flyer" && "1200×1600 px (A5 Portrait)"}
+                  {activeCollateral === "brochure" && "1400×1000 px (A4 Corporate)"}
+                  {activeCollateral === "card" && `1050×600 px (${cardSide === "front" ? "Recto" : "Verso"})`}
+                  {activeCollateral === "social" && "1080×1080 px (Carré Réseaux)"}
+                </span>
+                {activeCollateral === "card" && (
+                  <button
+                    type="button"
+                    onClick={() => setCardSide((prev) => (prev === "front" ? "back" : "front"))}
+                    className="ml-2 inline-flex items-center gap-1 font-semibold text-accent hover:underline"
+                  >
+                    <RotateCw className="size-3" />
+                    <span>{cardSide === "front" ? (isFr ? "Afficher le Verso" : "Show Back") : (isFr ? "Afficher le Recto" : "Show Front")}</span>
+                  </button>
+                )}
+              </div>
+            </Panel>
+
+            {/* Panneau d'édition rapide des informations publicitaires */}
+            <div className="space-y-5">
+              <Panel className="p-5 space-y-4">
+                <div className="flex items-center gap-2 font-semibold text-sm">
+                  <Megaphone className="size-4 text-accent" />
+                  <span>{isFr ? "Textes & Messages Publicitaires" : "Ad Copy & Messages"}</span>
+                </div>
+
+                <Field label={isFr ? "Grand Titre Accrocheur (Flyer)" : "Headline"}>
+                  <TextInput
+                    value={brandInfo.slogan}
+                    onChange={(e) => setBrandInfo({ ...brandInfo, slogan: e.target.value })}
+                  />
+                </Field>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <Field label={isFr ? "Badge Promo" : "Promo Badge"}>
+                    <TextInput
+                      value={brandInfo.promoBadge}
+                      onChange={(e) => setBrandInfo({ ...brandInfo, promoBadge: e.target.value })}
+                    />
+                  </Field>
+                  <Field label={isFr ? "Catégorie" : "Category"}>
+                    <TextInput
+                      value={brandInfo.category}
+                      onChange={(e) => setBrandInfo({ ...brandInfo, category: e.target.value })}
+                    />
+                  </Field>
+                </div>
+
+                <div className="space-y-2 pt-2 border-t border-line">
+                  <label className="text-xs font-semibold text-foreground block">
+                    {isFr ? "3 Piliers / Avantages Clés (Flyer & Brochure)" : "3 Key Features"}
+                  </label>
+                  {brandInfo.features.map((feat, i) => (
+                    <TextInput
+                      key={i}
+                      value={feat}
+                      onChange={(e) => {
+                        const newFeats = [...brandInfo.features] as [string, string, string]
+                        newFeats[i] = e.target.value
+                        setBrandInfo({ ...brandInfo, features: newFeats })
+                      }}
+                      placeholder={`Avantage ${i + 1}`}
+                    />
+                  ))}
+                </div>
+
+                <div className="space-y-2 pt-2 border-t border-line">
+                  <label className="text-xs font-semibold text-foreground block">
+                    {isFr ? "Chiffres Clés (Brochure d'Entreprise)" : "Key Metrics"}
+                  </label>
+                  <div className="grid grid-cols-3 gap-2">
+                    <TextInput
+                      value={brandInfo.metric1.value}
+                      onChange={(e) => setBrandInfo({ ...brandInfo, metric1: { ...brandInfo.metric1, value: e.target.value } })}
+                      placeholder="Valeur 1"
+                    />
+                    <TextInput
+                      value={brandInfo.metric2.value}
+                      onChange={(e) => setBrandInfo({ ...brandInfo, metric2: { ...brandInfo.metric2, value: e.target.value } })}
+                      placeholder="Valeur 2"
+                    />
+                    <TextInput
+                      value={brandInfo.metric3.value}
+                      onChange={(e) => setBrandInfo({ ...brandInfo, metric3: { ...brandInfo.metric3, value: e.target.value } })}
+                      placeholder="Valeur 3"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2 pt-2 border-t border-line">
+                  <label className="text-xs font-semibold text-foreground block">
+                    {isFr ? "Coordonnées de Contact" : "Contact details"}
+                  </label>
+                  <TextInput
+                    value={brandInfo.website}
+                    onChange={(e) => setBrandInfo({ ...brandInfo, website: e.target.value })}
+                    placeholder="Site web (ex: soside.pay)"
+                  />
+                  <div className="grid grid-cols-2 gap-2">
+                    <TextInput
+                      value={brandInfo.email}
+                      onChange={(e) => setBrandInfo({ ...brandInfo, email: e.target.value })}
+                      placeholder="Email"
+                    />
+                    <TextInput
+                      value={brandInfo.phone}
+                      onChange={(e) => setBrandInfo({ ...brandInfo, phone: e.target.value })}
+                      placeholder="Téléphone"
+                    />
+                  </div>
+                </div>
+              </Panel>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* =========================================================================
+          ONGLET 3 : FORMATS & ÉCOSYSTÈMES (iOS, Android, macOS, Web)
          ========================================================================= */}
       {mainTab === "platforms" && (
         <div className="space-y-8">
