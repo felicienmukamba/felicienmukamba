@@ -1,12 +1,12 @@
 "use client"
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { ArrowDown, ArrowUp, Download, FileJson, FileText, LoaderCircle, Plus, RotateCcw, Save, Sparkles, Trash2, Upload } from "lucide-react"
+import { ArrowDown, ArrowUp, Briefcase, Download, FileJson, FileText, Linkedin, LoaderCircle, Plus, RotateCcw, Save, Sparkles, Trash2, Upload } from "lucide-react"
 import { Button, ColorField, CopyButton, Field, Panel, Segmented, Select, TextArea, TextInput, Toggle, ToggleRow } from "@/components/kit/controls"
 import { ItemList } from "@/components/portal/item-list"
 import { applyProfile } from "@/lib/cv/apply"
 import { matchOffer } from "@/lib/cv/match"
-import { cvToText } from "@/lib/cv/text"
+import { cvToText, parseCvForLinkedIn, type LinkedInFormattedResult } from "@/lib/cv/text"
 import type { CvDoc, CvTemplate, SectionId } from "@/lib/cv/types"
 import { localeMeta, locales, type Locale } from "@/lib/i18n"
 import { downloadBlob, downloadText, slugify } from "@/lib/kit/download"
@@ -14,12 +14,15 @@ import { PORTAL_REFERENCES } from "@/lib/portal/directory"
 import type { CvProfile } from "@/lib/portal/profiles"
 import { cn } from "@/lib/utils"
 
+export { parseCvForLinkedIn, type LinkedInFormattedResult } from "@/lib/cv/text"
+export const formatCvForLinkedIn = parseCvForLinkedIn
+
 const DRAFT_KEY = "fm-cv-studio:draft"
 const VERSIONS_KEY = "fm-cv-studio:versions"
 
 type Draft = { profileId: string; lang: Locale; doc: CvDoc }
 type Version = Draft & { id: string; name: string; savedAt: number }
-type Tab = "design" | "content" | "offer" | "versions"
+type Tab = "design" | "content" | "offer" | "linkedin" | "versions"
 
 const SECTION_NAMES: Record<SectionId, string> = {
   summary: "Profil / résumé",
@@ -161,6 +164,12 @@ export function CvStudio({ profiles, initialProfileId }: { profiles: CvProfile[]
               <RotateCcw className="size-4" aria-hidden /> Réinitialiser
             </Button>
             <CopyButton size="md" text={() => cvToText(doc)} label="Copier en texte" copiedLabel="Copié" />
+            <CopyButton
+              size="md"
+              text={() => parseCvForLinkedIn(doc).fullLinkedInText}
+              label="Format LinkedIn"
+              copiedLabel="Copié LinkedIn"
+            />
             <Button variant="primary" onClick={downloadPdf}>
               <Download className="size-4" aria-hidden /> Télécharger le PDF
             </Button>
@@ -173,12 +182,13 @@ export function CvStudio({ profiles, initialProfileId }: { profiles: CvProfile[]
 
       <div className="mx-auto grid w-full max-w-[1600px] flex-1 gap-4 p-4 md:p-6 lg:grid-cols-[440px_1fr]">
         <div className="min-w-0 space-y-4">
-          <div role="tablist" aria-label="Sections du studio" className="grid grid-cols-4 rounded-xl border border-line p-1">
+          <div role="tablist" aria-label="Sections du studio" className="grid grid-cols-5 rounded-xl border border-line p-1">
             {(
               [
                 ["design", "Design"],
                 ["content", "Contenu"],
                 ["offer", "Offre"],
+                ["linkedin", "LinkedIn"],
                 ["versions", "Versions"],
               ] as [Tab, string][]
             ).map(([id, label]) => (
@@ -187,7 +197,7 @@ export function CvStudio({ profiles, initialProfileId }: { profiles: CvProfile[]
                 role="tab"
                 aria-selected={tab === id}
                 onClick={() => setTab(id)}
-                className={cn("rounded-lg py-2 text-[13px] font-medium transition-colors", tab === id ? "bg-surface-2 text-foreground" : "text-muted-foreground hover:text-foreground")}
+                className={cn("rounded-lg py-2 text-[12px] font-medium transition-colors sm:text-[13px]", tab === id ? "bg-surface-2 text-foreground" : "text-muted-foreground hover:text-foreground")}
               >
                 {label}
               </button>
@@ -197,6 +207,7 @@ export function CvStudio({ profiles, initialProfileId }: { profiles: CvProfile[]
           {tab === "design" && <DesignTab doc={doc} patch={patch} />}
           {tab === "content" && <ContentTab doc={doc} patch={patch} />}
           {tab === "offer" && <OfferTab doc={doc} patch={patch} profiles={profiles} lang={lang} onChoose={(id) => choose(id, lang)} />}
+          {tab === "linkedin" && <LinkedInTab doc={doc} fileName={fileName} />}
           {tab === "versions" && (
             <VersionsTab
               versions={versions}
@@ -743,3 +754,116 @@ function VersionsTab({
     </>
   )
 }
+
+function LinkedInTab({ doc, fileName }: { doc: CvDoc; fileName: string }) {
+  const linkedIn = useMemo(() => parseCvForLinkedIn(doc), [doc])
+  const charCount = linkedIn.about.length
+  const limit = 2600
+  const isNearLimit = charCount > 2400 && charCount <= limit
+  const isOverLimit = charCount > limit
+
+  return (
+    <>
+      <Panel
+        title={
+          <span className="flex items-center gap-1.5">
+            <Linkedin className="size-4 text-[#0a66c2]" aria-hidden /> Optimisation LinkedIn
+          </span>
+        }
+      >
+        <p className="text-[12px] text-muted-foreground">
+          Ces blocs de texte sont calibrés pour l&apos;algorithme LinkedIn et la lecture des recruteurs :
+          accroche percutante, réalisations chiffrées, compétences clés avec puces et coordonnées claires.
+        </p>
+        <div className="flex flex-wrap gap-2 pt-1">
+          <CopyButton size="sm" text={linkedIn.fullLinkedInText} label="Copier tout le pack LinkedIn" copiedLabel="Pack copié !" />
+          <Button size="sm" onClick={() => downloadText(linkedIn.fullLinkedInText, `${fileName}-LinkedIn.txt`)}>
+            <FileText className="size-3.5" aria-hidden /> Exporter en .txt
+          </Button>
+        </div>
+      </Panel>
+
+      <Panel
+        title={
+          <div className="flex items-center justify-between gap-2">
+            <span>Section « Infos » (About)</span>
+            <span
+              className={cn(
+                "rounded-full px-2 py-0.5 font-mono text-[11px]",
+                isOverLimit
+                  ? "bg-destructive/15 text-destructive font-semibold"
+                  : isNearLimit
+                    ? "bg-amber-500/15 text-amber-600 dark:text-amber-400"
+                    : "bg-surface-2 text-muted-foreground"
+              )}
+            >
+              {charCount} / {limit} car.
+            </span>
+          </div>
+        }
+      >
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-[11px] text-subtle-foreground">
+            À coller dans votre section « Infos » sur LinkedIn.
+          </p>
+          <CopyButton size="sm" text={linkedIn.about} label="Copier Infos" copiedLabel="Infos copiées !" />
+        </div>
+        <div className="max-h-72 overflow-y-auto rounded-lg border border-line bg-surface/50 p-3 font-mono text-[11px] leading-relaxed text-foreground whitespace-pre-wrap select-all">
+          {linkedIn.about}
+        </div>
+      </Panel>
+
+      <Panel
+        title={
+          <div className="flex items-center justify-between gap-2">
+            <span>Expériences professionnelles ({linkedIn.positions.length})</span>
+            <CopyButton size="sm" text={linkedIn.experienceSummaries} label="Copier tous les postes" copiedLabel="Postes copiés !" />
+          </div>
+        }
+      >
+        <p className="text-[11px] text-subtle-foreground">
+          Chaque poste est formaté avec l&apos;intitulé, l&apos;entreprise, les dates et les puces d&apos;impact.
+        </p>
+        <div className="space-y-3">
+          {linkedIn.positions.map((pos, idx) => (
+            <div key={idx} className="rounded-lg border border-line bg-surface/40 p-3">
+              <div className="mb-2 flex items-start justify-between gap-2">
+                <div>
+                  <p className="text-[12px] font-semibold text-foreground">
+                    {pos.role} <span className="text-muted-foreground font-normal">| {pos.company}</span>
+                  </p>
+                  <p className="text-[11px] text-subtle-foreground">
+                    {[pos.period, pos.location].filter(Boolean).join(" · ")}
+                  </p>
+                </div>
+                <CopyButton size="sm" text={pos.formattedText} label="Copier ce poste" copiedLabel="Poste copié !" />
+              </div>
+              <div className="max-h-40 overflow-y-auto rounded border border-line/60 bg-background/50 p-2 font-mono text-[10.5px] leading-relaxed text-muted-foreground whitespace-pre-wrap select-all">
+                {pos.formattedText}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Panel>
+
+      <Panel
+        title={
+          <div className="flex items-center justify-between gap-2">
+            <span>Compétences & Mots-clés</span>
+            <CopyButton size="sm" text={linkedIn.skillsBlock} label="Copier compétences" copiedLabel="Compétences copiées !" />
+          </div>
+        }
+      >
+        <p className="text-[11px] text-subtle-foreground">
+          Format liste à puces prêt pour la section Compétences ou le ciblage des recruteurs.
+        </p>
+        <div className="rounded-lg border border-line bg-surface/50 p-3 font-mono text-[11px] leading-relaxed text-foreground whitespace-pre-wrap select-all">
+          {linkedIn.skillsBlock}
+        </div>
+      </Panel>
+    </>
+  )
+}
+
+CvStudio.parseCvForLinkedIn = parseCvForLinkedIn
+CvStudio.formatCvForLinkedIn = parseCvForLinkedIn

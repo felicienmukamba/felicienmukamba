@@ -1,13 +1,34 @@
 import Link from "next/link"
-import { ArrowUpRight, Bot, Layers, Palette, Shapes, Smartphone, Sparkles, Waves } from "lucide-react"
+import { ArrowUpRight, Award, Bot, Layers, Palette, Shapes, Smartphone, Sparkles, Waves } from "lucide-react"
 import { Spotlight } from "@/components/motion"
 import type { LabToolId } from "@/lib/lab/tools"
 
-const icons = { "brand-kit": Palette, "app-icon": Smartphone, mascot: Sparkles, svg: Shapes, motion: Waves, design: Layers }
+const icons = { "logo-generator": Award, "brand-kit": Palette, "app-icon": Smartphone, mascot: Sparkles, svg: Shapes, motion: Waves, design: Layers }
 
 /** Mini preview drawn in CSS so the cards stay lightweight. */
 function Preview({ id }: { id: LabToolId }) {
   switch (id) {
+    case "logo-generator":
+      return (
+        <div className="flex h-full items-center justify-center gap-3">
+          <div className="relative flex h-16 w-28 flex-col justify-between rounded-xl border border-line-strong bg-surface p-2 shadow-lg transition-transform duration-500 group-hover:-translate-y-1">
+            <div className="flex items-center gap-1.5">
+              <span className="size-4 rounded-md bg-accent shadow" />
+              <div className="h-2 w-12 rounded bg-foreground/80" />
+            </div>
+            <div className="h-1.5 w-16 rounded bg-muted-foreground/40" />
+            <div className="flex justify-between items-center pt-1 border-t border-line/60">
+              <span className="text-[8px] font-mono text-accent font-bold">LOGO</span>
+              <span className="text-[8px] font-mono text-muted-foreground">HD</span>
+            </div>
+          </div>
+          <div className="relative flex h-20 w-14 flex-col justify-between rounded-lg bg-gradient-to-br from-accent/30 to-primary/40 border border-accent/40 p-1.5 shadow-md transition-transform duration-500 group-hover:translate-y-1">
+            <div className="h-2 w-8 rounded bg-foreground/90 mx-auto" />
+            <div className="h-6 w-full rounded bg-surface/80" />
+            <div className="h-1.5 w-10 rounded bg-accent mx-auto" />
+          </div>
+        </div>
+      )
     case "brand-kit":
       return (
         <div className="flex h-full items-center justify-center gap-2">

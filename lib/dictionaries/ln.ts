@@ -396,6 +396,10 @@ export const ln: Dictionary = {
     openTool: "Fungola outil",
     back: "Ba outils nyonso",
     tools: {
+      "logo-generator": {
+        name: "Générateur ya ba Logos mpe Publicités",
+        description: "Koma ba infos ya marque na yo, pona to importé ba icônes mpe ba langi: kosala noki ya ba logos, ba brochures, ba flyers mpe ba affiches na ba formats nyonso.",
+      },
       "brand-kit": {
         name: "Brand kit & marketplace",
         description: "Tia logo mpe ba langi na yo: charte graphique, ba visuels ya boutique, ba posts mpe ba données ya démo.",

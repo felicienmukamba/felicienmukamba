@@ -398,6 +398,10 @@ export const fr: Dictionary = {
     openTool: "Ouvrir l'outil",
     back: "Tous les outils",
     tools: {
+      "logo-generator": {
+        name: "Générateur de Logos & Publicités",
+        description: "Saisissez les infos de votre marque, choisissez ou importez une icône et votre charte graphique : génération immédiate de logos, brochures, flyers et bannières dans tous les formats.",
+      },
       "brand-kit": {
         name: "Brand kit & marketplace",
         description: "Déposez un logo et vos couleurs : charte graphique, visuels de boutique, posts sociaux et données de catalogue de démo.",

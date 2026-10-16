@@ -56,10 +56,15 @@ import {
   type BrandCharter,
   type BrandInfo,
   downloadCanvas,
+  drawBillboardCanvas,
   drawBrochureCanvas,
   drawBusinessCardCanvas,
   drawFlyerCanvas,
+  drawLogoEmblemCanvas,
+  drawRollupBannerCanvas,
   drawSocialPostCanvas,
+  drawStoryCanvas,
+  drawTrifoldBrochureCanvas,
 } from "@/lib/lab/branding-generator"
 import {
   DEFAULT_MOTION_CONFIG,
@@ -85,7 +90,9 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
     tagline: DEFAULT_THEME.tagline,
   })
   const [mainTab, setMainTab] = useState<MainTab>("studio")
-  const [activeCollateral, setActiveCollateral] = useState<"flyer" | "brochure" | "card" | "social">("flyer")
+  const [activeCollateral, setActiveCollateral] = useState<
+    "flyer" | "brochure" | "trifold" | "rollup" | "billboard" | "card" | "social" | "story" | "emblem"
+  >("flyer")
   const [cardSide, setCardSide] = useState<"front" | "back">("front")
   const [exportFormat, setExportFormat] = useState<"png" | "jpeg" | "webp">("png")
   const [isGeneratingAll, setIsGeneratingAll] = useState(false)
@@ -173,10 +180,20 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
       drawFlyerCanvas(canvas, brandInfo, brandCharter)
     } else if (activeCollateral === "brochure") {
       drawBrochureCanvas(canvas, brandInfo, brandCharter)
+    } else if (activeCollateral === "trifold") {
+      drawTrifoldBrochureCanvas(canvas, brandInfo, brandCharter)
+    } else if (activeCollateral === "rollup") {
+      drawRollupBannerCanvas(canvas, brandInfo, brandCharter)
+    } else if (activeCollateral === "billboard") {
+      drawBillboardCanvas(canvas, brandInfo, brandCharter)
     } else if (activeCollateral === "card") {
       drawBusinessCardCanvas(canvas, brandInfo, brandCharter, cardSide)
     } else if (activeCollateral === "social") {
       drawSocialPostCanvas(canvas, brandInfo, brandCharter)
+    } else if (activeCollateral === "story") {
+      drawStoryCanvas(canvas, brandInfo, brandCharter)
+    } else if (activeCollateral === "emblem") {
+      drawLogoEmblemCanvas(canvas, brandInfo, brandCharter)
     }
   }, [mainTab, activeCollateral, cardSide, brandInfo, brandCharter])
 
@@ -193,9 +210,14 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
     const targets = [
       { name: `${base}-flyer-a5`, draw: (c: HTMLCanvasElement) => drawFlyerCanvas(c, brandInfo, brandCharter) },
       { name: `${base}-brochure-corporate-a4`, draw: (c: HTMLCanvasElement) => drawBrochureCanvas(c, brandInfo, brandCharter) },
+      { name: `${base}-brochure-trifold-3volets`, draw: (c: HTMLCanvasElement) => drawTrifoldBrochureCanvas(c, brandInfo, brandCharter) },
+      { name: `${base}-rollup-banner-salon`, draw: (c: HTMLCanvasElement) => drawRollupBannerCanvas(c, brandInfo, brandCharter) },
+      { name: `${base}-billboard-outdoor-16-9`, draw: (c: HTMLCanvasElement) => drawBillboardCanvas(c, brandInfo, brandCharter) },
       { name: `${base}-business-card-recto`, draw: (c: HTMLCanvasElement) => drawBusinessCardCanvas(c, brandInfo, brandCharter, "front") },
       { name: `${base}-business-card-verso`, draw: (c: HTMLCanvasElement) => drawBusinessCardCanvas(c, brandInfo, brandCharter, "back") },
-      { name: `${base}-social-post`, draw: (c: HTMLCanvasElement) => drawSocialPostCanvas(c, brandInfo, brandCharter) },
+      { name: `${base}-social-post-carre`, draw: (c: HTMLCanvasElement) => drawSocialPostCanvas(c, brandInfo, brandCharter) },
+      { name: `${base}-social-story-vertical`, draw: (c: HTMLCanvasElement) => drawStoryCanvas(c, brandInfo, brandCharter) },
+      { name: `${base}-logo-emblem-carre`, draw: (c: HTMLCanvasElement) => drawLogoEmblemCanvas(c, brandInfo, brandCharter) },
     ]
 
     for (const item of targets) {
@@ -694,24 +716,29 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
             <div className="flex flex-wrap items-center gap-2">
               {[
                 { id: "flyer", label: isFr ? "Flyer Promo A5" : "Promo Flyer A5", icon: FileText, dims: "1200×1600" },
-                { id: "brochure", label: isFr ? "Brochure Corporate A4" : "Corporate Brochure A4", icon: Layout, dims: "1400×1000" },
-                { id: "card", label: isFr ? "Carte de Visite Pro" : "Business Card Pro", icon: CreditCard, dims: "1050×600" },
-                { id: "social", label: isFr ? "Post Réseaux Sociaux" : "Social Ad Post", icon: Share2, dims: "1080×1080" },
+                { id: "brochure", label: isFr ? "Brochure A4 (2V)" : "Corporate A4 (2P)", icon: Layout, dims: "1400×1000" },
+                { id: "trifold", label: isFr ? "Dépliant 3 Volets" : "Tri-Fold (3P)", icon: Printer, dims: "2100×1000" },
+                { id: "rollup", label: isFr ? "Roll-Up Salon" : "Roll-Up Stand", icon: Sparkles, dims: "900×2000" },
+                { id: "billboard", label: isFr ? "Panneau 16:9" : "Billboard 16:9", icon: Tv, dims: "1920×800" },
+                { id: "card", label: isFr ? "Carte de Visite" : "Business Card", icon: CreditCard, dims: "880×520" },
+                { id: "social", label: isFr ? "Post Réseaux (1:1)" : "Social Post (1:1)", icon: Share2, dims: "1080×1080" },
+                { id: "story", label: isFr ? "Story (9:16)" : "Story (9:16)", icon: Smartphone, dims: "1080×1920" },
+                { id: "emblem", label: isFr ? "Emblème Sceau" : "Emblem Seal", icon: Gem, dims: "1000×1000" },
               ].map((item) => (
                 <button
                   key={item.id}
                   type="button"
                   onClick={() => setActiveCollateral(item.id as any)}
                   className={cn(
-                    "flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-semibold transition",
+                    "flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold transition",
                     activeCollateral === item.id
                       ? "bg-accent text-accent-foreground shadow-md ring-2 ring-accent/30"
                       : "bg-surface-2 text-muted-foreground hover:bg-surface-2/80 hover:text-foreground border border-line"
                   )}
                 >
-                  <item.icon className="size-4 shrink-0" />
+                  <item.icon className="size-3.5 shrink-0" />
                   <span>{item.label}</span>
-                  <span className="font-mono text-[10px] opacity-70">({item.dims})</span>
+                  <span className="font-mono text-[9px] opacity-70">({item.dims})</span>
                 </button>
               ))}
             </div>
@@ -786,8 +813,13 @@ export function AppIconStudio({ t, lang }: { t: LabStrings; lang: "en" | "fr" })
                 <span className="font-mono">
                   {activeCollateral === "flyer" && "1200×1600 px (A5 Portrait)"}
                   {activeCollateral === "brochure" && "1400×1000 px (A4 Corporate)"}
-                  {activeCollateral === "card" && `1050×600 px (${cardSide === "front" ? "Recto" : "Verso"})`}
+                  {activeCollateral === "trifold" && "2100×1000 px (Dépliant 3 Volets)"}
+                  {activeCollateral === "rollup" && "900×2000 px (Kakémono Salon)"}
+                  {activeCollateral === "billboard" && "1920×800 px (Panneau 16:9)"}
+                  {activeCollateral === "card" && `880×520 px (${cardSide === "front" ? "Recto" : "Verso"})`}
                   {activeCollateral === "social" && "1080×1080 px (Carré Réseaux)"}
+                  {activeCollateral === "story" && "1080×1920 px (Story 9:16)"}
+                  {activeCollateral === "emblem" && "1000×1000 px (Emblème Carré)"}
                 </span>
                 {activeCollateral === "card" && (
                   <button

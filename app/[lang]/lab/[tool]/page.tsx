@@ -60,7 +60,7 @@ export default async function LabToolPage({ params }: PageProps<"/[lang]/lab/[to
           </p>
         </div>
         <div className="mt-10">
-          {tool === "brand-kit" && <BrandKit t={strings} lang={lang === "en" ? "en" : "fr"} />}
+          {(tool === "logo-generator" || tool === "brand-kit") && <BrandKit defaultTab="logos" t={strings} lang={lang === "en" ? "en" : "fr"} />}
           {tool === "app-icon" && <AppIconStudio t={strings} lang={lang === "en" ? "en" : "fr"} />}
           {tool === "mascot" && <MascotGenerator t={strings} lang={lang === "en" ? "en" : "fr"} />}
           {tool === "svg" && <SvgGenerator t={strings} />}

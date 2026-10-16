@@ -396,6 +396,10 @@ export const en = {
     openTool: "Open tool",
     back: "All tools",
     tools: {
+      "logo-generator": {
+        name: "Logo & Brand Generator",
+        description: "Enter your brand info, select or import icons, pick your color chart: instant generation of logos, brochures, flyers, and advertising materials in all formats.",
+      },
       "brand-kit": {
         name: "Brand kit & marketplace",
         description: "Drop a logo and colors: get a brand chart, store visuals, social posts and demo catalogue data.",

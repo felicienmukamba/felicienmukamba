@@ -9,6 +9,8 @@
  * Fonctionne directement dans le navigateur sans dépendance serveur.
  */
 
+import type { Brand } from "./brand-templates"
+
 export interface BrandInfo {
   name: string
   tagline: string
@@ -38,7 +40,7 @@ export interface BrandCharter {
   superellipseN: number  // défaut 5.0 (Apple squircle)
   glossOpacity: number   // 0.2
   shadowOpacity: number  // 0.35
-  iconStyle: "cards" | "shield" | "zap" | "chip" | "diamond" | "rocket" | "custom"
+  iconStyle: "cards" | "shield" | "zap" | "chip" | "diamond" | "rocket" | "store" | "flame" | "custom"
   customSvgPath?: string
   customLogoImage?: HTMLImageElement | null
 }
@@ -417,6 +419,60 @@ export function drawBrandGlyph(
       ctx.moveTo(50, 120)
       ctx.lineTo(140, 190)
       ctx.lineTo(50, 180)
+      ctx.closePath()
+      ctx.fill()
+      ctx.restore()
+      break
+    }
+
+    case "store": {
+      ctx.save()
+      // Store roof awning
+      ctx.fillStyle = charter.accent
+      ctx.beginPath()
+      ctx.moveTo(-160, -60)
+      ctx.lineTo(-120, -160)
+      ctx.lineTo(120, -160)
+      ctx.lineTo(160, -60)
+      ctx.closePath()
+      ctx.fill()
+
+      // Store building base
+      ctx.fillStyle = charter.light
+      traceRoundRect(ctx, -140, -60, 280, 220, 16)
+      ctx.fill()
+
+      // Door & window
+      ctx.fillStyle = charter.primary
+      traceRoundRect(ctx, -45, 10, 90, 150, 8)
+      ctx.fill()
+      ctx.fillStyle = charter.accent
+      traceRoundRect(ctx, -115, -20, 50, 60, 6)
+      traceRoundRect(ctx, 65, -20, 50, 60, 6)
+      ctx.fill()
+      ctx.restore()
+      break
+    }
+
+    case "flame": {
+      ctx.save()
+      ctx.fillStyle = charter.accent
+      ctx.beginPath()
+      ctx.moveTo(0, -190)
+      ctx.bezierCurveTo(120, -60, 160, 60, 120, 140)
+      ctx.bezierCurveTo(70, 210, -70, 210, -120, 140)
+      ctx.bezierCurveTo(-180, 50, -110, -40, -50, -90)
+      ctx.bezierCurveTo(-20, -130, -30, -165, 0, -190)
+      ctx.closePath()
+      ctx.fill()
+
+      // Inner flame
+      ctx.fillStyle = charter.light
+      ctx.beginPath()
+      ctx.moveTo(0, -60)
+      ctx.bezierCurveTo(60, 0, 80, 70, 50, 120)
+      ctx.bezierCurveTo(30, 160, -30, 160, -50, 120)
+      ctx.bezierCurveTo(-75, 70, -40, 10, 0, -60)
       ctx.closePath()
       ctx.fill()
       ctx.restore()
@@ -1119,3 +1175,791 @@ export function downloadCanvas(
   link.href = canvas.toDataURL(`image/${format}`, 0.95)
   link.click()
 }
+
+// ---------------------------------------------------------------------------
+// 10. Dépliant 3 Volets (Tri-Fold Marketing Brochure 2100x1000)
+// ---------------------------------------------------------------------------
+
+export function drawTrifoldBrochureCanvas(
+  canvas: HTMLCanvasElement,
+  brand: BrandInfo,
+  charter: BrandCharter
+) {
+  const w = 2100
+  const h = 1000
+  canvas.width = w
+  canvas.height = h
+  const ctx = canvas.getContext("2d")
+  if (!ctx) return
+
+  // Fond clair
+  ctx.fillStyle = charter.light || "#FFFFFF"
+  ctx.fillRect(0, 0, w, h)
+
+  // Volet 1 (Gauche: 0-700) : Présentation & Vision
+  const g1 = ctx.createLinearGradient(0, 0, 700, 240)
+  g1.addColorStop(0, charter.primary)
+  g1.addColorStop(1, charter.dark)
+  ctx.fillStyle = g1
+  ctx.fillRect(0, 0, 700, 240)
+
+  // Mini icône volet 1
+  ctx.save()
+  const mini1 = 110
+  traceSquircle(ctx, 110, 120, mini1 / 2, charter.superellipseN)
+  ctx.clip()
+  const ig1 = ctx.createLinearGradient(55, 65, 165, 175)
+  ig1.addColorStop(0, charter.primaryLight)
+  ig1.addColorStop(1, charter.primary)
+  ctx.fillStyle = ig1
+  ctx.fillRect(55, 65, mini1, mini1)
+  drawBrandGlyph(ctx, charter, 107, 123, 0.12)
+  ctx.restore()
+
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 38px system-ui, sans-serif"
+  ctx.textAlign = "left"
+  ctx.textBaseline = "middle"
+  ctx.fillText(brand.name, 190, 105)
+  ctx.fillStyle = charter.accent
+  ctx.font = "20px system-ui, sans-serif"
+  ctx.fillText(brand.tagline, 190, 145)
+
+  ctx.fillStyle = charter.dark
+  ctx.font = "bold 30px system-ui, sans-serif"
+  ctx.fillText("Notre Engagement", 60, 310)
+
+  ctx.fillStyle = "rgba(15, 23, 42, 0.75)"
+  ctx.font = "19px system-ui, sans-serif"
+  const missionLines = [
+    brand.category,
+    "",
+    brand.slogan,
+    "",
+    "Une technologie de pointe alliant",
+    "sécurité industrielle et simplicité",
+    "pour chaque utilisateur et commerce.",
+  ]
+  missionLines.forEach((l, i) => ctx.fillText(l, 60, 360 + i * 26))
+
+  // Carte confiance
+  ctx.fillStyle = "#FFFFFF"
+  ctx.strokeStyle = "rgba(15, 23, 42, 0.1)"
+  ctx.lineWidth = 1.5
+  traceRoundRect(ctx, 60, 560, 580, 160, 20)
+  ctx.fill()
+  ctx.stroke()
+
+  ctx.fillStyle = charter.accent
+  ctx.beginPath()
+  ctx.arc(115, 640, 28, 0, Math.PI * 2)
+  ctx.fill()
+  ctx.fillStyle = charter.dark
+  ctx.font = "bold 24px system-ui, sans-serif"
+  ctx.textAlign = "center"
+  ctx.fillText("★", 115, 648)
+
+  ctx.textAlign = "left"
+  ctx.fillStyle = charter.dark
+  ctx.font = "bold 22px system-ui, sans-serif"
+  ctx.fillText("Fiabilité & Disponibilité Maximale", 165, 625)
+  ctx.fillStyle = "rgba(15, 23, 42, 0.65)"
+  ctx.font = "16px system-ui, sans-serif"
+  ctx.fillText("Transactions sécurisées en temps réel 24h/24.", 165, 658)
+
+  // Bandeau bas volet 1
+  ctx.fillStyle = charter.dark
+  traceRoundRect(ctx, 60, 750, 580, 190, 20)
+  ctx.fill()
+  ctx.fillStyle = charter.accent
+  ctx.font = "bold 20px system-ui, sans-serif"
+  ctx.fillText("GARANTIE & CERTIFICATION", 90, 805)
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "16px system-ui, sans-serif"
+  ctx.fillText("Conforme aux normes internationales de sécurité bancaire.", 90, 840)
+  ctx.fillStyle = charter.primaryLight
+  ctx.font = "bold 18px monospace"
+  ctx.fillText(brand.website, 90, 890)
+
+  // Lignes de pliure
+  ctx.setLineDash([8, 8])
+  ctx.strokeStyle = "rgba(15, 23, 42, 0.18)"
+  ctx.lineWidth = 2
+  ctx.beginPath()
+  ctx.moveTo(700, 0)
+  ctx.lineTo(700, h)
+  ctx.moveTo(1400, 0)
+  ctx.lineTo(1400, h)
+  ctx.stroke()
+  ctx.setLineDash([])
+
+  // Volet 2 (Centre: 700-1400) : Offres & Piliers
+  ctx.fillStyle = charter.primary
+  traceRoundRect(ctx, 760, 60, 180, 36, 18)
+  ctx.fill()
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 15px system-ui, sans-serif"
+  ctx.textAlign = "center"
+  ctx.fillText(brand.promoBadge || "OFFRE SPECIALE", 850, 83)
+
+  ctx.textAlign = "left"
+  ctx.fillStyle = charter.dark
+  ctx.font = "bold 40px system-ui, sans-serif"
+  ctx.fillText("L'Écosystème " + brand.name, 760, 145)
+
+  // Visuel produit central
+  ctx.save()
+  const cW = 580
+  const cH = 280
+  traceRoundRect(ctx, 760, 180, cW, cH, 24)
+  ctx.clip()
+  const cGrad = ctx.createLinearGradient(760, 180, 760 + cW, 180 + cH)
+  cGrad.addColorStop(0, charter.primary)
+  cGrad.addColorStop(1, charter.dark)
+  ctx.fillStyle = cGrad
+  ctx.fillRect(760, 180, cW, cH)
+  drawBrandGlyph(ctx, charter, 760 + cW / 2 - 10, 180 + cH / 2 + 10, 0.36)
+  ctx.restore()
+
+  // 3 Puces clés
+  brand.features.forEach((feat, i) => {
+    const fy = 500 + i * 70
+    ctx.fillStyle = "#FFFFFF"
+    ctx.strokeStyle = "rgba(15, 23, 42, 0.08)"
+    traceRoundRect(ctx, 760, fy, 580, 56, 14)
+    ctx.fill()
+    ctx.stroke()
+
+    ctx.fillStyle = charter.primaryLight
+    ctx.beginPath()
+    ctx.arc(795, fy + 28, 14, 0, Math.PI * 2)
+    ctx.fill()
+    ctx.fillStyle = "#FFFFFF"
+    ctx.font = "bold 14px system-ui, sans-serif"
+    ctx.textAlign = "center"
+    ctx.fillText("✓", 795, fy + 33)
+
+    ctx.textAlign = "left"
+    ctx.fillStyle = charter.dark
+    ctx.font = "600 17px system-ui, sans-serif"
+    ctx.fillText(feat, 825, fy + 34)
+  })
+
+  // Prix & CTA Volet 2
+  ctx.fillStyle = charter.primary
+  ctx.font = "bold 44px system-ui, sans-serif"
+  ctx.fillText(brand.metric3.value || "0% Frais", 760, 765)
+  ctx.fillStyle = "rgba(15, 23, 42, 0.6)"
+  ctx.font = "16px system-ui, sans-serif"
+  ctx.fillText(brand.metric3.label || "Sur toutes vos micro-transactions", 760, 800)
+
+  ctx.fillStyle = charter.primary
+  traceRoundRect(ctx, 760, 840, 580, 76, 38)
+  ctx.fill()
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 22px system-ui, sans-serif"
+  ctx.textAlign = "center"
+  ctx.fillText("Activer Votre Compte Pro →", 1050, 885)
+
+  // Volet 3 (Droite: 1400-2100) : Contact & QR Code
+  const g3 = ctx.createLinearGradient(1400, 0, 2100, h)
+  g3.addColorStop(0, charter.dark)
+  g3.addColorStop(1, "#030B1C")
+  ctx.fillStyle = g3
+  ctx.fillRect(1400, 0, 700, h)
+
+  ctx.textAlign = "left"
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 40px system-ui, sans-serif"
+  ctx.fillText("Connectez votre entreprise", 1460, 110)
+  ctx.fillStyle = charter.primaryLight
+  ctx.font = "24px system-ui, sans-serif"
+  ctx.fillText("Discutez dès aujourd'hui avec nos équipes.", 1460, 155)
+
+  // QR Code Mockup
+  const qrX = 1460
+  const qrY = 220
+  const qrS = 220
+  ctx.fillStyle = "#FFFFFF"
+  traceRoundRect(ctx, qrX, qrY, qrS, qrS, 20)
+  ctx.fill()
+  ctx.fillStyle = charter.dark
+  ctx.fillRect(qrX + 25, qrY + 25, 55, 55)
+  ctx.fillRect(qrX + qrS - 80, qrY + 25, 55, 55)
+  ctx.fillRect(qrX + 25, qrY + qrS - 80, 55, 55)
+  ctx.fillStyle = charter.primary
+  ctx.fillRect(qrX + 105, qrY + 105, 75, 75)
+
+  ctx.fillStyle = "rgba(255, 255, 255, 0.85)"
+  ctx.font = "bold 15px monospace"
+  ctx.fillText("SCANNEZ LE QR POUR DÉMARRER", qrX, 480)
+
+  // Coordonnées
+  const contacts = [
+    { label: "Site Officiel", val: brand.website },
+    { label: "Email Support", val: brand.email },
+    { label: "Ligne Directe", val: brand.phone },
+  ]
+  contacts.forEach((c, idx) => {
+    const cy = 540 + idx * 75
+    ctx.fillStyle = charter.accent
+    ctx.font = "bold 15px system-ui, sans-serif"
+    ctx.fillText(c.label.toUpperCase(), qrX, cy)
+    ctx.fillStyle = "#FFFFFF"
+    ctx.font = "500 22px system-ui, sans-serif"
+    ctx.fillText(c.val, qrX, cy + 30)
+  })
+
+  // CTA final bas
+  ctx.fillStyle = charter.accent
+  traceRoundRect(ctx, qrX, 820, 540, 70, 35)
+  ctx.fill()
+  ctx.fillStyle = charter.dark
+  ctx.font = "bold 22px system-ui, sans-serif"
+  ctx.textAlign = "center"
+  ctx.fillText("Rejoindre le Réseau " + brand.name + " →", qrX + 270, 862)
+}
+
+// ---------------------------------------------------------------------------
+// 11. Kakémono / Roll-Up Banner Stand (900x2000)
+// ---------------------------------------------------------------------------
+
+export function drawRollupBannerCanvas(
+  canvas: HTMLCanvasElement,
+  brand: BrandInfo,
+  charter: BrandCharter
+) {
+  const w = 900
+  const h = 2000
+  canvas.width = w
+  canvas.height = h
+  const ctx = canvas.getContext("2d")
+  if (!ctx) return
+
+  // Fond dégradé sombre
+  const bg = ctx.createLinearGradient(0, 0, w, h)
+  bg.addColorStop(0, charter.dark)
+  bg.addColorStop(1, "#020712")
+  ctx.fillStyle = bg
+  ctx.fillRect(0, 0, w, h)
+
+  // Lueurs salon
+  const lueur1 = ctx.createRadialGradient(450, 300, 30, 450, 300, 450)
+  lueur1.addColorStop(0, `${charter.primaryLight}44`)
+  lueur1.addColorStop(1, "transparent")
+  ctx.fillStyle = lueur1
+  ctx.fillRect(0, 0, w, h)
+
+  // Emblème haut du roll-up
+  ctx.save()
+  const iconS = 220
+  traceSquircle(ctx, 450, 220, iconS / 2, charter.superellipseN)
+  ctx.clip()
+  const ig = ctx.createLinearGradient(340, 110, 560, 330)
+  ig.addColorStop(0, charter.primaryLight)
+  ig.addColorStop(1, charter.primary)
+  ctx.fillStyle = ig
+  ctx.fillRect(340, 110, iconS, iconS)
+  drawBrandGlyph(ctx, charter, 444, 226, 0.24)
+  ctx.restore()
+
+  // Nom de marque
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 64px system-ui, sans-serif"
+  ctx.textAlign = "center"
+  ctx.fillText(brand.name, 450, 380)
+
+  ctx.fillStyle = charter.accent
+  ctx.font = "bold 28px system-ui, sans-serif"
+  ctx.fillText(brand.tagline, 450, 430)
+
+  // Grand Titre d'Accroche
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 56px system-ui, sans-serif"
+  ctx.fillText("INNOVEZ SANS LIMITE", 450, 580)
+  ctx.fillStyle = "rgba(255, 255, 255, 0.75)"
+  ctx.font = "28px system-ui, sans-serif"
+  ctx.fillText(brand.slogan, 450, 640)
+
+  // Grande carte visuelle
+  ctx.save()
+  const cW = 660
+  const cH = 480
+  const cX = (w - cW) / 2
+  const cY = 720
+  traceSquircle(ctx, 450, cY + cH / 2, cW / 2, charter.superellipseN)
+  ctx.clip()
+  const cGrad = ctx.createLinearGradient(cX, cY, cX + cW, cY + cH)
+  cGrad.addColorStop(0, charter.primaryLight)
+  cGrad.addColorStop(1, charter.primary)
+  ctx.fillStyle = cGrad
+  ctx.fillRect(cX, cY, cW, cH)
+  drawBrandGlyph(ctx, charter, 438, cY + cH / 2 + 16, 0.52)
+  ctx.restore()
+
+  // Badge promo
+  ctx.fillStyle = charter.accent
+  traceRoundRect(ctx, 250, 1260, 400, 64, 32)
+  ctx.fill()
+  ctx.fillStyle = charter.dark
+  ctx.font = "bold 26px system-ui, sans-serif"
+  ctx.fillText(brand.promoBadge || "DÉMONSTRATION EN DIRECT", 450, 1300)
+
+  // 3 Points forts
+  const points = [
+    "Démonstration en direct au stand",
+    "Compatible mobile, cloud & API",
+    "Mise en place en moins de 24h",
+  ]
+  points.forEach((p, idx) => {
+    const py = 1420 + idx * 75
+    ctx.fillStyle = "#FFFFFF"
+    ctx.font = "bold 32px system-ui, sans-serif"
+    ctx.fillText(`✓ ${p}`, 450, py)
+  })
+
+  // Bouton CTA Bas
+  ctx.fillStyle = charter.accent
+  traceRoundRect(ctx, 150, 1680, 600, 100, 50)
+  ctx.fill()
+  ctx.fillStyle = charter.dark
+  ctx.font = "bold 34px system-ui, sans-serif"
+  ctx.fillText("Tester Immédiatement →", 450, 1740)
+
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 32px monospace"
+  ctx.fillText(brand.website, 450, 1850)
+  ctx.fillStyle = "rgba(255, 255, 255, 0.6)"
+  ctx.font = "22px system-ui, sans-serif"
+  ctx.fillText(`${brand.phone} · ${brand.email}`, 450, 1900)
+}
+
+// ---------------------------------------------------------------------------
+// 12. Panneau Publicitaire / Billboard 16:9 (1920x800)
+// ---------------------------------------------------------------------------
+
+export function drawBillboardCanvas(
+  canvas: HTMLCanvasElement,
+  brand: BrandInfo,
+  charter: BrandCharter
+) {
+  const w = 1920
+  const h = 800
+  canvas.width = w
+  canvas.height = h
+  const ctx = canvas.getContext("2d")
+  if (!ctx) return
+
+  // Fond immersif
+  ctx.fillStyle = charter.dark
+  ctx.fillRect(0, 0, w, h)
+
+  // Côté droit dégradé
+  const rightGrad = ctx.createLinearGradient(1100, 0, w, h)
+  rightGrad.addColorStop(0, charter.primary)
+  rightGrad.addColorStop(1, charter.dark)
+  ctx.fillStyle = rightGrad
+  ctx.fillRect(1100, 0, 820, h)
+
+  // Logo haut gauche
+  ctx.save()
+  const iconS = 160
+  traceSquircle(ctx, 180, 150, iconS / 2, charter.superellipseN)
+  ctx.clip()
+  const ig = ctx.createLinearGradient(100, 70, 260, 230)
+  ig.addColorStop(0, charter.primaryLight)
+  ig.addColorStop(1, charter.primary)
+  ctx.fillStyle = ig
+  ctx.fillRect(100, 70, iconS, iconS)
+  drawBrandGlyph(ctx, charter, 174, 156, 0.18)
+  ctx.restore()
+
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 64px system-ui, sans-serif"
+  ctx.textAlign = "left"
+  ctx.fillText(brand.name, 290, 140)
+  ctx.fillStyle = charter.accent
+  ctx.font = "bold 30px system-ui, sans-serif"
+  ctx.fillText(brand.tagline, 290, 190)
+
+  // Titre percutant
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 90px system-ui, sans-serif"
+  ctx.fillText("CHANGEZ DE", 100, 360)
+  ctx.fillStyle = charter.accent
+  ctx.fillText("DIMENSION.", 100, 460)
+
+  ctx.fillStyle = "rgba(255, 255, 255, 0.85)"
+  ctx.font = "32px system-ui, sans-serif"
+  ctx.fillText(brand.slogan, 100, 540)
+
+  // CTA
+  ctx.fillStyle = charter.accent
+  traceRoundRect(ctx, 100, 610, 460, 96, 48)
+  ctx.fill()
+  ctx.fillStyle = charter.dark
+  ctx.font = "bold 34px system-ui, sans-serif"
+  ctx.textAlign = "center"
+  ctx.fillText("DÉCOUVRIR L'OFFRE →", 330, 668)
+
+  ctx.textAlign = "left"
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 34px monospace"
+  ctx.fillText(brand.website, 600, 670)
+
+  // Visuel Hero Droit
+  ctx.save()
+  const heroS = 480
+  traceSquircle(ctx, 1500, 400, heroS / 2, charter.superellipseN)
+  ctx.clip()
+  const heroGrad = ctx.createLinearGradient(1260, 160, 1740, 640)
+  heroGrad.addColorStop(0, charter.primaryLight)
+  heroGrad.addColorStop(1, charter.primary)
+  ctx.fillStyle = heroGrad
+  ctx.fillRect(1260, 160, heroS, heroS)
+  drawBrandGlyph(ctx, charter, 1488, 416, 0.54)
+  ctx.restore()
+
+  // Badge promo sur billboard
+  ctx.fillStyle = charter.accent
+  traceRoundRect(ctx, 1160, 100, 240, 60, 30)
+  ctx.fill()
+  ctx.fillStyle = charter.dark
+  ctx.font = "bold 26px system-ui, sans-serif"
+  ctx.textAlign = "center"
+  ctx.fillText(brand.promoBadge || "OFFRE SPECIALE", 1280, 138)
+}
+
+// ---------------------------------------------------------------------------
+// 13. Story / Reel Mobile 9:16 (1080x1920)
+// ---------------------------------------------------------------------------
+
+export function drawStoryCanvas(
+  canvas: HTMLCanvasElement,
+  brand: BrandInfo,
+  charter: BrandCharter
+) {
+  const w = 1080
+  const h = 1920
+  canvas.width = w
+  canvas.height = h
+  const ctx = canvas.getContext("2d")
+  if (!ctx) return
+
+  // Fond dégradé vertical
+  const bg = ctx.createLinearGradient(0, 0, 0, h)
+  bg.addColorStop(0, charter.dark)
+  bg.addColorStop(1, "#020712")
+  ctx.fillStyle = bg
+  ctx.fillRect(0, 0, w, h)
+
+  // Logo haut
+  ctx.save()
+  const iconS = 180
+  traceSquircle(ctx, 540, 220, iconS / 2, charter.superellipseN)
+  ctx.clip()
+  const ig = ctx.createLinearGradient(450, 130, 630, 310)
+  ig.addColorStop(0, charter.primaryLight)
+  ig.addColorStop(1, charter.primary)
+  ctx.fillStyle = ig
+  ctx.fillRect(450, 130, iconS, iconS)
+  drawBrandGlyph(ctx, charter, 534, 226, 0.2)
+  ctx.restore()
+
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 52px system-ui, sans-serif"
+  ctx.textAlign = "center"
+  ctx.fillText(brand.name, 540, 370)
+
+  // Grand Titre Story
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 64px system-ui, sans-serif"
+  ctx.fillText("LA VITESSE", 540, 520)
+  ctx.fillStyle = charter.accent
+  ctx.fillText("À PORTÉE DE MAIN.", 540, 595)
+
+  // Carte centrale
+  ctx.save()
+  const cW = 600
+  traceSquircle(ctx, 540, 960, cW / 2, charter.superellipseN)
+  ctx.clip()
+  const cGrad = ctx.createLinearGradient(240, 660, 840, 1260)
+  cGrad.addColorStop(0, charter.primaryLight)
+  cGrad.addColorStop(1, charter.primary)
+  ctx.fillStyle = cGrad
+  ctx.fillRect(240, 660, cW, cW)
+  drawBrandGlyph(ctx, charter, 528, 976, 0.64)
+  ctx.restore()
+
+  // Badge
+  ctx.fillStyle = charter.accent
+  traceRoundRect(ctx, 360, 1340, 360, 60, 30)
+  ctx.fill()
+  ctx.fillStyle = charter.dark
+  ctx.font = "bold 24px system-ui, sans-serif"
+  ctx.fillText(brand.promoBadge || "NOUVEAUTÉ", 540, 1378)
+
+  ctx.fillStyle = "rgba(255, 255, 255, 0.85)"
+  ctx.font = "30px system-ui, sans-serif"
+  ctx.fillText(brand.slogan, 540, 1470)
+
+  // Swipe Up / CTA
+  ctx.fillStyle = charter.primaryLight
+  traceRoundRect(ctx, 240, 1640, 600, 96, 48)
+  ctx.fill()
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 32px system-ui, sans-serif"
+  ctx.fillText("Glisser vers le haut ↑", 540, 1700)
+
+  ctx.fillStyle = "rgba(255, 255, 255, 0.6)"
+  ctx.font = "24px monospace"
+  ctx.fillText(brand.website, 540, 1790)
+}
+
+// ---------------------------------------------------------------------------
+// 14. Emblème de Marque Carré (1000x1000)
+// ---------------------------------------------------------------------------
+
+export function drawLogoEmblemCanvas(
+  canvas: HTMLCanvasElement,
+  brand: BrandInfo,
+  charter: BrandCharter
+) {
+  const s = 1000
+  canvas.width = s
+  canvas.height = s
+  const ctx = canvas.getContext("2d")
+  if (!ctx) return
+
+  // Fond dégradé
+  const bg = ctx.createLinearGradient(0, 0, s, s)
+  bg.addColorStop(0, charter.dark)
+  bg.addColorStop(1, "#030A1C")
+  ctx.fillStyle = bg
+  ctx.fillRect(0, 0, s, s)
+
+  // Cercle doré décoratif
+  ctx.strokeStyle = charter.accent
+  ctx.lineWidth = 4
+  ctx.setLineDash([8, 12])
+  ctx.beginPath()
+  ctx.arc(500, 460, 320, 0, Math.PI * 2)
+  ctx.stroke()
+  ctx.setLineDash([])
+
+  // Grande superellipse centrale
+  ctx.save()
+  const iconS = 440
+  traceSquircle(ctx, 500, 460, iconS / 2, charter.superellipseN)
+  ctx.clip()
+  const ig = ctx.createLinearGradient(280, 240, 720, 680)
+  ig.addColorStop(0, charter.primaryLight)
+  ig.addColorStop(1, charter.primary)
+  ctx.fillStyle = ig
+  ctx.fillRect(280, 240, iconS, iconS)
+  drawBrandGlyph(ctx, charter, 488, 474, 0.48)
+  ctx.restore()
+
+  // Nom et typographie
+  ctx.fillStyle = "#FFFFFF"
+  ctx.font = "bold 76px system-ui, sans-serif"
+  ctx.textAlign = "center"
+  ctx.fillText(brand.name, 500, 810)
+
+  ctx.fillStyle = charter.accent
+  ctx.font = "bold 32px system-ui, sans-serif"
+  ctx.fillText(brand.tagline, 500, 868)
+
+  ctx.fillStyle = "rgba(255, 255, 255, 0.65)"
+  ctx.font = "20px monospace"
+  ctx.fillText(brand.website, 500, 920)
+}
+
+// ---------------------------------------------------------------------------
+// 15. Adaptateur BrandKit & Registre du Moteur de Mise en Page Promotionnelle
+// ---------------------------------------------------------------------------
+
+export function fromBrandKit(b: Brand): { brandInfo: BrandInfo; brandCharter: BrandCharter } {
+  const brandInfo: BrandInfo = {
+    name: b.name || "SOSIDE",
+    tagline: b.tagline || "PAY",
+    category: b.promoLabel || "Paiements Mobiles & FinTech Sécurisée",
+    website: b.handle ? (b.handle.startsWith("@") ? `${b.handle.slice(1)}.com` : b.handle) : "soside.pay",
+    email: `contact@${(b.name || "soside").toLowerCase().replace(/[^a-z0-9]/g, "")}.com`,
+    phone: "+243 990 000 000",
+    slogan: b.tagline || "L'excellence et la vitesse au service de vos transactions.",
+    promoBadge: b.promoLabel || "EXCLUSIF",
+    features: [
+      "Transactions instantanées et sécurisées sans friction",
+      "Sécurité biométrique et chiffrement matériel de bout en bout",
+      "Écosystème multi-plateforme ouvert et interopérable",
+    ],
+    metric1: { value: "< 1s", label: "Vitesse d'Exécution" },
+    metric2: { value: "99.9%", label: "Disponibilité Cloud" },
+    metric3: { value: b.promo || "0% Frais", label: "Sur vos opérations" },
+  }
+
+  const iconStyleMap: Record<string, BrandCharter["iconStyle"]> = {
+    cards: "cards",
+    shield: "shield",
+    zap: "zap",
+    chip: "chip",
+    diamond: "diamond",
+    rocket: "rocket",
+    store: "store",
+    flame: "flame",
+  }
+
+  const brandCharter: BrandCharter = {
+    primary: b.primary,
+    primaryLight: b.secondary,
+    secondary: b.secondary,
+    accent: b.accent,
+    dark: b.dark,
+    light: b.light,
+    cardStripe: b.secondary,
+    fontFamily: b.font === "serif" ? "serif" : "sans",
+    superellipseN: b.radius === "sharp" ? 12 : b.radius === "round" ? 2.5 : 5.0,
+    glossOpacity: 0.22,
+    shadowOpacity: 0.35,
+    iconStyle: b.iconStyle && iconStyleMap[b.iconStyle] ? iconStyleMap[b.iconStyle] : "cards",
+    customSvgPath: undefined,
+    customLogoImage: null,
+  }
+
+  return { brandInfo, brandCharter }
+}
+
+export interface PromotionalLayoutItem {
+  id: string
+  name: string
+  category: "flyer" | "brochure" | "card" | "outdoor" | "social" | "logo"
+  unit: "A4" | "A5" | "Rollup" | "Billboard" | "Square" | "Story" | "Card" | "Banner"
+  w: number
+  h: number
+  renderCanvas: (canvas: HTMLCanvasElement, brand: BrandInfo, charter: BrandCharter) => void
+  description: string
+}
+
+export const PROMOTIONAL_LAYOUT_ENGINE: PromotionalLayoutItem[] = [
+  {
+    id: "flyer-a5",
+    name: "Flyer Commercial A5",
+    category: "flyer",
+    unit: "A5",
+    w: 1200,
+    h: 1600,
+    renderCanvas: drawFlyerCanvas,
+    description: "Format A5 haute définition avec en-tête, 3 piliers d'offres et pied de page d'action.",
+  },
+  {
+    id: "brochure-corporate-a4",
+    name: "Brochure Corporate A4 (2 volets)",
+    category: "brochure",
+    unit: "A4",
+    w: 1400,
+    h: 1000,
+    renderCanvas: drawBrochureCanvas,
+    description: "Brochure professionnelle double page : volet gauche exécutif et panneau droit de performance.",
+  },
+  {
+    id: "brochure-trifold",
+    name: "Dépliant Marketing 3 Volets (Tri-Fold)",
+    category: "brochure",
+    unit: "A4",
+    w: 2100,
+    h: 1000,
+    renderCanvas: drawTrifoldBrochureCanvas,
+    description: "Dépliant trois volets avec vision, offre vedette, témoignage de confiance et QR code.",
+  },
+  {
+    id: "rollup-banner",
+    name: "Kakémono / Roll-Up Salon (80x200cm)",
+    category: "outdoor",
+    unit: "Rollup",
+    w: 900,
+    h: 2000,
+    renderCanvas: drawRollupBannerCanvas,
+    description: "Bannière verticale pour foires, expositions et points de vente avec accroche haute visibilité.",
+  },
+  {
+    id: "billboard-outdoor",
+    name: "Panneau Publicitaire 16:9 (Billboard)",
+    category: "outdoor",
+    unit: "Billboard",
+    w: 1920,
+    h: 800,
+    renderCanvas: drawBillboardCanvas,
+    description: "Affichage grand format ultra-percutant pour campagnes urbaines et autoroutières.",
+  },
+  {
+    id: "business-card-front",
+    name: "Carte de Visite (Recto)",
+    category: "card",
+    unit: "Card",
+    w: 880,
+    h: 520,
+    renderCanvas: (c, b, ch) => drawBusinessCardCanvas(c, b, ch, "front"),
+    description: "Face avant épurée avec emblème continu et identité visuelle de marque.",
+  },
+  {
+    id: "business-card-back",
+    name: "Carte de Visite (Verso)",
+    category: "card",
+    unit: "Card",
+    w: 880,
+    h: 520,
+    renderCanvas: (c, b, ch) => drawBusinessCardCanvas(c, b, ch, "back"),
+    description: "Face arrière avec coordonnées professionnelles, titre et puce NFC / QR Code.",
+  },
+  {
+    id: "social-post",
+    name: "Post Réseaux Sociaux (1:1)",
+    category: "social",
+    unit: "Square",
+    w: 1080,
+    h: 1080,
+    renderCanvas: drawSocialPostCanvas,
+    description: "Post carré universel Instagram / LinkedIn avec lueur néon et bouton d'action.",
+  },
+  {
+    id: "social-story",
+    name: "Story & Reel Vertical (9:16)",
+    category: "social",
+    unit: "Story",
+    w: 1080,
+    h: 1920,
+    renderCanvas: drawStoryCanvas,
+    description: "Format mobile vertical 9:16 pour Instagram Story, TikTok et WhatsApp Status.",
+  },
+  {
+    id: "logo-horizontal",
+    name: "Logo Horizontal Complet",
+    category: "logo",
+    unit: "Banner",
+    w: 880,
+    h: 320,
+    renderCanvas: (c, b, ch) => drawHorizontalLogoCanvas(c, b, ch, false),
+    description: "Lockup typographique horizontal haute fidélité pour en-têtes et signatures.",
+  },
+  {
+    id: "logo-emblem",
+    name: "Emblème de Marque Sceau",
+    category: "logo",
+    unit: "Square",
+    w: 1000,
+    h: 1000,
+    renderCanvas: drawLogoEmblemCanvas,
+    description: "Emblème circulaire et squircle avec couronne dorée et signature de marque.",
+  },
+  {
+    id: "app-icon-squircle",
+    name: "Icône d'Application Apple Squircle",
+    category: "logo",
+    unit: "Square",
+    w: 1024,
+    h: 1024,
+    renderCanvas: (c, _b, ch) => drawAppIconCanvas(c, ch, 1024),
+    description: "Icône continue 1024x1024 superellipse de Lamé avec gloss et ombre Apple.",
+  },
+]

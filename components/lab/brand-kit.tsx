@@ -2,10 +2,28 @@
 
 import { useMemo, useRef, useState } from "react"
 import Link from "next/link"
-import { ArrowUpRight, Download, ImagePlus, RefreshCw, Smartphone, Wand2, X } from "lucide-react"
+import {
+  ArrowUpRight,
+  Cpu,
+  CreditCard,
+  Download,
+  Flame,
+  Gem,
+  ImagePlus,
+  RefreshCw,
+  Rocket,
+  Shield,
+  Smartphone,
+  Sparkles,
+  Store,
+  Type,
+  Wand2,
+  X,
+  Zap,
+} from "lucide-react"
 import { Button, CodeBlock, ColorField, Field, Panel, Segmented, Slider, TabBar, TextInput, Toggle } from "@/components/kit/controls"
 import { contrast, extractPalette, hexToOklch, oklchToHex, readableOn, scale, wcag } from "@/lib/lab/color"
-import { brandSheet, templates, type Brand, type TemplateGroup } from "@/lib/lab/brand-templates"
+import { brandSheet, templates, type Brand, type IconStyle, type TemplateGroup } from "@/lib/lab/brand-templates"
 import { CATEGORIES, generateProducts, toCsv, toSql, type Currency, type DataLang } from "@/lib/lab/demo-data"
 import { fill, type LabStrings } from "@/lib/lab/i18n"
 import { downloadBlob, downloadText, slugify, svgDataUrl, svgToImage, type RasterFormat } from "@/lib/kit/download"
@@ -58,6 +76,7 @@ export function BrandKit({ t, lang }: { t: LabStrings; lang: DataLang }) {
   const [brand, setBrand] = useState<Brand>({
     ...s.defaults,
     logo: null,
+    iconStyle: "cards",
     primary: "#0f7a5c",
     secondary: "#0b3b5b",
     accent: "#f5a524",
@@ -73,6 +92,18 @@ export function BrandKit({ t, lang }: { t: LabStrings; lang: DataLang }) {
   const [exportOpts, setExportOpts] = useState<ExportOptions>({ format: "png", scale: 1 })
   const fileInput = useRef<HTMLInputElement>(null)
   const set = <K extends keyof Brand>(key: K, value: Brand[K]) => setBrand((b) => ({ ...b, [key]: value }))
+
+  const ICON_OPTIONS: { id: IconStyle; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
+    { id: "cards", label: s.iconOptions?.cards || "Cartes SOSIDE", icon: CreditCard },
+    { id: "shield", label: s.iconOptions?.shield || "Bouclier", icon: Shield },
+    { id: "zap", label: s.iconOptions?.zap || "Éclair", icon: Zap },
+    { id: "chip", label: s.iconOptions?.chip || "Puce", icon: Cpu },
+    { id: "diamond", label: s.iconOptions?.diamond || "Diamant", icon: Gem },
+    { id: "rocket", label: s.iconOptions?.rocket || "Fusée", icon: Rocket },
+    { id: "store", label: s.iconOptions?.store || "Boutique", icon: Store },
+    { id: "flame", label: s.iconOptions?.flame || "Flamme", icon: Flame },
+    { id: "monogram", label: s.iconOptions?.monogram || "Monogramme", icon: Type },
+  ]
 
   const rendered = useMemo(
     () => templates.filter((tpl) => group === "all" || tpl.group === group).map((tpl) => ({ ...tpl, svg: tpl.render(brand) })),
@@ -172,33 +203,70 @@ export function BrandKit({ t, lang }: { t: LabStrings; lang: DataLang }) {
         </Panel>
 
         <Panel title={s.logo}>
-          <div className="flex items-center gap-3">
-            <div className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-xl border border-line bg-[repeating-conic-gradient(var(--surface-2)_0_25%,transparent_0_50%)] bg-[length:12px_12px]">
-              {brand.logo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={brand.logo} alt="" className="size-full object-contain p-1.5" />
-              ) : (
-                <ImagePlus className="size-5 text-subtle-foreground" aria-hidden />
-              )}
+          <div className="space-y-3">
+            <div>
+              <p className="mb-2 text-[12px] font-medium text-muted-foreground">
+                {s.iconLibrary || "Sélectionner une icône vectorielle"}
+              </p>
+              <div className="grid grid-cols-3 gap-1.5">
+                {ICON_OPTIONS.map((opt) => {
+                  const IconComp = opt.icon
+                  const active = brand.iconStyle === opt.id && !brand.logo
+                  return (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      onClick={() => {
+                        setBrand((b) => ({ ...b, iconStyle: opt.id, logo: null }))
+                      }}
+                      className={cn(
+                        "flex items-center gap-1.5 rounded-lg border px-2 py-2 text-left text-[11px] font-medium transition-colors",
+                        active
+                          ? "border-accent bg-accent/15 text-foreground shadow-sm"
+                          : "border-line bg-surface/50 text-muted-foreground hover:border-line-strong hover:text-foreground"
+                      )}
+                    >
+                      <IconComp className={cn("size-3.5 shrink-0", active ? "text-accent" : "text-subtle-foreground")} />
+                      <span className="truncate">{opt.label}</span>
+                    </button>
+                  )
+                })}
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <Button size="sm" onClick={() => fileInput.current?.click()}>
-                <ImagePlus className="size-3.5" aria-hidden /> {s.upload}
-              </Button>
+
+            <div className="border-t border-line pt-3">
+              <p className="mb-2 text-[12px] font-medium text-muted-foreground">
+                Ou importer votre propre logo / icône
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="grid size-14 shrink-0 place-items-center overflow-hidden rounded-xl border border-line bg-[repeating-conic-gradient(var(--surface-2)_0_25%,transparent_0_50%)] bg-[length:12px_12px]">
+                  {brand.logo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={brand.logo} alt="" className="size-full object-contain p-1" />
+                  ) : (
+                    <ImagePlus className="size-5 text-subtle-foreground" aria-hidden />
+                  )}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Button size="sm" onClick={() => fileInput.current?.click()}>
+                    <ImagePlus className="size-3.5" aria-hidden /> {s.upload}
+                  </Button>
+                  {brand.logo && (
+                    <Button size="sm" variant="ghost" onClick={() => set("logo", null)}>
+                      <X className="size-3.5" aria-hidden /> {s.remove}
+                    </Button>
+                  )}
+                </div>
+              </div>
               {brand.logo && (
-                <Button size="sm" variant="ghost" onClick={() => set("logo", null)}>
-                  <X className="size-3.5" aria-hidden /> {s.remove}
+                <Button size="sm" variant="primary" onClick={extract} className="mt-2.5 w-full">
+                  <Wand2 className="size-3.5" aria-hidden /> {s.extract}
                 </Button>
               )}
+              <p className="mt-1.5 text-[11px] text-subtle-foreground">{s.logoHint}</p>
+              <input ref={fileInput} type="file" accept="image/png,image/jpeg,image/svg+xml,image/webp" hidden onChange={(e) => e.target.files?.[0] && onLogo(e.target.files[0])} />
             </div>
           </div>
-          {brand.logo && (
-            <Button size="sm" variant="primary" onClick={extract} className="w-full">
-              <Wand2 className="size-3.5" aria-hidden /> {s.extract}
-            </Button>
-          )}
-          <p className="text-[11px] text-subtle-foreground">{s.logoHint}</p>
-          <input ref={fileInput} type="file" accept="image/png,image/jpeg,image/svg+xml,image/webp" hidden onChange={(e) => e.target.files?.[0] && onLogo(e.target.files[0])} />
         </Panel>
 
         <Panel title={s.colors}>
@@ -304,11 +372,11 @@ export function BrandKit({ t, lang }: { t: LabStrings; lang: DataLang }) {
                 <figure key={tpl.id} className="card break-inside-avoid overflow-hidden rounded-2xl">
                   <div className="bg-[repeating-conic-gradient(var(--surface-2)_0_25%,transparent_0_50%)] bg-[length:16px_16px] p-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={svgDataUrl(tpl.svg)} alt={s.templates[tpl.id as keyof typeof s.templates]} className="mx-auto max-h-80 w-auto rounded-md shadow-lg" style={{ aspectRatio: `${tpl.w} / ${tpl.h}` }} />
+                    <img src={svgDataUrl(tpl.svg)} alt={(s.templates as Record<string, string>)[tpl.id] || tpl.id} className="mx-auto max-h-80 w-auto rounded-md shadow-lg" style={{ aspectRatio: `${tpl.w} / ${tpl.h}` }} />
                   </div>
                   <figcaption className="flex items-center justify-between gap-2 border-t border-line px-4 py-3">
                     <span>
-                      <span className="block text-[13px] font-medium">{s.templates[tpl.id as keyof typeof s.templates]}</span>
+                      <span className="block text-[13px] font-medium">{(s.templates as Record<string, string>)[tpl.id] || tpl.id}</span>
                       <span className="font-mono text-[11px] text-subtle-foreground">
                         {tpl.w}×{tpl.h}
                       </span>
