@@ -5,6 +5,7 @@ import { ArrowLeft, ShieldCheck } from "lucide-react"
 import { AppIconStudio } from "@/components/lab/app-icon-studio"
 import { BrandKit } from "@/components/lab/brand-kit"
 import { DesignTools } from "@/components/lab/design-tools"
+import { LogoStudio } from "@/components/lab/logo-studio"
 import { MascotGenerator } from "@/components/lab/mascot-generator"
 import { MotionTools } from "@/components/lab/motion-tools"
 import { SvgGenerator } from "@/components/lab/svg-generator"
@@ -15,6 +16,7 @@ import { headerLabels } from "@/lib/header-labels"
 import { isLocale, localeMeta, locales } from "@/lib/i18n"
 import { getLabStrings } from "@/lib/lab/i18n"
 import { isLabTool, labTools } from "@/lib/lab/tools"
+import { cn } from "@/lib/utils"
 
 export const dynamicParams = false
 
@@ -46,7 +48,7 @@ export default async function LabToolPage({ params }: PageProps<"/[lang]/lab/[to
   return (
     <>
       <SiteHeader lang={lang} labels={headerLabels(t)} path={`/lab/${tool}`} />
-      <main id="main" className="container-page pb-24 pt-28 md:pt-32">
+      <main id="main" className={cn("container-page pb-24 pt-28 md:pt-32", (tool === "logo-generator" || tool === "motion") && "max-w-[96rem]")}>
         <Link href={`/${lang}/lab`} className="inline-flex items-center gap-1.5 text-[13px] text-muted-foreground hover:text-foreground">
           <ArrowLeft className="size-4" aria-hidden /> {t.lab.back}
         </Link>
@@ -60,11 +62,12 @@ export default async function LabToolPage({ params }: PageProps<"/[lang]/lab/[to
           </p>
         </div>
         <div className="mt-10">
-          {(tool === "logo-generator" || tool === "brand-kit") && <BrandKit defaultTab="logos" t={strings} lang={lang === "en" ? "en" : "fr"} />}
+          {tool === "logo-generator" && <LogoStudio t={strings} lang={lang === "en" ? "en" : "fr"} />}
+          {tool === "brand-kit" && <BrandKit t={strings} lang={lang === "en" ? "en" : "fr"} />}
           {tool === "app-icon" && <AppIconStudio t={strings} lang={lang === "en" ? "en" : "fr"} />}
           {tool === "mascot" && <MascotGenerator t={strings} lang={lang === "en" ? "en" : "fr"} />}
           {tool === "svg" && <SvgGenerator t={strings} />}
-          {tool === "motion" && <MotionTools t={strings} />}
+          {tool === "motion" && <MotionTools t={strings} lang={lang === "en" ? "en" : "fr"} />}
           {tool === "design" && <DesignTools t={strings} />}
         </div>
       </main>

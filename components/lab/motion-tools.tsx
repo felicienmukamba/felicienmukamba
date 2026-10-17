@@ -6,20 +6,23 @@ import { Button, CodeBlock, Panel, Segmented, Select, Slider, TabBar, ToggleRow 
 import { fill, type LabStrings } from "@/lib/lab/i18n"
 import { EASINGS, EFFECTS, SPRING_PRESETS, bezierCss, fmt, framerVariants, keyframesCss, scaleFrames, simulateSpring, springToLinear, type Bezier, type Direction, type EffectId, type SpringPreset } from "@/lib/lab/motion"
 import { cn } from "@/lib/utils"
+import { MotionStudio } from "@/components/lab/motion-studio"
 
 import { ArrowDownToLine, Check, Copy, CreditCard, Sparkles, Waves } from "lucide-react"
 import { DEFAULT_MOTION_CONFIG, generateAnimatedCardSvg, generateCssMotionCode, generateFlutterCode, generateFramerMotionCode, type MotionConfig, type MotionMode } from "@/lib/lab/card-motion"
 import { downloadText } from "@/lib/kit/download"
 
-type Tab = "easing" | "spring" | "keyframes" | "cards"
+type Tab = "studio" | "easing" | "spring" | "keyframes" | "cards"
 
-export function MotionTools({ t }: { t: LabStrings }) {
-  const [tab, setTab] = useState<Tab>("easing")
+export function MotionTools({ t, lang = "fr" }: { t: LabStrings; lang?: "fr" | "en" }) {
+  const [tab, setTab] = useState<Tab>("studio")
+  const labels: Record<Tab, string> = { studio: lang === "fr" ? "Studio motion" : "Motion studio", ...t.motion.tabs }
   return (
     <div className="space-y-6">
-      <div className="max-w-2xl">
-        <TabBar label="Motion" value={tab} onChange={setTab} tabs={(["easing", "spring", "keyframes", "cards"] as const).map((v) => ({ value: v, label: t.motion.tabs[v] }))} />
+      <div className="max-w-3xl">
+        <TabBar label="Motion" value={tab} onChange={setTab} tabs={(["studio", "easing", "spring", "keyframes", "cards"] as const).map((v) => ({ value: v, label: labels[v] }))} />
       </div>
+      {tab === "studio" && <MotionStudio lang={lang} />}
       {tab === "easing" && <EasingEditor t={t} />}
       {tab === "spring" && <SpringTool t={t} />}
       {tab === "keyframes" && <KeyframesTool t={t} />}

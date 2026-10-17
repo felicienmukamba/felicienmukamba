@@ -30,6 +30,10 @@ export type Brand = {
   theme: "light" | "dark"
   background: "gradient" | "solid" | "duotone"
   pattern: "dots" | "grid" | "diagonal" | "none"
+  /** Overrides `font` with a real family (e.g. from the logo studio)… */
+  fontFamily?: string
+  /** …and the `@font-face` rules that embed it, so exports render it too. */
+  fontCss?: string
 }
 
 export type TemplateGroup = "marketplace" | "social" | "print" | "digital"
@@ -147,7 +151,7 @@ function logo(b: Brand, cx: number, cy: number, size: number, opts: { plate?: bo
     return `${plate}${plateBg}${renderIconGlyph(b.iconStyle, cx, cy, size, fg, b.accent)}`
   }
 
-  return `${plate}${plateBg}<text x="${cx}" y="${cy}" dy="0.35em" text-anchor="middle" font-family="${FONTS[b.font]}" font-weight="800" font-size="${size * 0.42}" fill="${fg}">${x(initials(b.name))}</text>`
+  return `${plate}${plateBg}<text x="${cx}" y="${cy}" dy="0.35em" text-anchor="middle" font-family="${(b.fontFamily ?? FONTS[b.font]).replace(/"/g, "'")}" font-weight="800" font-size="${size * 0.42}" fill="${fg}">${x(initials(b.name))}</text>`
 }
 
 /** Brand fill (`url(#g)`): smooth gradient, flat colour or hard two-tone split. */
@@ -170,7 +174,9 @@ function patternDefs(b: Brand) {
 }
 
 function svg(w: number, h: number, b: Brand, body: string, defs = "") {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" font-family="${FONTS[b.font]}"><defs>${fillDefs(b)}${patternDefs(b)}${defs}</defs>${body}</svg>`
+  const family = (b.fontFamily ?? FONTS[b.font]).replace(/"/g, "'")
+  const fontStyle = b.fontCss ? `<style>${b.fontCss}</style>` : ""
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" font-family="${family}"><defs>${fontStyle}${fillDefs(b)}${patternDefs(b)}${defs}</defs>${body}</svg>`
 }
 
 /** Greedy line wrapping (SVG has no automatic text wrap). */
