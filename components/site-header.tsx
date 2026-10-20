@@ -10,7 +10,7 @@ import { CvDownloadButton, type CvLabels } from "@/components/cv-download-button
 import { localeCookie, localeMeta, locales, type Locale } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
-export type NavKey = "about" | "ai" | "experience" | "projects" | "skills" | "lab" | "contact"
+export type NavKey = "about" | "ai" | "services" | "experience" | "projects" | "skills" | "lab" | "contact"
 
 type HeaderLabels = {
   nav: Record<NavKey, string>
@@ -22,7 +22,7 @@ type HeaderLabels = {
   cv: CvLabels
 }
 
-const sections: NavKey[] = ["about", "ai", "experience", "projects", "skills", "lab", "contact"]
+const sections: NavKey[] = ["about", "ai", "services", "experience", "projects", "skills", "lab", "contact"]
 
 function rememberLocale(locale: Locale) {
   document.cookie = `${localeCookie}=${locale}; path=/; max-age=31536000; samesite=lax`
@@ -138,7 +138,7 @@ export function SiteHeader({ lang, labels, path = "" }: { lang: Locale; labels: 
           </Link>
 
           <nav aria-label={labels.primaryNav} className="hidden lg:block">
-            <ul className="flex items-center gap-1 rounded-full border border-line bg-surface/60 p-1 backdrop-blur">
+            <ul className="flex items-center gap-0.5 rounded-full border border-line bg-surface/60 p-1 backdrop-blur xl:gap-1">
               {sections.map((key) => (
                 <li key={key} className="relative">
                   {active === key && (
@@ -152,7 +152,7 @@ export function SiteHeader({ lang, labels, path = "" }: { lang: Locale; labels: 
                     href={`${base}#${key}`}
                     aria-current={active === key ? "location" : undefined}
                     className={cn(
-                      "relative block rounded-full px-3.5 py-1.5 text-[13px] transition-colors",
+                      "relative block rounded-full px-2.5 py-1.5 text-[12.5px] transition-colors xl:px-3.5 xl:text-[13px]",
                       active === key ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                     )}
                   >

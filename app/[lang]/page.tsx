@@ -9,6 +9,7 @@ import { Footer } from "@/components/sections/footer"
 import { Hero } from "@/components/sections/hero"
 import { LabTeaser } from "@/components/sections/lab"
 import { Projects } from "@/components/sections/projects"
+import { Services } from "@/components/sections/services"
 import { Skills } from "@/components/sections/skills"
 import { Marquee } from "@/components/ui-kit"
 import { getDictionary } from "@/lib/dictionaries"
@@ -31,6 +32,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
         <About t={t} />
         <AiSection t={t} />
+        <Services lang={lang} t={t} />
         <Experience t={t} />
         <Projects t={t} />
         <Skills t={t} />

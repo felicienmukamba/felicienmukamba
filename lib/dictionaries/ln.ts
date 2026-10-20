@@ -34,7 +34,8 @@ export const ln: Dictionary = {
   nav: {
     about: "Mpo na ngai",
     ai: "IA",
-    experience: "Misala",
+    services: "Services",
+    experience: "Parcours",
     projects: "Ba projets",
     skills: "Mayele",
     lab: "Lab",
@@ -119,6 +120,177 @@ export const ln: Dictionary = {
       ship: "Production",
       caption:
         "Agent moko na moko azali na périmètre na ye, étape nyonso ekomami, mpe eloko moko te ekomaka na production soki moto andimi te.",
+    },
+  },
+
+  services: {
+    kicker: "Misala & Masolo SOSIDE",
+    title: "Misala ya solo solo,",
+    titleAccent: "mpo na matomba ya mosala na yo.",
+    intro:
+      "Kobanda na bopeti ya mbangu tii na kotonga ba logiciels ya minene mpe ba agents IA na production. Misala na biso nionso ebongisami mpo na mikakatano ya réseau mpe ya mboka na RDC.",
+    negotiableNotice: {
+      badge: "Talos ya koyokana 100%",
+      title: "Talo ya makasi ezali te : toyokanaka na motindo ya mbongo na yo.",
+      description:
+        "PME, ONG, kelasi, lopitalo to structure ya monene : projet moko moko ezali ndenge mosusu. Tobimisaka talo ya kofungama te mpo misala nionso esalemaka na boyokani na kolanda budget na yo.",
+      cta: "Solola mpo na talo ya yo",
+    },
+    filterAll: "Misala nionso",
+    filterCore: "Misala ya liboso",
+    filterSectors: "Ndenge ya ba secteurs",
+    items: [
+      {
+        id: "diagnostic",
+        category: "core",
+        title: "Diagnostic Digital & Bopeti IA",
+        badge: "Ebandeli ya malamu",
+        pricingTag: "Na devis · Talo ya koyokana",
+        description:
+          "Na miniti 60 tii 120, totalaka ndenge misala na bino etambolaka, tozalaka kotala ngonga oyo ezali kobunga mpe topesi bino nzela misato ya liboso mpo na kozwa litomba ya mbangu.",
+        deliverables: [
+          "Botalisi ya solosolo ya ndenge misala etambolaka lelo",
+          "Kotala ntango mpe mbongo oyo ekoki kobombama",
+          "Rapport ya mikanda 3 tii 7 oyo epesi batoli ya malamu",
+          "Plan ya mikolo 30 mpo na kobanda (devis ya ofele)",
+        ],
+        tags: ["Bopeti 60–120 min", "Plan mikolo 30", "Litomba ya mbongo", "Misala"],
+        cta: "Senga diagnostic",
+        waPrompt: "Mbote Félicien, nalingi tosalisa Diagnostic Digital & IA mpo na structure na ngai.",
+        highlight: false,
+      },
+      {
+        id: "automation",
+        category: "core",
+        title: "Bongisa misala na mbangu (Automation)",
+        badge: "Mosala ya mbangu (7-10j)",
+        pricingTag: "Talo ya koyokana",
+        description:
+          "Kolongola kotiaka ba donnes mbala na mbala na maboko kati na Excel, Sheets, WhatsApp mpe ba emails. Ba rapports na bino ekokoma kosalama yango moko.",
+        deliverables: [
+          "Ba rapports ya mikolo nyonso ekosala mpe ekotinda yango moko",
+          "Kotinda ba informations na bisika nyonso kozanga kozongela kotia",
+          "Kozwa makebisi ya stock mpe ya ba mbongo na WhatsApp / Email",
+          "Mosala ya kolonga na se ya mikolo 10",
+        ],
+        tags: ["Kozanga kotiama na maboko", "Ba rapports auto", "Makebisi WhatsApp", "Automation"],
+        cta: "Bongisa mosala",
+        waPrompt: "Mbote Félicien, nazali na misala oyo nalingi ebongisama na mbangu mpe toyokana na talo ya malamu.",
+        highlight: false,
+      },
+      {
+        id: "software",
+        category: "core",
+        title: "Kotonga ba logiciels mpe ba sites web sur mesure",
+        badge: "Mayele ya monene",
+        pricingTag: "Sur mesure · Talo ya koyokana",
+        description:
+          "Kotonga ba systèmes ya makasi mpo na bino : RH, stocks, boteki, caisse esalaka ata réseau ezali te (offline), comptabilité mpe ba portails B2B.",
+        deliverables: [
+          "Esalaka ata réseau ezali te (Offline-First) mpo na kokoba koteka",
+          "Multi-devises (USD, CDF, EUR) mpe Mobile Money (M-Pesa, Orange, Airtel)",
+          "Architecture ya sécurité makasi (Spring Boot, Next.js, PostgreSQL)",
+          "Koteya bato na bino ndenge ya kosalela yango malamu",
+        ],
+        tags: ["Spring Boot", "Next.js", "Caisse hors-ligne", "Mobile Money", "PostgreSQL"],
+        cta: "Tonga logiciel na yo",
+        waPrompt: "Mbote Félicien, nazali na projet ya kotonga logiciel / site web mpe nalingi toyokana na talo.",
+        highlight: true,
+      },
+      {
+        id: "ai",
+        category: "core",
+        title: "Ingénierie IA, RAG & Ba Agents Autonomes",
+        badge: "Mayele ya sika",
+        pricingTag: "Na devis · Talo ya koyokana",
+        description:
+          "Kotia ba assistants IA mpe ba agents oyo esalaka misala ya solo na kotala mikanda ya sekele ya ndako na bino, na kokengela mpe bokengi ya makasi.",
+        deliverables: [
+          "RAG ya sekele : koyanola mituna na kotala kaka mikanda na bino",
+          "Ba agents autonomes oyo ekoki kosala misala na ba systèmes na bino",
+          "Mibeko ya bokengi : moto nde aza na bokonzi ya suka, masumu te",
+          "Bokengi ya sekele : mikanda na bino ekobima libanda ata moke te",
+        ],
+        tags: ["RAG ya sekele", "Agents IA", "Bokengi IA", "LangGraph / LLM"],
+        cta: "Tia IA na misala na yo",
+        waPrompt: "Mbote Félicien, nalingi natia IA to agent autonome na misala na ngai mpe tosolola.",
+        highlight: false,
+      },
+      {
+        id: "sectors",
+        category: "sector",
+        title: "Ba solutions oyo ebongisami mpo na ba secteurs",
+        badge: "PME · ONG · Kelasi · Lopitalo",
+        pricingTag: "Ekolanda structure na yo · Talo ya koyokana",
+        description:
+          "Ba systèmes oyo esili kosalema mpe oyo emonani malamu na RDC mpo na kobanda kozanga kozela ntango molai.",
+        deliverables: [
+          "PME & Boteki : kobatela stock, kokata ba factures kozanga kotiama na maboko",
+          "ONG : kolandela misala ya bilanga mpe kosala ba rapports ya ba bailleurs",
+          "Kelasi (GEVAPOM) : mbongo ya kelasi, ba bulletins mpe kotala bana",
+          "Lopitalo (HMS) : mikanda ya bato ya maladi (DPI), ba rendez-vous mpe kisi",
+        ],
+        tags: ["PME & Magasin", "ONG", "Kelasi", "Lopitalo & Santé"],
+        cta: "Tala solution oyo ebongi",
+        waPrompt: "Mbote Félicien, nalingi nazwa solution mpo na secteur na ngai (PME / ONG / Kelasi / Santé).",
+        highlight: false,
+      },
+      {
+        id: "maintenance",
+        category: "core",
+        title: "Bokengi, Kobatela mpe Kosunga mikolo nionso",
+        badge: "Kimia ya motema",
+        pricingTag: "Forfait · Talo ya koyokana",
+        description:
+          "Sima ya kopesa bino logiciel, tozali kokoba kobatela yango : kosala ba sauvegardes, kotala ba serveurs mpe kopesa lisungi ya mbangu.",
+        deliverables: [
+          "Kobatela ba données mikolo nionso na esika ya bokengi",
+          "Kotala fonctionnement 24/7 kozanga kokata",
+          "Lisungi ya mbangu na WhatsApp mpe email na boyokani ya mikanda (SLA)",
+          "Kobongisa mikakatano mpe kopesa ba mises à jour ya sika",
+        ],
+        tags: ["Monitoring 24/7", "Sauvegarde", "SLA ya mikanda", "Lisungi ya mbangu"],
+        cta: "Batela système na yo",
+        waPrompt: "Mbote Félicien, nalingi tosalisa contrat ya maintenance mpo na système informatique na ngai.",
+        highlight: false,
+      },
+    ],
+    methodTitle: "Ndenge tosalaka misala",
+    methodSubtitle: "Nzela ya mikakatano te na mikolo 4 mpe boyokani ya polele.",
+    methodSteps: [
+      {
+        number: "01",
+        title: "Diagnostic & Bopeti",
+        description: "Totalaka ndenge mosala etambolaka mpe toluki esika oyo ekoki kobongisama.",
+      },
+      {
+        number: "02",
+        title: "Boyokani & Talo",
+        description: "Topesi plan ya mosala mpe toyokanaka na talo oyo ekobonga na mbongo na yo.",
+      },
+      {
+        number: "03",
+        title: "Kosala mosala & Komeka",
+        description: "Totongi logiciel, tomeki yango elongo na bato na bino mpe toteyi bango.",
+      },
+      {
+        number: "04",
+        title: "Kobatela & Lisungi",
+        description: "Tozali pembeni na bino mpo na kotala bokengi mpe kopesa lisungi mikolo nionso.",
+      },
+    ],
+    guardrail: {
+      title: "IA mpe technologie na bokengi",
+      description:
+        "Mosala nyonso ezali na mibeko ya bokengi makasi. Moto nde aza na bokonzi ya kotala makambo ya ntina liboso ya kondima, mpe ba données na bino ezali na sekele ya makasi.",
+    },
+    ctaBanner: {
+      title: "Tobanda kosolola mpo na mosala na yo to mpo na kobongisa misala.",
+      description:
+        "Yebisa biso nini ezali kozwa ntango mingi to logiciel nini olingi totonga. Talos nionso ezali ya koyokana mpe tokotonga elongo na yo.",
+      waButton: "Solola na WhatsApp",
+      emailButton: "Tinda email",
+      waMessage: "Mbote Félicien, nalingi tosolola mpo na misala na bino mpe tozwana talo ya malamu.",
     },
   },
 

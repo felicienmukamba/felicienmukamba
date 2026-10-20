@@ -11,7 +11,7 @@ export function LabTeaser({ lang, t }: { lang: Locale; t: Dictionary }) {
   return (
     <Section id="lab" labelledBy="lab-title">
       <div className="flex flex-wrap items-end justify-between gap-6">
-        <SectionHeading id="lab-title" index="07" kicker={t.lab.kicker} title={t.lab.title} accent={t.lab.titleAccent} intro={t.lab.intro} />
+        <SectionHeading id="lab-title" index="08" kicker={t.lab.kicker} title={t.lab.title} accent={t.lab.titleAccent} intro={t.lab.intro} />
         <Reveal>
           <Link href={`/${lang}/lab`} className="group inline-flex h-11 items-center gap-2 rounded-full border border-line-strong px-5 text-[14px] font-medium transition-colors hover:bg-surface-2">
             {t.lab.open}

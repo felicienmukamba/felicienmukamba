@@ -143,7 +143,7 @@ export function Projects({ t }: { t: Dictionary }) {
     <Section id="projects" labelledBy="projects-title">
       <SectionHeading
         id="projects-title"
-        index="04"
+        index="05"
         kicker={t.projects.kicker}
         title={t.projects.title}
         accent={t.projects.titleAccent}

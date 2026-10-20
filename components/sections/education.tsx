@@ -9,7 +9,7 @@ export function Education({ t }: { t: Dictionary }) {
     <Section id="education" labelledBy="education-title">
       <SectionHeading
         id="education-title"
-        index="06"
+        index="07"
         kicker={t.education.kicker}
         title={t.education.title}
         accent={t.education.titleAccent}

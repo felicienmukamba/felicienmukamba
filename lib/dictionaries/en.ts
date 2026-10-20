@@ -34,6 +34,7 @@ export const en = {
   nav: {
     about: "About",
     ai: "AI",
+    services: "Services",
     experience: "Experience",
     projects: "Work",
     skills: "Skills",
@@ -119,6 +120,181 @@ export const en = {
       ship: "Production",
       caption:
         "Every agent has a scope, every step is traced, and nothing reaches production without a human sign-off.",
+    },
+  },
+
+  services: {
+    kicker: "Services & Solutions SOSIDE",
+    title: "Concrete solutions,",
+    titleAccent: "designed for measurable impact.",
+    intro:
+      "From rapid diagnostic audits to full-scale custom distributed systems and production AI agents. We build resilient software engineered for challenging network conditions and local business realities in DR Congo and beyond.",
+    negotiableNotice: {
+      badge: "100% Tailored & Negotiable Pricing",
+      title: "No rigid price tags: we adapt to your organization's budget and scale.",
+      description:
+        "Local SME, funded humanitarian NGO, school, healthcare clinic, or large institution: every project has unique constraints. We do not publish fixed rate tables because every engagement is discussed and negotiated based on your scope, schedule, and cash flow.",
+      cta: "Discuss a tailored proposal",
+    },
+    filterAll: "All services",
+    filterCore: "Core services",
+    filterSectors: "Sector solutions",
+    items: [
+      {
+        id: "diagnostic",
+        category: "core",
+        title: "Digital & AI Diagnostic Audit",
+        badge: "Recommended starting point",
+        pricingTag: "Custom quote · Negotiable",
+        description:
+          "In 60 to 120 minutes, we map your business workflows, quantify lost hours, and pinpoint the 3 highest-impact automation and AI opportunities.",
+        deliverables: [
+          "Detailed mapping of your current operational workflows",
+          "Quantified estimate of recoverable hours and operational costs",
+          "Comprehensive 3-to-7-page audit report with recommendations",
+          "Prioritized 30-day action plan (no-obligation quote)",
+        ],
+        tags: ["60–120 min audit", "30-day roadmap", "ROI calculation", "Process mapping"],
+        cta: "Request a diagnostic",
+        waPrompt: "Hello Félicien, I would like to schedule a Digital & AI Diagnostic for my organization and discuss available slots.",
+        highlight: false,
+      },
+      {
+        id: "automation",
+        category: "core",
+        title: "Express Workflow Automation",
+        badge: "Rapid turnaround (7-10d)",
+        pricingTag: "Fixed scope · Negotiable",
+        description:
+          "Eliminate repetitive manual data entry across Excel spreadsheets, Google Sheets, WhatsApp, ERPs, and mailboxes. Your reports and alerts run automatically.",
+        deliverables: [
+          "Automatic generation and scheduled delivery of periodic reports",
+          "Zero-re-entry bidirectional data sync across your tools",
+          "Automated stock threshold warnings and WhatsApp/email payment reminders",
+          "Thorough quality check and deployment in under 10 days",
+        ],
+        tags: ["Zero data re-entry", "Auto reports", "WhatsApp alerts", "Ops workflows"],
+        cta: "Automate a workflow",
+        waPrompt: "Hello Félicien, I have repetitive manual tasks to automate and would like to negotiate a package that fits my budget.",
+        highlight: false,
+      },
+      {
+        id: "software",
+        category: "core",
+        title: "Custom Web Systems & Core Platforms",
+        badge: "Core specialty & High reliability",
+        pricingTag: "Tailored scope · Negotiable",
+        description:
+          "End-to-end design and engineering of custom web applications tailored to your business rules: HR, inventory, POS, accounting, education, or B2B portals.",
+        deliverables: [
+          "Offline-First architecture: keep selling and operating without internet",
+          "Multi-currency (USD, CDF, EUR) & Mobile Money (M-Pesa, Orange, Airtel)",
+          "Secure containerized microservices architecture with high-performance DB",
+          "Clean ergonomic UI and comprehensive user training",
+        ],
+        tags: ["Spring Boot", "Next.js", "Offline POS", "Mobile Money", "PostgreSQL"],
+        cta: "Build your custom system",
+        waPrompt: "Hello Félicien, I have a custom web application project and would like to discuss specifications and negotiable pricing.",
+        highlight: true,
+      },
+      {
+        id: "ai",
+        category: "core",
+        title: "AI Engineering, RAG & Autonomous Agents",
+        badge: "Cutting-edge expertise",
+        pricingTag: "Custom quote · Negotiable",
+        description:
+          "Integrate intelligent assistants and autonomous agents grounded in your private documents and databases, backed by strict guardrails and human oversight.",
+        deliverables: [
+          "Private RAG: semantic search and question answering over private company documents",
+          "Autonomous agents equipped with tool use wired into internal business APIs",
+          "Strict guardrails: human-in-the-loop validation, auditing, and PII masking",
+          "Guaranteed confidentiality: absolute protection of your enterprise data",
+        ],
+        tags: ["Document RAG", "AI agents", "Ethical guardrails", "LangGraph / LLM"],
+        cta: "Integrate AI in your tools",
+        waPrompt: "Hello Félicien, I want to integrate an AI solution or autonomous agent into my operations and discuss feasibility.",
+        highlight: false,
+      },
+      {
+        id: "sectors",
+        category: "sector",
+        title: "Field-Proven Sectoral Solutions",
+        badge: "SMEs · NGOs · Schools · Healthcare",
+        pricingTag: "Adapted to your scale · Negotiable",
+        description:
+          "Pre-engineered software modules battle-tested on the ground in DR Congo to immediately meet the specific operational demands of your industry.",
+        deliverables: [
+          "SMEs & Retail: inventory with low-stock alerts, fast invoicing without re-entry",
+          "NGOs & Donors: field mobile data collection and automated donor reporting",
+          "Schools (GEVAPOM): tuition fee tracking, digital report cards, and attendance",
+          "Cliniques & Healthcare (HMS): electronic patient records, appointments, and pharmacy",
+        ],
+        tags: ["SME & Retail", "Humanitarian NGOs", "Schools & Higher Ed", "Healthcare & Clinics"],
+        cta: "Explore sector solution",
+        waPrompt: "Hello Félicien, I am interested in deploying your sector-specific solution (SME / NGO / School / Clinic).",
+        highlight: false,
+      },
+      {
+        id: "maintenance",
+        category: "core",
+        title: "Maintenance, Monitoring & Ongoing Support",
+        badge: "Long-term peace of mind",
+        pricingTag: "Flexible plan · Negotiable",
+        description:
+          "Post-launch, we safeguard your software infrastructure: automated cloud backups, proactive server monitoring, security patches, and rapid technical support.",
+        deliverables: [
+          "Daily offsite backups and automated disaster recovery plans",
+          "Continuous 24/7 monitoring and uptime/performance telemetry",
+          "Priority WhatsApp & email tech support with a written SLA commitment",
+          "Regular security updates and minor feature upgrades included",
+        ],
+        tags: ["24/7 monitoring", "Cloud backups", "Guaranteed SLA", "Responsive support"],
+        cta: "Secure your infrastructure",
+        waPrompt: "Hello Félicien, I would like to set up an infrastructure maintenance and support agreement for my organization.",
+        highlight: false,
+      },
+    ],
+    methodTitle: "How we work",
+    methodSubtitle: "A 4-step framework built on clear scopes, guaranteed outcomes, and transparent communication.",
+    methodSteps: [
+      {
+        number: "01",
+        title: "Diagnostic & Scoping",
+        description:
+          "We map your actual workflows, calculate potential gains, and define an exact project scope.",
+      },
+      {
+        number: "02",
+        title: "Proposal & Negotiation",
+        description:
+          "An actionable roadmap and a quote negotiated to match your budget, with zero hidden surprises.",
+      },
+      {
+        number: "03",
+        title: "Build & Acceptance",
+        description:
+          "Iterative delivery, real-world user acceptance testing, and hands-on staff training prior to release.",
+      },
+      {
+        number: "04",
+        title: "Monitoring & SLA",
+        description:
+          "Proactive maintenance, backups, and ongoing engineering support backed by a formal Service Level Agreement.",
+      },
+    ],
+    guardrail: {
+      title: "AI and technology with safety guardrails",
+      description:
+        "Every assistant and automated workflow operates within strictly bounded permissions. We systematically enforce human approval for critical decisions, end-to-end data encryption, audit logging, and absolute confidentiality of sensitive organizational data.",
+    },
+    ctaBanner: {
+      title: "Let's talk about your project or the first process to automate.",
+      description:
+        "Tell us what takes up the most time or the system you need built. All pricing is negotiable and we design an engagement tailored to your reality.",
+      waButton: "Chat on WhatsApp",
+      emailButton: "Send an email",
+      waMessage: "Hello Félicien, I would like to discuss your services and receive a customized proposal.",
     },
   },
 

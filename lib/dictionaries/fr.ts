@@ -36,6 +36,7 @@ export const fr: Dictionary = {
   nav: {
     about: "À propos",
     ai: "IA",
+    services: "Services",
     experience: "Parcours",
     projects: "Projets",
     skills: "Compétences",
@@ -121,6 +122,181 @@ export const fr: Dictionary = {
       ship: "Production",
       caption:
         "Chaque agent a un périmètre, chaque étape est tracée, et rien n'atteint la production sans validation humaine.",
+    },
+  },
+
+  services: {
+    kicker: "Services & Solutions SOSIDE",
+    title: "Des solutions concrètes,",
+    titleAccent: "pensées pour vos résultats.",
+    intro:
+      "Du diagnostic express au déploiement de systèmes métiers complets et d'assistants IA en production. Nous concevons des logiciels robustes, adaptés aux réalités du terrain et aux contraintes de connectivité en RDC.",
+    negotiableNotice: {
+      badge: "Tarifs 100% sur mesure & négociables",
+      title: "Aucun prix rigide : nous nous adaptons à votre budget et à votre échelle.",
+      description:
+        "PME locale, ONG humanitaire, établissement scolaire, clinique ou grande structure : chaque projet est unique. Nous ne publions pas de grille tarifaire fixe car tous nos forfaits sont discutés et négociés selon votre périmètre, votre calendrier et votre trésorerie.",
+      cta: "Discuter d'une proposition sur mesure",
+    },
+    filterAll: "Tous les services",
+    filterCore: "Services principaux",
+    filterSectors: "Solutions sectorielles",
+    items: [
+      {
+        id: "diagnostic",
+        category: "core",
+        title: "Diagnostic Digital & Audit IA",
+        badge: "Recommandé pour démarrer",
+        pricingTag: "Sur devis · Prix négociable",
+        description:
+          "En 60 à 120 minutes, nous cartographions vos processus métier, chiffrons le temps perdu et identifions 3 opportunités d'automatisation et d'IA à plus fort impact immédiat.",
+        deliverables: [
+          "Cartographie détaillée de vos flux de travail actuels",
+          "Estimation chiffrée des heures et coûts récupérables",
+          "Rapport d'audit de 3 à 7 pages avec recommandations",
+          "Plan d'action priorisé à 30 jours (devis sans engagement)",
+        ],
+        tags: ["Audit 60–120 min", "Roadmap 30j", "Chiffrage ROI", "Process Mapping"],
+        cta: "Demander un diagnostic",
+        waPrompt: "Bonjour Félicien, je souhaite planifier un Diagnostic Digital & IA pour mon organisation et échanger sur vos disponibilités.",
+        highlight: false,
+      },
+      {
+        id: "automation",
+        category: "core",
+        title: "Automatisation Express de Workflows",
+        badge: "Livraison rapide (7-10j)",
+        pricingTag: "Périmètre fermé · Prix négociable",
+        description:
+          "Élimination des ressaisies manuelles répétitives entre Excel, Google Sheets, WhatsApp, ERP et boîtes emails. Vos rapports et alertes critiques tournent désormais seuls.",
+        deliverables: [
+          "Génération et envoi automatiques de rapports périodiques",
+          "Synchronisation instantanée des données entre outils sans ressaisie",
+          "Alertes de stock et relances clients automatiques par WhatsApp / Email",
+          "Recette rigoureuse et mise en production en moins de 10 jours",
+        ],
+        tags: ["Zéro ressaisie", "Rapports auto", "Alertes WhatsApp", "Workflows Ops"],
+        cta: "Automatiser un processus",
+        waPrompt: "Bonjour Félicien, j'ai des tâches manuelles répétitives à automatiser et souhaite obtenir une proposition adaptée à mon budget.",
+        highlight: false,
+      },
+      {
+        id: "software",
+        category: "core",
+        title: "Systèmes Métiers & Plateformes Web sur mesure",
+        badge: "Spécialité & Haute fiabilité",
+        pricingTag: "Sur mesure · Prix négociable",
+        description:
+          "Conception complète de logiciels métiers et applications web taillés pour vos règles de gestion : RH, stocks, ventes, comptabilité, scolarité ou plateformes B2B.",
+        deliverables: [
+          "Fonctionnement hors-ligne (Offline-First) : continue de vendre sans réseau",
+          "Multi-devises (USD, CDF, EUR) et Mobile Money (M-Pesa, Orange, Airtel)",
+          "Architecture microservices sécurisée et base de données haute performance",
+          "Interface moderne, ergonomique et formation complète de vos utilisateurs",
+        ],
+        tags: ["Spring Boot", "Next.js", "Caisse hors-ligne", "Mobile Money", "PostgreSQL"],
+        cta: "Concevoir votre logiciel",
+        waPrompt: "Bonjour Félicien, j'ai un projet de logiciel / plateforme web sur mesure et souhaite discuter d'un cahier des charges et d'un tarif négociable.",
+        highlight: true,
+      },
+      {
+        id: "ai",
+        category: "core",
+        title: "Ingénierie IA, RAG & Agents Autonomes",
+        badge: "Technologie de pointe",
+        pricingTag: "Sur devis · Prix négociable",
+        description:
+          "Intégration d'assistants intelligents et d'agents autonomes branchés sur vos documents internes et vos bases de données, avec des garde-fous stricts et supervision humaine.",
+        deliverables: [
+          "RAG privé : recherche sémantique et questions-réponses sur vos données internes",
+          "Agents autonomes avec appels d'outils (tool use) reliés à vos API métiers",
+          "Garde-fous stricts : validation humaine, journalisation et masquage PII",
+          "Confidentialité garantie : étanchéité totale de vos données d'entreprise",
+        ],
+        tags: ["RAG documentaire", "Agents IA", "Garde-fous éthiques", "LangGraph / LLM"],
+        cta: "Intégrer l'IA dans vos outils",
+        waPrompt: "Bonjour Félicien, je souhaite intégrer une solution IA / un agent autonome dans mes opérations et échanger sur la faisabilité.",
+        highlight: false,
+      },
+      {
+        id: "sectors",
+        category: "sector",
+        title: "Solutions Sectorielles Prêtes au Déploiement",
+        badge: "PME · ONG · Écoles · Cliniques",
+        pricingTag: "Tarif adapté à votre structure · Négociable",
+        description:
+          "Des briques logicielles pré-conçues et éprouvées sur le terrain congolais pour répondre immédiatement aux exigences spécifiques de votre secteur d'activité.",
+        deliverables: [
+          "PME & Commerces : gestion des stocks avec seuils d'alerte, facturation sans ressaisie",
+          "ONG & Bailleurs : suivi terrain par formulaires mobiles et rapports bailleurs automatisés",
+          "Écoles (GEVAPOM) : frais scolaires, bulletins numériques et suivi des présences",
+          "Cliniques & Santé (HMS) : dossier patient informatisé, rendez-vous et pharmacie",
+        ],
+        tags: ["PME & Boutiques", "ONG Humanitaires", "Écoles & Universités", "Santé & Cliniques"],
+        cta: "Découvrir la solution adaptée",
+        waPrompt: "Bonjour Félicien, je souhaite équiper mon organisation (PME / ONG / École / Santé) avec votre solution sectorielle.",
+        highlight: false,
+      },
+      {
+        id: "maintenance",
+        category: "core",
+        title: "Abonnement Maintenance, Supervision & Évolution",
+        badge: "Tranquillité d'esprit",
+        pricingTag: "Forfait flexible · Prix négociable",
+        description:
+          "Après la livraison, nous veillons sur votre infrastructure logicielle : sauvegardes automatisées, supervision proactive des serveurs, correctifs et support technique réactif.",
+        deliverables: [
+          "Sauvegardes quotidiennes externalisées et plan de reprise d'activité",
+          "Supervision continue (monitoring, alertes de disponibilité et de charge)",
+          "Support prioritaire WhatsApp & e-mail avec engagement de service (SLA écrit)",
+          "Mises à jour de sécurité et petites évolutions fonctionnelles incluses",
+        ],
+        tags: ["Supervision 24/7", "Sauvegardes cloud", "SLA garanti", "Support réactif"],
+        cta: "Sécuriser votre système",
+        waPrompt: "Bonjour Félicien, je souhaite mettre en place un contrat de maintenance et support pour mon système informatique.",
+        highlight: false,
+      },
+    ],
+    methodTitle: "Comment nous travaillons",
+    methodSubtitle: "Une méthode en 4 temps avec engagement au résultat et clarté contractuelle.",
+    methodSteps: [
+      {
+        number: "01",
+        title: "Diagnostic & Périmètre",
+        description:
+          "Nous cartographions vos processus réels, chiffrons les gains potentiels et délimitons un périmètre précis.",
+      },
+      {
+        number: "02",
+        title: "Proposition & Négociation",
+        description:
+          "Un plan d'action opérationnel et un devis négocié selon vos capacités budgétaires, sans frais cachés.",
+      },
+      {
+        number: "03",
+        title: "Développement & Recette",
+        description:
+          "Livraison itérative, tests en conditions réelles avec vos équipes et formation complète avant mise en service.",
+      },
+      {
+        number: "04",
+        title: "Suivi & Garantie",
+        description:
+          "Maintenance proactive, sauvegardes et support continu encadrés par un accord de niveau de service (SLA).",
+      },
+    ],
+    guardrail: {
+      title: "L'IA et la technologie avec garde-fous",
+      description:
+        "Chaque assistant et automatisation a un périmètre d'action strictement borné. Nous prévoyons systématiquement la validation humaine quand une décision critique est en jeu, le chiffrement des données, la journalisation des actions et le respect strict du secret professionnel.",
+    },
+    ctaBanner: {
+      title: "Parlons de votre projet ou du premier processus à automatiser.",
+      description:
+        "Décrivez-nous ce qui vous prend le plus de temps ou le système dont vous avez besoin. Tous les tarifs sont négociables et nous construisons une offre adaptée à votre situation.",
+      waButton: "Discuter sur WhatsApp",
+      emailButton: "Envoyer un e-mail",
+      waMessage: "Bonjour Félicien, je souhaite échanger au sujet de vos services et obtenir une proposition personnalisée.",
     },
   },
 

@@ -15,7 +15,7 @@ function span(i: number, highlight: boolean) {
 export function Skills({ t }: { t: Dictionary }) {
   return (
     <Section id="skills" labelledBy="skills-title">
-      <SectionHeading id="skills-title" index="05" kicker={t.skills.kicker} title={t.skills.title} accent={t.skills.titleAccent} />
+      <SectionHeading id="skills-title" index="06" kicker={t.skills.kicker} title={t.skills.title} accent={t.skills.titleAccent} />
 
       <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-12">
         {t.skills.categories.map((category, i) => {

@@ -11,7 +11,7 @@ export function Experience({ t }: { t: Dictionary }) {
         <div className="lg:sticky lg:top-32 lg:self-start">
           <SectionHeading
             id="experience-title"
-            index="03"
+            index="04"
             kicker={t.experience.kicker}
             title={t.experience.title}
             accent={t.experience.titleAccent}
