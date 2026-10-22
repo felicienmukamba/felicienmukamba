@@ -2,25 +2,26 @@ import type { Dictionary } from "./en"
 
 export const fr: Dictionary = {
   meta: {
-    title: "Félicien Mukamba — Ingénieur Logiciel & AI Engineer",
+    title: "Félicien Mukamba — Ingénieur Logiciel & AI Engineer | Fondateur de SOSIDE (Bukavu, RDC)",
     description:
-      "Félicien Mukamba, ingénieur logiciel, AI Engineer et fondateur de SOSIDE, conçoit des plateformes distribuées sécurisées et des agents IA en production depuis Bukavu, RDC.",
+      "Ingénieur logiciel senior, AI Engineer et fondateur de SOSIDE à Bukavu, RDC. Plateformes web sur mesure, automatisation de processus, RAG et agents IA en production. Tarifs négociables et adaptés à votre budget.",
     keywords: [
       "Félicien Mukamba",
-      "Ingénieur logiciel",
-      "AI Engineer",
+      "Ingénieur logiciel Bukavu",
+      "AI Engineer RDC",
       "AI Agent Manager",
-      "Développeur full-stack",
-      "LLM",
-      "RAG",
-      "Systèmes multi-agents",
-      "Spring Boot",
-      "Next.js",
-      "SOSIDE",
-      "Bukavu",
-      "RDC",
+      "Développeur full-stack Bukavu",
+      "SOSIDE Bukavu",
+      "Automatisation processus Bukavu",
+      "Logiciel sur mesure RDC",
+      "Solutions informatiques Sud-Kivu",
+      "Caisse hors-ligne Mobile Money RDC",
+      "RAG et LLM en production",
+      "Spring Boot Next.js Congo",
+      "Développeur Goma Kinshasa",
+      "Transformation digitale PME ONG RDC",
     ],
-    ogAlt: "Félicien Mukamba — Ingénieur Logiciel & AI Engineer",
+    ogAlt: "Félicien Mukamba — Ingénieur Logiciel & AI Engineer à Bukavu, RDC",
   },
 
   a11y: {
@@ -45,15 +46,20 @@ export const fr: Dictionary = {
   },
 
   hero: {
-    available: "Disponible pour de nouvelles opportunités",
+    available: "Disponible pour de nouveaux projets · Bukavu & à distance",
     eyebrow: "Ingénieur Logiciel & IA · Chef de projet · Fondateur de SOSIDE",
     headlineStart: "Je construis des plateformes sûres",
     headlineAccent: "et les agents IA",
     headlineEnd: "qui les font tourner.",
     intro:
-      "Ingénieur full-stack basé à Bukavu, en RDC. Je conçois des systèmes distribués pour l'identité numérique, la santé, l'éducation et le commerce — et je mets les LLM et les agents autonomes en production, avec les garde-fous qu'ils exigent.",
-    ctaPrimary: "Démarrer une conversation",
-    ctaWork: "Voir mes projets",
+      "J'aide PME, ONG, écoles et cliniques à remplacer Excel, papier et ressaisies par des logiciels fiables — qui tournent même sans réseau, gèrent le Mobile Money et intègrent l'IA avec des garde-fous. Ingénieur logiciel & IA à Bukavu, fondateur de SOSIDE.",
+    ctaPrimary: "Démarrer un projet",
+    ctaWork: "Voir mes réalisations",
+    ctaWhatsapp: "Écrire sur WhatsApp",
+    waMessage: "Bonjour Félicien, j'ai visité votre site et j'aimerais discuter d'un projet.",
+    trust: ["Premier échange sans engagement", "Devis adapté à votre budget", "Hors-ligne & Mobile Money"],
+    proofLabel: "Plateformes conçues et architecturées",
+    recruiter: "Recruteur ou partenaire technique ?",
     rolesLabel: "Aujourd'hui",
     roles: ["AI Engineer", "Chef de projet", "AI Agent Manager", "Ingénieur Logiciel", "Architecte Système", "Fondateur"],
     location: "Bukavu, RD Congo",
@@ -132,8 +138,8 @@ export const fr: Dictionary = {
     intro:
       "Du diagnostic express au déploiement de systèmes métiers complets et d'assistants IA en production. Nous concevons des logiciels robustes, adaptés aux réalités du terrain et aux contraintes de connectivité en RDC.",
     negotiableNotice: {
-      badge: "Tarifs 100% sur mesure & négociables",
-      title: "Aucun prix rigide : nous nous adaptons à votre budget et à votre échelle.",
+      badge: "Devis clair, adapté à votre budget",
+      title: "Vous investissez dans un résultat, pas dans une grille tarifaire.",
       description:
         "PME locale, ONG humanitaire, établissement scolaire, clinique ou grande structure : chaque projet est unique. Nous ne publions pas de grille tarifaire fixe car tous nos forfaits sont discutés et négociés selon votre périmètre, votre calendrier et votre trésorerie.",
       cta: "Discuter d'une proposition sur mesure",
@@ -147,7 +153,7 @@ export const fr: Dictionary = {
         category: "core",
         title: "Diagnostic Digital & Audit IA",
         badge: "Recommandé pour démarrer",
-        pricingTag: "Sur devis · Prix négociable",
+        pricingTag: "60–120 min",
         description:
           "En 60 à 120 minutes, nous cartographions vos processus métier, chiffrons le temps perdu et identifions 3 opportunités d'automatisation et d'IA à plus fort impact immédiat.",
         deliverables: [
@@ -166,7 +172,7 @@ export const fr: Dictionary = {
         category: "core",
         title: "Automatisation Express de Workflows",
         badge: "Livraison rapide (7-10j)",
-        pricingTag: "Périmètre fermé · Prix négociable",
+        pricingTag: "7–10 jours",
         description:
           "Élimination des ressaisies manuelles répétitives entre Excel, Google Sheets, WhatsApp, ERP et boîtes emails. Vos rapports et alertes critiques tournent désormais seuls.",
         deliverables: [
@@ -185,7 +191,7 @@ export const fr: Dictionary = {
         category: "core",
         title: "Systèmes Métiers & Plateformes Web sur mesure",
         badge: "Spécialité & Haute fiabilité",
-        pricingTag: "Sur mesure · Prix négociable",
+        pricingTag: "Sur mesure",
         description:
           "Conception complète de logiciels métiers et applications web taillés pour vos règles de gestion : RH, stocks, ventes, comptabilité, scolarité ou plateformes B2B.",
         deliverables: [
@@ -204,7 +210,7 @@ export const fr: Dictionary = {
         category: "core",
         title: "Ingénierie IA, RAG & Agents Autonomes",
         badge: "Technologie de pointe",
-        pricingTag: "Sur devis · Prix négociable",
+        pricingTag: "Sur devis",
         description:
           "Intégration d'assistants intelligents et d'agents autonomes branchés sur vos documents internes et vos bases de données, avec des garde-fous stricts et supervision humaine.",
         deliverables: [
@@ -223,7 +229,7 @@ export const fr: Dictionary = {
         category: "sector",
         title: "Solutions Sectorielles Prêtes au Déploiement",
         badge: "PME · ONG · Écoles · Cliniques",
-        pricingTag: "Tarif adapté à votre structure · Négociable",
+        pricingTag: "Prêt à déployer",
         description:
           "Des briques logicielles pré-conçues et éprouvées sur le terrain congolais pour répondre immédiatement aux exigences spécifiques de votre secteur d'activité.",
         deliverables: [
@@ -242,7 +248,7 @@ export const fr: Dictionary = {
         category: "core",
         title: "Abonnement Maintenance, Supervision & Évolution",
         badge: "Tranquillité d'esprit",
-        pricingTag: "Forfait flexible · Prix négociable",
+        pricingTag: "Forfait flexible",
         description:
           "Après la livraison, nous veillons sur votre infrastructure logicielle : sauvegardes automatisées, supervision proactive des serveurs, correctifs et support technique réactif.",
         deliverables: [
@@ -295,7 +301,7 @@ export const fr: Dictionary = {
       description:
         "Décrivez-nous ce qui vous prend le plus de temps ou le système dont vous avez besoin. Tous les tarifs sont négociables et nous construisons une offre adaptée à votre situation.",
       waButton: "Discuter sur WhatsApp",
-      emailButton: "Envoyer un e-mail",
+      emailButton: "Décrire mon projet",
       waMessage: "Bonjour Félicien, je souhaite échanger au sujet de vos services et obtenir une proposition personnalisée.",
     },
   },
@@ -576,7 +582,7 @@ export const fr: Dictionary = {
     tools: {
       "logo-generator": {
         name: "Générateur de Logos & Publicités",
-        description: "Saisissez les infos de votre marque, choisissez ou importez une icône et votre charte graphique : génération immédiate de logos, brochures, flyers et bannières dans tous les formats.",
+        description: "Nom, symbole, typographie, charte graphique : le studio compose des logos professionnels, entièrement modifiables, puis décline flyers, brochures et posts réseaux sociaux. Pack ZIP complet.",
       },
       "brand-kit": {
         name: "Brand kit & marketplace",
@@ -595,8 +601,8 @@ export const fr: Dictionary = {
         description: "Blobs, vagues en couches, motifs répétables et dégradés maillés avec grain — export SVG, PNG ou CSS.",
       },
       motion: {
-        name: "Boîte à outils motion",
-        description: "Dessinez des courbes d'easing, réglez des ressorts, orchestrez des keyframes — copiez le CSS ou le Framer Motion.",
+        name: "Motion Studio",
+        description: "Un vrai studio de motion design dans le navigateur : importez et combinez vos vecteurs, animez-les sur une timeline à keyframes, exportez en vidéo MP4/WebM ou SVG animé.",
       },
       design: {
         name: "Outils design",
@@ -605,12 +611,79 @@ export const fr: Dictionary = {
     },
   },
 
+  faq: {
+    kicker: "Questions fréquentes",
+    title: "Les réponses",
+    titleAccent: "avant de vous engager.",
+    intro: "Ce que les dirigeants me demandent le plus souvent avant de lancer un projet.",
+    items: [
+      {
+        q: "Combien coûte un projet ?",
+        a: "Cela dépend du périmètre : un diagnostic, une automatisation ciblée et une plateforme complète n'ont pas le même coût. Après un premier échange sans engagement, vous recevez un devis détaillé, adapté à votre budget, sans frais cachés.",
+      },
+      {
+        q: "En combien de temps est-ce livré ?",
+        a: "Une automatisation ciblée se livre en 7 à 10 jours. Une plateforme sur mesure se construit par étapes : vous testez une première version tôt, puis les modules s'ajoutent jalon après jalon.",
+      },
+      {
+        q: "Et si la connexion internet coupe ?",
+        a: "Les logiciels sont conçus « offline-first » : ventes, saisies et caisse continuent sans réseau et se synchronisent automatiquement au retour de la connexion.",
+      },
+      {
+        q: "Mes données restent-elles confidentielles ?",
+        a: "Oui. Données chiffrées, accès journalisés, et des assistants IA qui n'accèdent qu'à ce que vous autorisez, avec validation humaine pour toute décision critique — dans le respect strict du secret professionnel.",
+      },
+      {
+        q: "Que se passe-t-il après la livraison ?",
+        a: "Vos équipes sont formées, puis vous choisissez un suivi : sauvegardes quotidiennes, supervision, correctifs de sécurité et support WhatsApp & e-mail encadré par un SLA écrit.",
+      },
+      {
+        q: "Travaillez-vous en dehors de Bukavu ?",
+        a: "Oui. J'accompagne des organisations à Goma, Kinshasa, Lubumbashi et dans tout l'espace francophone, à distance, avec des déplacements possibles selon le projet.",
+      },
+      {
+        q: "Je ne suis pas technicien : est-ce un problème ?",
+        a: "Pas du tout. Vous décrivez vos difficultés avec vos mots ; je les traduis en solution, je chiffre les gains et j'explique chaque choix sans jargon.",
+      },
+    ],
+  },
+
+  brief: {
+    title: "Décrivez votre projet",
+    subtitle: "4 questions, 30 secondes. Votre message est prêt à partir sur WhatsApp ou par e-mail.",
+    name: "Votre nom",
+    org: "Organisation (facultatif)",
+    need: "De quoi avez-vous besoin ?",
+    needs: ["Logiciel / plateforme sur mesure", "Automatiser un processus", "Assistant IA / RAG", "Solution école, clinique, ONG ou commerce", "Diagnostic digital", "Maintenance & support", "Autre"],
+    budget: "Budget indicatif (facultatif)",
+    budgets: ["À discuter", "< 500 $", "500 – 2 000 $", "2 000 – 10 000 $", "> 10 000 $"],
+    timeline: "Délai souhaité",
+    timelines: ["Urgent", "Sous 1 mois", "1 à 3 mois", "Flexible"],
+    message: "Votre besoin en quelques mots",
+    placeholder: "Ex. : nous gérons les frais scolaires sur Excel et voulons des reçus et un suivi automatiques…",
+    send: "Envoyer sur WhatsApp",
+    sendEmail: "Par e-mail",
+    note: "Rien n'est enregistré sur ce site : le message s'ouvre dans votre WhatsApp ou votre messagerie.",
+    greeting: "Bonjour Félicien, je vous contacte depuis votre site.",
+    fields: {
+      name: "Nom",
+      org: "Organisation",
+      need: "Besoin",
+      budget: "Budget",
+      timeline: "Délai",
+      details: "Détails",
+    },
+    emailSubject: "Nouveau projet",
+    floating: "WhatsApp",
+    required: "Choisissez au moins un besoin",
+  },
+
   contact: {
     kicker: "Contact",
-    title: "Construisons",
-    titleAccent: "la suite.",
+    title: "Parlons de",
+    titleAccent: "votre projet.",
     description:
-      "Ouvert aux postes à temps plein, missions freelance et collaborations techniques — en particulier là où les systèmes distribués rencontrent l'IA.",
+      "Décrivez votre besoin en 30 secondes : le message arrive directement sur mon WhatsApp. Recruteurs et partenaires techniques : l'e-mail et le CV sont juste en dessous.",
     cta: "Envoyer un e-mail",
     copy: "Copier l'e-mail",
     copied: "Copié !",

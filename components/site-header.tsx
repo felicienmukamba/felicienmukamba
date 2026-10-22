@@ -20,9 +20,10 @@ type HeaderLabels = {
   language: string
   primaryNav: string
   cv: CvLabels
+  cta: string
 }
 
-const sections: NavKey[] = ["about", "ai", "services", "experience", "projects", "skills", "lab", "contact"]
+const sections: NavKey[] = ["services", "projects", "about", "ai", "experience", "skills", "lab", "contact"]
 
 function rememberLocale(locale: Locale) {
   document.cookie = `${localeCookie}=${locale}; path=/; max-age=31536000; samesite=lax`
@@ -134,7 +135,7 @@ export function SiteHeader({ lang, labels, path = "" }: { lang: Locale; labels: 
             <span className="grid size-8 place-items-center rounded-[10px] bg-foreground font-mono text-[13px] font-semibold tracking-tight text-background transition-transform duration-500 ease-out-expo group-hover:rotate-[-8deg]">
               FM
             </span>
-            <span className="hidden text-sm font-medium tracking-tight sm:block">Félicien Mukamba</span>
+            <span className="hidden whitespace-nowrap text-sm font-medium tracking-tight sm:block">Félicien Mukamba</span>
           </Link>
 
           <nav aria-label={labels.primaryNav} className="hidden lg:block">
@@ -152,7 +153,7 @@ export function SiteHeader({ lang, labels, path = "" }: { lang: Locale; labels: 
                     href={`${base}#${key}`}
                     aria-current={active === key ? "location" : undefined}
                     className={cn(
-                      "relative block rounded-full px-2.5 py-1.5 text-[12.5px] transition-colors xl:px-3.5 xl:text-[13px]",
+                      "relative block whitespace-nowrap rounded-full px-2.5 py-1.5 text-[12.5px] transition-colors xl:px-3.5 xl:text-[13px]",
                       active === key ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                     )}
                   >
@@ -168,9 +169,15 @@ export function SiteHeader({ lang, labels, path = "" }: { lang: Locale; labels: 
               <LanguageSwitch lang={lang} hash={path ? "" : hash} path={path} label={labels.language} />
             </div>
             <ThemeToggle label={labels.toggleTheme} />
-            <div className="hidden md:block">
+            <div className="hidden xl:block">
               <CvDownloadButton lang={lang} labels={labels.cv} variant="compact" />
             </div>
+            <a
+              href={`${base}#brief`}
+              className="hidden h-9 shrink-0 items-center whitespace-nowrap rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-transform duration-300 hover:scale-[1.03] sm:inline-flex"
+            >
+              {labels.cta}
+            </a>
 
             <Drawer>
               <DrawerTrigger asChild>
@@ -218,6 +225,11 @@ export function SiteHeader({ lang, labels, path = "" }: { lang: Locale; labels: 
                 <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line px-6 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
                   <LanguageSwitch lang={lang} hash={path ? "" : hash} path={path} label={labels.language} />
                   <CvDownloadButton lang={lang} labels={labels.cv} variant="compact" />
+                  <DrawerClose asChild>
+                    <a href={`${base}#brief`} className="inline-flex h-11 w-full items-center justify-center rounded-full bg-foreground text-[15px] font-medium text-background">
+                      {labels.cta}
+                    </a>
+                  </DrawerClose>
                 </div>
               </DrawerContent>
             </Drawer>

@@ -1,4 +1,4 @@
-import { ArrowRight, Github, Linkedin } from "lucide-react"
+import { ArrowRight, Check, Github, Linkedin, MessageCircle } from "lucide-react"
 import { Fragment, type CSSProperties } from "react"
 import { CvDownloadButton } from "@/components/cv-download-button"
 import { HeroVisual } from "@/components/hero-visual"
@@ -6,6 +6,7 @@ import { XIcon } from "@/components/icons"
 import type { Dictionary } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
 import { site } from "@/lib/site"
+import { whatsappUrl } from "@/lib/whatsapp"
 
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties
 const rise = "animate-[rise_1s_var(--ease-out-expo)_var(--d)_both]"
@@ -86,14 +87,34 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
 
           <div className={`mt-9 flex flex-wrap items-center gap-3 ${rise}`} style={delay(820)}>
             <a
-              href="#contact"
+              href="#brief"
               className="group inline-flex h-12 items-center gap-2 rounded-full bg-foreground px-6 text-[15px] font-medium text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
             >
               {t.hero.ctaPrimary}
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
             </a>
-            <CvDownloadButton lang={lang} labels={{ download: t.cv.download, generating: t.cv.generating, error: t.cv.error }} />
+            <a
+              href={whatsappUrl(t.hero.waMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-line-strong bg-surface/70 px-5 text-[15px] font-medium backdrop-blur transition-colors hover:border-[#25D366] hover:text-foreground"
+            >
+              <MessageCircle className="size-4 text-[#25D366]" aria-hidden />
+              {t.hero.ctaWhatsapp}
+            </a>
+            <a href="#projects" className="px-2 text-[14px] font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline">
+              {t.hero.ctaWork}
+            </a>
           </div>
+
+          <ul className={`mt-5 flex flex-wrap gap-x-5 gap-y-2 ${rise}`} style={delay(870)}>
+            {t.hero.trust.map((item) => (
+              <li key={item} className="flex items-center gap-1.5 text-[13px] text-muted-foreground">
+                <Check className="size-3.5 text-success" aria-hidden />
+                {item}
+              </li>
+            ))}
+          </ul>
 
           <ul className={`mt-9 flex items-center gap-1 ${rise}`} style={delay(920)}>
             {socials.map(({ href, label, Icon }) => (
@@ -110,13 +131,9 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
               </li>
             ))}
             <li aria-hidden className="mx-2 h-4 w-px bg-line-strong" />
-            <li>
-              <a
-                href={`mailto:${site.email}`}
-                className="text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
-              >
-                {site.email}
-              </a>
+            <li className="flex items-center gap-2.5">
+              <span className="hidden text-[13px] text-subtle-foreground sm:inline">{t.hero.recruiter}</span>
+              <CvDownloadButton lang={lang} labels={{ download: t.cv.download, generating: t.cv.generating, error: t.cv.error }} variant="compact" />
             </li>
           </ul>
         </div>
@@ -143,6 +160,14 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
             </div>
           ))}
         </dl>
+        <p className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
+          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-subtle-foreground">{t.hero.proofLabel}</span>
+          {Object.entries(t.projects.items).slice(0, 6).map(([id, project]) => (
+            <a key={id} href="#projects" className="text-[14px] font-semibold tracking-tight text-muted-foreground transition-colors hover:text-foreground">
+              {project.title.split(" — ")[0]}
+            </a>
+          ))}
+        </p>
       </div>
     </section>
   )

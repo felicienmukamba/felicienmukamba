@@ -24,6 +24,23 @@ export const site = {
   country: "DR Congo",
   countryCode: "CD",
   timezone: "Africa/Lubumbashi",
+  coordinates: {
+    latitude: -2.5085,
+    longitude: 28.8608,
+  },
+  geoRegion: "CD-SK",
+  geoPlacename: "Bukavu, Sud-Kivu, République Démocratique du Congo",
+  areasServed: [
+    "Bukavu",
+    "Sud-Kivu",
+    "Nord-Kivu",
+    "Goma",
+    "Kinshasa",
+    "Lubumbashi",
+    "République démocratique du Congo",
+    "Afrique centrale",
+    "Espace francophone (à distance)",
+  ],
   portrait: "/images/felicien-portrait.jpg",
   avatar: "/images/felicien-avatar.jpg",
   social: {

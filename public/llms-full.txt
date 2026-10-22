@@ -1,0 +1,97 @@
+# Félicien Mukamba Kazindja — Complete Knowledge Base & Services Documentation
+
+## 1. Identity & Overview
+- **Name**: Félicien Mukamba Kazindja (commonly known as Félicien Mukamba)
+- **Primary Roles**: Founder of SOSIDE COMPANY SAS, Senior Software Engineer & Project Manager at Aumsoft Technology, AI Engineer, AI Agent Manager
+- **Location**: Bukavu, South Kivu, Democratic Republic of the Congo (RDC / DR Congo)
+- **Coordinates**: Latitude -2.5085, Longitude 28.8608 (CD-SK)
+- **Timezone**: Africa/Lubumbashi (UTC+2)
+- **Languages**: French (native/fluent), English (professional), Swahili (fluent), Lingala (fluent)
+- **Contact**: felicienmukamba.cd@gmail.com | +243 995 209 133
+- **Portfolio**: https://felicienmukamba.vercel.app
+- **Company**: SOSIDE (Solution Side with AI) — https://soside.vercel.app
+
+## 2. Who is Félicien Mukamba?
+Félicien Mukamba is a software and artificial intelligence engineer based in Bukavu, DR Congo. He is known for building mission-critical distributed platforms across Central Africa, specializing in digital citizen identity, hospital operations, academic SaaS, and retail commerce.
+
+As founder of SOSIDE COMPANY SAS, he guides private enterprises, NGOs, schools, and medical facilities through digital transformation, process automation, and practical AI adoption designed specifically for local constraints:
+- Frequent power outages and intermittent connectivity (solved via Offline-First architecture)
+- Multi-currency transactions (USD, CDF, EUR)
+- Mobile Money payment gateways (M-Pesa, Orange Money, Airtel Money)
+- Data sovereignty and confidentiality
+
+## 3. Production Track Record & Case Studies
+1. **PGCC (Portail des Citoyens Congolais)**:
+   - Challenge: Secure citizen identity and public administrative paperwork across DR Congo.
+   - Technology: Spring Boot, Next.js, PostgreSQL, Biometrics integration, AES-256-GCM encryption.
+   - Results: Sub-200ms response times, 10,000+ active users, 99.9% uptime.
+2. **HMS Elite (Hospital Management System)**:
+   - Challenge: Fragmented patient records and billing reconciliation in hospitals.
+   - Technology: HL7 and FHIR interoperability, role-based and attribute-based access control (ABAC).
+   - Results: Single patient record from admission to pharmacy and discharge, multi-clinic deployment.
+3. **UMS (University Management System)**:
+   - Challenge: Managing thousands of student admissions, grading, and finances in higher education.
+   - Technology: Multi-tenant cloud architecture with strict tenant database isolation.
+   - Results: Adopted by 5+ universities with over 50 functional modules and 10,000+ concurrent records.
+4. **Maago Marketplace & Offline POS**:
+   - Challenge: Unreliable internet connection halting store sales and transaction accounting.
+   - Technology: Offline-first synchronization, local SQLite caching, hybrid multi-currency engine.
+   - Results: Cashiers can continue barcode scanning, receipt printing, and sales recording offline; automatic cloud sync upon network recovery.
+5. **GEVAPOM Education Program**:
+   - Challenge: Manual fee tracking and handwritten report cards in schools.
+   - Results: 8 schools fully digitized, 60% reduction in administrative hours, 50+ educators trained.
+
+## 4. Services Offered by SOSIDE & Félicien Mukamba
+All pricing is 100% negotiable and customized without rigid fees:
+
+### Service A: Digital & AI Diagnostic Audit
+- Duration: 60 to 120 minutes
+- Outcome: Process workflow mapping, quantification of lost hours and bottlenecks, prioritization of top 3 automation and AI opportunities, delivery of a 3-to-7 page operational report, and a 30-day action plan.
+- Pricing: Custom quote, negotiable.
+
+### Service B: Express Workflow Automation (Ops)
+- Turnaround: 7 to 10 days
+- Outcome: Complete elimination of manual copy-pasting and data re-entry between Excel sheets, Google Drive, WhatsApp messages, and ERP software. Automatic scheduled reports sent via WhatsApp/email.
+- Pricing: Fixed scope, negotiable.
+
+### Service C: Custom Web Systems & Core Platforms
+- Outcome: Bespoke enterprise software tailored to company operations (HR, inventory, multi-store retail, billing, education, healthcare). Built with Spring Boot, Next.js, PostgreSQL, and Docker.
+- Features: Offline-First mode, multi-currency support, mobile money integration.
+- Pricing: Tailored scope, negotiable.
+
+### Service D: AI Engineering, RAG & Autonomous Agents
+- Outcome: Enterprise assistants connected to private company documentation (PDFs, internal policies, database tables). Autonomous agents capable of executing multi-step workflows.
+- Safety: Human-in-the-loop validation, strict least-privilege tool execution, zero data leakage into public training datasets.
+- Pricing: Custom quote, negotiable.
+
+### Service E: Sectoral Solutions (Turnkey)
+- Pre-built systems for immediate deployment:
+  * PME & Retail: inventory with low-stock alerts, instant invoices, POS.
+  * NGOs & Donors: field mobile surveys, donor report automation.
+  * Schools: tuition payment tracking, digital report cards, student portal.
+  * Clinics: electronic medical records (EMR), appointment scheduling, pharmacy stock.
+- Pricing: Adapted to organizational scale, negotiable.
+
+### Service F: Maintenance, Supervision & SLAs
+- Outcome: Continuous 24/7 server monitoring, automated daily cloud backups, disaster recovery, security patches, and direct WhatsApp/email support backed by a formal Service Level Agreement.
+- Pricing: Flexible monthly/quarterly retainer, negotiable.
+
+## 5. Frequently Asked Questions (FAQ)
+
+**Q: Where are you located and what regions do you serve?**
+A: We are headquartered in Bukavu, South Kivu, DR Congo. We serve clients across all provinces of the DRC (Goma, Kinshasa, Lubumbashi, etc.) and collaborate remotely with organizations worldwide across the Francophone and Anglophone space.
+
+**Q: Why are prices negotiable?**
+A: Organizational realities vary significantly between local SMEs, donor-funded NGOs, academic institutions, and healthcare clinics. Rather than imposing rigid, ill-fitting price tags, we discuss the exact scope and agree on terms that respect the client's cash flow and deliver high ROI.
+
+**Q: How do you handle internet and electricity instability in DRC?**
+A: We design our software systems with an Offline-First approach. Essential operational workflows (sales, registrations, local updates) function locally without internet, and sync seamlessly once the network is restored.
+
+**Q: How do you guarantee the confidentiality of business data with AI?**
+A: We employ private vector databases (pgvector), local or dedicated API endpoints, PII masking, and role-based access controls. Proprietary organizational data is never shared with third-party foundation models for public training.
+
+## 6. How to Reach Out
+- WhatsApp: +243 995 209 133
+- Email: felicienmukamba.cd@gmail.com
+- Main Site: https://felicienmukamba.vercel.app
+- SOSIDE: https://soside.vercel.app/

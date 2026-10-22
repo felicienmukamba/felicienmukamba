@@ -275,7 +275,8 @@ export function MotionStudio({ lang }: { lang: Lang }) {
         layers.push(l)
       }
       const underline = makeLayer(sc, { kind: "shape", shape: "line" }, "Accent", W * 0.3, 40, data.palette.accent)
-      underline.base.y = H * 0.78
+      underline.strokeWidth = 3
+      underline.base.y = Math.min(H - 60, Math.max(...layers.map((l) => l.base.y + l.h / 2)) + 50)
       layers.push(applyPreset(underline, "drawOn", 1500, 900, sc))
       history.reset({ w: W, h: H, duration: 4500, background: data.palette.paper, transparent: false, loop: true, layers })
       setSelectedId(layers[0].id)
@@ -295,6 +296,8 @@ export function MotionStudio({ lang }: { lang: Lang }) {
       try {
         const saved = localStorage.getItem(STORAGE_KEY)
         if (saved) history.reset(JSON.parse(saved))
+        // First visit: open on a finished frame of the demo rather than an empty frame 0.
+        else setTime(2400)
       } catch {}
     }
     setLoaded(true)
@@ -429,6 +432,9 @@ export function MotionStudio({ lang }: { lang: Lang }) {
   }
 
   const projectInput = useRef<HTMLInputElement>(null)
+
+  // Text layers are measured with real fonts, which only exist in the browser.
+  if (!loaded) return <div className="h-[clamp(480px,70vh,820px)] animate-pulse rounded-2xl border border-line bg-surface-2/60" aria-hidden />
 
   return (
     <div className="space-y-3">

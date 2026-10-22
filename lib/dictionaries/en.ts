@@ -1,24 +1,24 @@
 export const en = {
   meta: {
-    title: "Félicien Mukamba — Software Engineer & AI Engineer",
+    title: "Félicien Mukamba — Software & AI Engineer | Founder of SOSIDE (Bukavu, DR Congo)",
     description:
-      "Félicien Mukamba is a software engineer, AI engineer and founder of SOSIDE, building secure distributed platforms and production AI agents from Bukavu, DR Congo.",
+      "Senior software engineer, AI engineer, and founder of SOSIDE in Bukavu, DR Congo. Custom web platforms, process automation, production RAG & AI agents. Negotiable pricing tailored to your scale.",
     keywords: [
       "Félicien Mukamba",
-      "Software Engineer",
-      "AI Engineer",
+      "Software Engineer Bukavu",
+      "AI Engineer DR Congo",
       "AI Agent Manager",
-      "Full-stack developer",
-      "LLM",
-      "RAG",
-      "Multi-agent systems",
-      "Spring Boot",
-      "Next.js",
-      "SOSIDE",
-      "Bukavu",
-      "DR Congo",
+      "Full-stack developer Bukavu",
+      "SOSIDE DR Congo",
+      "Workflow automation Bukavu",
+      "Custom software development Congo",
+      "Offline-first POS Africa",
+      "Mobile Money integration M-Pesa Airtel Orange",
+      "Production LLM RAG systems",
+      "Spring Boot Next.js developer",
+      "Digital transformation DR Congo",
     ],
-    ogAlt: "Félicien Mukamba — Software Engineer & AI Engineer",
+    ogAlt: "Félicien Mukamba — Software & AI Engineer in Bukavu, DR Congo",
   },
 
   a11y: {
@@ -43,15 +43,20 @@ export const en = {
   },
 
   hero: {
-    available: "Available for new opportunities",
+    available: "Available for new projects · Bukavu & remote",
     eyebrow: "Software & AI Engineer · Project Manager · Founder of SOSIDE",
     headlineStart: "I build secure platforms",
     headlineAccent: "and the AI agents",
     headlineEnd: "that run on them.",
     intro:
-      "Full-stack engineer based in Bukavu, DR Congo. I design distributed systems for digital identity, healthcare, education and commerce — and bring LLMs and autonomous agents into production, with the guardrails they need.",
-    ctaPrimary: "Start a conversation",
+      "I help SMEs, NGOs, schools and clinics replace spreadsheets, paper and double entry with reliable software — that keeps working offline, handles Mobile Money and brings in AI with guardrails. Software & AI engineer in Bukavu, founder of SOSIDE.",
+    ctaPrimary: "Start a project",
     ctaWork: "See my work",
+    ctaWhatsapp: "Message on WhatsApp",
+    waMessage: "Hello Félicien, I visited your website and would like to discuss a project.",
+    trust: ["First call, no commitment", "Quote fitted to your budget", "Offline & Mobile Money"],
+    proofLabel: "Platforms designed and architected",
+    recruiter: "Recruiter or technical partner?",
     rolesLabel: "Now",
     roles: ["AI Engineer", "Project Manager", "AI Agent Manager", "Software Engineer", "Systems Architect", "Founder"],
     location: "Bukavu, DR Congo",
@@ -130,8 +135,8 @@ export const en = {
     intro:
       "From rapid diagnostic audits to full-scale custom distributed systems and production AI agents. We build resilient software engineered for challenging network conditions and local business realities in DR Congo and beyond.",
     negotiableNotice: {
-      badge: "100% Tailored & Negotiable Pricing",
-      title: "No rigid price tags: we adapt to your organization's budget and scale.",
+      badge: "Clear quote, fitted to your budget",
+      title: "You invest in an outcome, not in a rate card.",
       description:
         "Local SME, funded humanitarian NGO, school, healthcare clinic, or large institution: every project has unique constraints. We do not publish fixed rate tables because every engagement is discussed and negotiated based on your scope, schedule, and cash flow.",
       cta: "Discuss a tailored proposal",
@@ -145,7 +150,7 @@ export const en = {
         category: "core",
         title: "Digital & AI Diagnostic Audit",
         badge: "Recommended starting point",
-        pricingTag: "Custom quote · Negotiable",
+        pricingTag: "60–120 min",
         description:
           "In 60 to 120 minutes, we map your business workflows, quantify lost hours, and pinpoint the 3 highest-impact automation and AI opportunities.",
         deliverables: [
@@ -164,7 +169,7 @@ export const en = {
         category: "core",
         title: "Express Workflow Automation",
         badge: "Rapid turnaround (7-10d)",
-        pricingTag: "Fixed scope · Negotiable",
+        pricingTag: "7–10 days",
         description:
           "Eliminate repetitive manual data entry across Excel spreadsheets, Google Sheets, WhatsApp, ERPs, and mailboxes. Your reports and alerts run automatically.",
         deliverables: [
@@ -183,7 +188,7 @@ export const en = {
         category: "core",
         title: "Custom Web Systems & Core Platforms",
         badge: "Core specialty & High reliability",
-        pricingTag: "Tailored scope · Negotiable",
+        pricingTag: "Custom build",
         description:
           "End-to-end design and engineering of custom web applications tailored to your business rules: HR, inventory, POS, accounting, education, or B2B portals.",
         deliverables: [
@@ -202,7 +207,7 @@ export const en = {
         category: "core",
         title: "AI Engineering, RAG & Autonomous Agents",
         badge: "Cutting-edge expertise",
-        pricingTag: "Custom quote · Negotiable",
+        pricingTag: "Custom quote",
         description:
           "Integrate intelligent assistants and autonomous agents grounded in your private documents and databases, backed by strict guardrails and human oversight.",
         deliverables: [
@@ -221,7 +226,7 @@ export const en = {
         category: "sector",
         title: "Field-Proven Sectoral Solutions",
         badge: "SMEs · NGOs · Schools · Healthcare",
-        pricingTag: "Adapted to your scale · Negotiable",
+        pricingTag: "Ready to deploy",
         description:
           "Pre-engineered software modules battle-tested on the ground in DR Congo to immediately meet the specific operational demands of your industry.",
         deliverables: [
@@ -240,7 +245,7 @@ export const en = {
         category: "core",
         title: "Maintenance, Monitoring & Ongoing Support",
         badge: "Long-term peace of mind",
-        pricingTag: "Flexible plan · Negotiable",
+        pricingTag: "Flexible plan",
         description:
           "Post-launch, we safeguard your software infrastructure: automated cloud backups, proactive server monitoring, security patches, and rapid technical support.",
         deliverables: [
@@ -293,7 +298,7 @@ export const en = {
       description:
         "Tell us what takes up the most time or the system you need built. All pricing is negotiable and we design an engagement tailored to your reality.",
       waButton: "Chat on WhatsApp",
-      emailButton: "Send an email",
+      emailButton: "Describe my project",
       waMessage: "Hello Félicien, I would like to discuss your services and receive a customized proposal.",
     },
   },
@@ -574,7 +579,7 @@ export const en = {
     tools: {
       "logo-generator": {
         name: "Logo & Brand Generator",
-        description: "Enter your brand info, select or import icons, pick your color chart: instant generation of logos, brochures, flyers, and advertising materials in all formats.",
+        description: "Name, symbol, typography, brand colours: the studio composes professional, fully editable logos, then rolls them out to flyers, brochures and social posts. Full ZIP pack.",
       },
       "brand-kit": {
         name: "Brand kit & marketplace",
@@ -593,8 +598,8 @@ export const en = {
         description: "Blobs, layered waves, seamless patterns and grainy mesh gradients — export SVG, PNG or CSS.",
       },
       motion: {
-        name: "Motion toolkit",
-        description: "Draw easing curves, tune springs and stage keyframes with stagger — copy CSS or Framer Motion.",
+        name: "Motion Studio",
+        description: "A real motion-design studio in the browser: import and combine vectors, animate them on a keyframe timeline, export MP4/WebM video or animated SVG.",
       },
       design: {
         name: "Design utilities",
@@ -603,12 +608,79 @@ export const en = {
     },
   },
 
+  faq: {
+    kicker: "FAQ",
+    title: "The answers",
+    titleAccent: "before you commit.",
+    intro: "What decision-makers ask me most before starting a project.",
+    items: [
+      {
+        q: "How much does a project cost?",
+        a: "It depends on scope: a diagnostic, a targeted automation and a full platform don't cost the same. After a first call with no commitment, you get a detailed quote fitted to your budget, with no hidden fees.",
+      },
+      {
+        q: "How long does delivery take?",
+        a: "A targeted automation ships in 7 to 10 days. A custom platform is built in stages: you test a first version early, then modules are added milestone by milestone.",
+      },
+      {
+        q: "What if the internet goes down?",
+        a: "The software is built offline-first: sales, data entry and checkout keep running without a network and sync automatically when the connection returns.",
+      },
+      {
+        q: "Does my data stay confidential?",
+        a: "Yes. Encrypted data, logged access, and AI assistants that only reach what you authorise, with human approval for any critical decision — under strict professional confidentiality.",
+      },
+      {
+        q: "What happens after delivery?",
+        a: "Your team is trained, then you choose a support plan: daily backups, monitoring, security patches and WhatsApp & email support backed by a written SLA.",
+      },
+      {
+        q: "Do you work outside Bukavu?",
+        a: "Yes. I work with organisations in Goma, Kinshasa, Lubumbashi and across the French-speaking world, remotely, with on-site visits possible depending on the project.",
+      },
+      {
+        q: "I'm not technical — is that a problem?",
+        a: "Not at all. You describe your pain points in your own words; I turn them into a solution, estimate the gains and explain every choice without jargon.",
+      },
+    ],
+  },
+
+  brief: {
+    title: "Describe your project",
+    subtitle: "4 questions, 30 seconds. Your message is ready to send on WhatsApp or by email.",
+    name: "Your name",
+    org: "Organisation (optional)",
+    need: "What do you need?",
+    needs: ["Custom software / platform", "Automate a process", "AI assistant / RAG", "School, clinic, NGO or retail solution", "Digital diagnostic", "Maintenance & support", "Other"],
+    budget: "Indicative budget (optional)",
+    budgets: ["To discuss", "< $500", "$500 – 2,000", "$2,000 – 10,000", "> $10,000"],
+    timeline: "Desired timeline",
+    timelines: ["Urgent", "Within a month", "1 to 3 months", "Flexible"],
+    message: "Your need in a few words",
+    placeholder: "e.g. we track school fees in Excel and want automatic receipts and follow-up…",
+    send: "Send on WhatsApp",
+    sendEmail: "By email",
+    note: "Nothing is stored on this site: the message opens in your WhatsApp or email app.",
+    greeting: "Hello Félicien, I'm reaching out from your website.",
+    fields: {
+      name: "Name",
+      org: "Organisation",
+      need: "Need",
+      budget: "Budget",
+      timeline: "Timeline",
+      details: "Details",
+    },
+    emailSubject: "New project",
+    floating: "WhatsApp",
+    required: "Pick at least one need",
+  },
+
   contact: {
     kicker: "Contact",
-    title: "Let's build",
-    titleAccent: "what's next.",
+    title: "Let's talk about",
+    titleAccent: "your project.",
     description:
-      "Open to full-time roles, freelance missions and technical collaborations — especially where distributed systems meet AI.",
+      "Describe what you need in 30 seconds: the message lands straight in my WhatsApp. Recruiters and technical partners: email and CV are right below.",
     cta: "Send an email",
     copy: "Copy email",
     copied: "Copied!",

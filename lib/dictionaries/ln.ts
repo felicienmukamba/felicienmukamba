@@ -2,23 +2,23 @@ import type { Dictionary } from "./en"
 
 export const ln: Dictionary = {
   meta: {
-    title: "Félicien Mukamba — Software Engineer & AI Engineer",
+    title: "Félicien Mukamba — Software & AI Engineer | Mokeli ya SOSIDE (Bukavu, RDC)",
     description:
-      "Félicien Mukamba, software engineer, AI engineer mpe mokeli ya SOSIDE, atongaka ba plateformes distribuées sécurisées mpe ba agents IA na production, kobanda na Bukavu, RDC.",
+      "Ingénieur logiciel senior, AI Engineer mpe mokeli ya SOSIDE na Bukavu, RDC. Ba plateformes sur mesure, kobongisa misala (automation), RAG mpe ba agents IA na production. Talos ya koyokana.",
     keywords: [
       "Félicien Mukamba",
-      "Software Engineer",
-      "AI Engineer",
+      "Ingénieur logiciel Bukavu",
+      "Mosali ya ba logiciels na RDC",
+      "AI Engineer Congo",
       "AI Agent Manager",
-      "Développeur full-stack",
-      "LLM",
-      "Spring Boot",
-      "Next.js",
+      "Développeur full-stack Bukavu",
       "SOSIDE",
-      "Bukavu",
-      "RDC",
+      "Kobongisa misala ya entreprise",
+      "Kotonga site web na logiciel RDC",
+      "Caisse hors-ligne Mobile Money",
+      "Spring Boot Next.js Congo",
     ],
-    ogAlt: "Félicien Mukamba — Software Engineer & AI Engineer",
+    ogAlt: "Félicien Mukamba — Software & AI Engineer na Bukavu, RDC",
   },
 
   a11y: {
@@ -43,15 +43,20 @@ export const ln: Dictionary = {
   },
 
   hero: {
-    available: "Nazali disponible mpo na misala ya sika",
+    available: "Nazali disponible mpo na ba projets ya sika · Bukavu & na mosika",
     eyebrow: "Software & AI Engineer · Mokambi ya projet · Mokeli ya SOSIDE",
     headlineStart: "Natongaka ba plateformes ya makasi",
     headlineAccent: "mpe ba agents IA",
     headlineEnd: "oyo ekambaka yango.",
     intro:
-      "Ingénieur full-stack na Bukavu, RDC. Nasalaka ba systèmes distribués mpo na identité numérique, santé, boyekoli mpe mombongo — mpe natiaka ba LLM na ba agents autonomes na production, na ba garde-fous oyo esengeli.",
-    ctaPrimary: "Tobanda kosolola",
+      "Nasalisaka ba PME, ba ONG, ba kelasi mpe ba clinique bátika Excel, mikanda mpe kokoma mbala mibale, bázwa ba logiciels ya solo — oyo esalaka ata soki réseau ezali te, endimaka Mobile Money mpe ekotisaka IA na ba garde-fous. Ingénieur logiciel & IA na Bukavu, mokeli ya SOSIDE.",
+    ctaPrimary: "Tobanda projet",
     ctaWork: "Tala misala na ngai",
+    ctaWhatsapp: "Koma na WhatsApp",
+    waMessage: "Mbote Félicien, natali site na yo mpe nalingi tosolola mpo na projet moko.",
+    trust: ["Lisolo ya liboso, engagement te", "Devis na kolanda budget na yo", "Hors-ligne & Mobile Money"],
+    proofLabel: "Ba plateformes oyo nasalaki architecture",
+    recruiter: "Recruteur to partenaire technique?",
     rolesLabel: "Lelo",
     roles: ["AI Engineer", "Mokambi ya projet", "AI Agent Manager", "Software Engineer", "Architecte Système", "Mokeli"],
     location: "Bukavu, RD Congo",
@@ -130,8 +135,8 @@ export const ln: Dictionary = {
     intro:
       "Kobanda na bopeti ya mbangu tii na kotonga ba logiciels ya minene mpe ba agents IA na production. Misala na biso nionso ebongisami mpo na mikakatano ya réseau mpe ya mboka na RDC.",
     negotiableNotice: {
-      badge: "Talos ya koyokana 100%",
-      title: "Talo ya makasi ezali te : toyokanaka na motindo ya mbongo na yo.",
+      badge: "Devis ya polele, na kolanda budget na yo",
+      title: "Ofutaka mpo na lifuti, kasi mpo na liste ya ntalo te.",
       description:
         "PME, ONG, kelasi, lopitalo to structure ya monene : projet moko moko ezali ndenge mosusu. Tobimisaka talo ya kofungama te mpo misala nionso esalemaka na boyokani na kolanda budget na yo.",
       cta: "Solola mpo na talo ya yo",
@@ -145,7 +150,7 @@ export const ln: Dictionary = {
         category: "core",
         title: "Diagnostic Digital & Bopeti IA",
         badge: "Ebandeli ya malamu",
-        pricingTag: "Na devis · Talo ya koyokana",
+        pricingTag: "Miniti 60–120",
         description:
           "Na miniti 60 tii 120, totalaka ndenge misala na bino etambolaka, tozalaka kotala ngonga oyo ezali kobunga mpe topesi bino nzela misato ya liboso mpo na kozwa litomba ya mbangu.",
         deliverables: [
@@ -164,7 +169,7 @@ export const ln: Dictionary = {
         category: "core",
         title: "Bongisa misala na mbangu (Automation)",
         badge: "Mosala ya mbangu (7-10j)",
-        pricingTag: "Talo ya koyokana",
+        pricingTag: "Mikolo 7–10",
         description:
           "Kolongola kotiaka ba donnes mbala na mbala na maboko kati na Excel, Sheets, WhatsApp mpe ba emails. Ba rapports na bino ekokoma kosalama yango moko.",
         deliverables: [
@@ -183,7 +188,7 @@ export const ln: Dictionary = {
         category: "core",
         title: "Kotonga ba logiciels mpe ba sites web sur mesure",
         badge: "Mayele ya monene",
-        pricingTag: "Sur mesure · Talo ya koyokana",
+        pricingTag: "Sur mesure",
         description:
           "Kotonga ba systèmes ya makasi mpo na bino : RH, stocks, boteki, caisse esalaka ata réseau ezali te (offline), comptabilité mpe ba portails B2B.",
         deliverables: [
@@ -202,7 +207,7 @@ export const ln: Dictionary = {
         category: "core",
         title: "Ingénierie IA, RAG & Ba Agents Autonomes",
         badge: "Mayele ya sika",
-        pricingTag: "Na devis · Talo ya koyokana",
+        pricingTag: "Na devis",
         description:
           "Kotia ba assistants IA mpe ba agents oyo esalaka misala ya solo na kotala mikanda ya sekele ya ndako na bino, na kokengela mpe bokengi ya makasi.",
         deliverables: [
@@ -221,7 +226,7 @@ export const ln: Dictionary = {
         category: "sector",
         title: "Ba solutions oyo ebongisami mpo na ba secteurs",
         badge: "PME · ONG · Kelasi · Lopitalo",
-        pricingTag: "Ekolanda structure na yo · Talo ya koyokana",
+        pricingTag: "Pene mpo na kosala",
         description:
           "Ba systèmes oyo esili kosalema mpe oyo emonani malamu na RDC mpo na kobanda kozanga kozela ntango molai.",
         deliverables: [
@@ -240,7 +245,7 @@ export const ln: Dictionary = {
         category: "core",
         title: "Bokengi, Kobatela mpe Kosunga mikolo nionso",
         badge: "Kimia ya motema",
-        pricingTag: "Forfait · Talo ya koyokana",
+        pricingTag: "Forfait flexible",
         description:
           "Sima ya kopesa bino logiciel, tozali kokoba kobatela yango : kosala ba sauvegardes, kotala ba serveurs mpe kopesa lisungi ya mbangu.",
         deliverables: [
@@ -289,7 +294,7 @@ export const ln: Dictionary = {
       description:
         "Yebisa biso nini ezali kozwa ntango mingi to logiciel nini olingi totonga. Talos nionso ezali ya koyokana mpe tokotonga elongo na yo.",
       waButton: "Solola na WhatsApp",
-      emailButton: "Tinda email",
+      emailButton: "Limbolá projet na ngai",
       waMessage: "Mbote Félicien, nalingi tosolola mpo na misala na bino mpe tozwana talo ya malamu.",
     },
   },
@@ -589,7 +594,7 @@ export const ln: Dictionary = {
         description: "Ba blobs, ba vagues, ba motifs mpe ba dégradés — export SVG, PNG to CSS.",
       },
       motion: {
-        name: "Ba outils ya motion",
+        name: "Motion Studio",
         description: "Salá ba courbes ya easing, ba ressorts mpe ba keyframes — kopia CSS to Framer Motion.",
       },
       design: {
@@ -599,12 +604,79 @@ export const ln: Dictionary = {
     },
   },
 
+  faq: {
+    kicker: "Mituna oyo batunaka mingi",
+    title: "Ba eyano",
+    titleAccent: "liboso ya kokota.",
+    intro: "Oyo bakambi batunaka ngai mingi liboso ya kobanda projet.",
+    items: [
+      {
+        q: "Projet ekosala ntalo boni?",
+        a: "Etaleli périmètre: diagnostic, automatisation moko mpe plateforme mobimba ezali na ntalo moko te. Sima ya lisolo ya liboso, engagement te, okozwa devis ya polele na kolanda budget na yo, frais ya kobombama te.",
+      },
+      {
+        q: "Ekozwa ntango boni mpo na kosilisa?",
+        a: "Automatisation moko esilaka na mikolo 7 kino 10. Plateforme sur mesure etongamaka na etape: omekaka version ya liboso noki, sima ba modules ebakisamaka na jalon moko moko.",
+      },
+      {
+        q: "Soki internet ekati?",
+        a: "Ba logiciels esalemi « offline-first »: koteka, kokoma mpe caisse ekobi ata réseau ezali te, mpe ekosangana yango moko soki connexion ezongi.",
+      },
+      {
+        q: "Ba données na ngai ekobatelama?",
+        a: "Iyo. Ba données ebombami na chiffrement, ba accès ekomamaka, mpe ba assistants IA ekoki kokota kaka na oyo opesi ndingisa, na validation ya moto mpo na décision nyonso ya ntina.",
+      },
+      {
+        q: "Sima ya kopesa logiciel, nini ekolanda?",
+        a: "Ba équipes na yo bakoyekola, sima opona suivi: sauvegardes mokolo na mokolo, supervision, correctifs ya sécurité mpe support na WhatsApp & e-mail na SLA ekomami.",
+      },
+      {
+        q: "Osalaka libanda ya Bukavu?",
+        a: "Iyo. Nasalaka na ba organisations na Goma, Kinshasa, Lubumbashi mpe na mokili mobimba ya francophone, na mosika, mpe nakoki koya soki projet esengi.",
+      },
+      {
+        q: "Nazali technicien te: ezali likambo?",
+        a: "Ata moke te. Olimboli mikakatano na yo na maloba na yo; nabongolaka yango na solution, nalakisaka matomba mpe nalimbolaka choix nyonso kozanga jargon.",
+      },
+    ],
+  },
+
+  brief: {
+    title: "Limbolá projet na yo",
+    subtitle: "Mituna 4, ba seconde 30. Message na yo ekozala pene mpo na kotinda na WhatsApp to na e-mail.",
+    name: "Nkombo na yo",
+    org: "Organisation (soki olingi)",
+    need: "Ozali na posa ya nini?",
+    needs: ["Logiciel / plateforme sur mesure", "Automatiser processus", "Assistant IA / RAG", "Solution kelasi, clinique, ONG to mombongo", "Diagnostic digital", "Maintenance & support", "Mosusu"],
+    budget: "Budget (soki olingi)",
+    budgets: ["Tokosolola", "< 500 $", "500 – 2 000 $", "2 000 – 10 000 $", "> 10 000 $"],
+    timeline: "Ntango olingi",
+    timelines: ["Mbangu", "Liboso ya sanza 1", "Sanza 1 kino 3", "Ntango nyonso"],
+    message: "Posa na yo na maloba moke",
+    placeholder: "Ndakisa: tokomaka frais scolaires na Excel mpe tolingi ba reçus mpe suivi automatique…",
+    send: "Tinda na WhatsApp",
+    sendEmail: "Na e-mail",
+    note: "Eloko moko te ebombamaka na site oyo: message efungwamaka na WhatsApp to na messagerie na yo.",
+    greeting: "Mbote Félicien, nakomeli yo uta na site na yo.",
+    fields: {
+      name: "Nkombo",
+      org: "Organisation",
+      need: "Posa",
+      budget: "Budget",
+      timeline: "Ntango",
+      details: "Ba détails",
+    },
+    emailSubject: "Projet ya sika",
+    floating: "WhatsApp",
+    required: "Pona ata posa moko",
+  },
+
   contact: {
     kicker: "Kosolola",
-    title: "Totonga",
-    titleAccent: "oyo ekoya.",
+    title: "Tosolola mpo na",
+    titleAccent: "projet na yo.",
     description:
-      "Nazali disponible mpo na misala ya temps plein, ba missions freelance mpe ba collaborations techniques — mingi mingi esika ba systèmes distribués ekutanaka na IA.",
+      "Limbolá posa na yo na ba seconde 30: message ekoya mbala moko na WhatsApp na ngai. Ba recruteurs mpe ba partenaires techniques: e-mail mpe CV ezali na se.",
     cta: "Tinda e-mail",
     copy: "Kopia e-mail",
     copied: "Ekopiami!",

@@ -10,5 +10,6 @@ export function headerLabels(t: Dictionary) {
     language: t.a11y.language,
     primaryNav: t.a11y.primaryNav,
     cv: { download: t.cv.download, generating: t.cv.generating, error: t.cv.error },
+    cta: t.hero.ctaPrimary,
   }
 }

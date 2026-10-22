@@ -74,7 +74,7 @@ export function AiSection({ t }: { t: Dictionary }) {
     <Section id="ai" labelledBy="ai-title">
       <SectionHeading
         id="ai-title"
-        index="02"
+        index="04"
         kicker={t.ai.kicker}
         title={t.ai.title}
         accent={t.ai.titleAccent}

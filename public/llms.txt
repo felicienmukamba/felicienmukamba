@@ -1,0 +1,38 @@
+# Félicien Mukamba — Software Engineer, AI Engineer & Founder of SOSIDE
+
+> Senior Software Engineer, AI Engineer, and Founder of SOSIDE COMPANY SAS based in Bukavu, South Kivu, Democratic Republic of the Congo (DR Congo / RDC). Specialized in secure distributed systems, production LLM RAG pipelines, autonomous AI agent management, and offline-first enterprise applications.
+
+## Profile Summary
+- **Full Name**: Félicien Mukamba Kazindja
+- **Roles**: Founder (SOSIDE COMPANY SAS), Senior Full-Stack Engineer & Project Manager (Aumsoft Technology), AI Engineer, AI Agent Manager
+- **Location**: Bukavu, South Kivu, DR Congo (UTC+2)
+- **Geographic Coverage**: Bukavu, Goma, Kinshasa, Lubumbashi, DR Congo nationwide, and remote worldwide across Francophone and Anglophone markets
+- **Website**: https://felicienmukamba.vercel.app
+- **Company Website**: https://soside.vercel.app/
+- **Contact**: felicienmukamba.cd@gmail.com | +243 995 209 133 (WhatsApp & Phone)
+- **Profiles**: [LinkedIn](https://www.linkedin.com/in/felicien-mukamba-5b49ab252/) | [GitHub](https://github.com/felicienmukamba)
+
+## Core Competencies & Tech Stack
+- **AI Engineering**: Retrieval-Augmented Generation (RAG), pgvector, LangGraph, tool calling / function calling, streaming APIs, prompt versioning & evaluation harnesses
+- **AI Agent Management**: Multi-agent orchestration, least-privilege tool access, human-in-the-loop approval gates, prompt-injection defense, PII redaction, audit logging
+- **Backend & Distributed Systems**: Spring Boot (Java), Next.js / TypeScript, PostgreSQL, Docker, Redis, Rust (performance-critical modules)
+- **Local African Constraints**: Offline-First architecture (local transaction continuity during internet or power outages), Multi-currency (USD, CDF, EUR), Mobile Money integration (M-Pesa, Orange Money, Airtel Money)
+
+## Flagship Systems in Production
+- **PGCC (Portail des Citoyens Congolais)**: Digital identity and public administration platform. AES-256-GCM encryption, sub-200ms latency, 10,000+ active users.
+- **HMS Elite**: Hospital Management System interoperable with HL7 and FHIR standards. Electronic Patient Records, admissions, billing, and pharmacy.
+- **UMS (University Management System)**: Multi-tenant SaaS for higher education. 5+ institutions, 100% tenant data isolation, 50+ modules.
+- **Maago**: Retail marketplace and offline-first point-of-sale system that continues transacting without network connection.
+- **GEVAPOM**: Digital transformation across 8 schools, reducing administrative overhead by 60%.
+
+## Services & Solutions (via SOSIDE)
+All services are provided with negotiable, tailored pricing. No rigid fees:
+1. **Digital & AI Diagnostic Audit**: 60-to-120 minute operational workflow mapping, identifying lost hours, and presenting a 30-day prioritized action plan.
+2. **Express Workflow Automation**: Zero data re-entry between Excel, Google Sheets, WhatsApp, and ERPs; automated periodic reports and smart WhatsApp alerts (delivered in under 10 days).
+3. **Custom Web Systems & Core Platforms**: End-to-end bespoke software engineered for African business realities (offline-first, multi-currency, mobile money).
+4. **AI Engineering, RAG & Autonomous Agents**: Private document interrogation, API-connected agents, strict privacy, and human validation guardrails.
+5. **Sector-Specific Turnkey Solutions**: Battle-tested modules for SMEs & retail, humanitarian NGOs & donors, schools & universities, and healthcare clinics.
+6. **Maintenance, Supervision & SLAs**: Automated daily cloud backups, 24/7 server monitoring, proactive updates, and written SLA commitments.
+
+## Pricing Policy
+All quotes and engagement rates are **100% negotiable and customized** based on client scope, timeline, and budgetary capacity. Whether working with a local SME, an international NGO, an educational establishment, or a healthcare provider, terms are structured flexibly.

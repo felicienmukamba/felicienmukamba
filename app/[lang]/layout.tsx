@@ -74,6 +74,12 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     robots: { index: true, follow: true, googleBot: { "max-image-preview": "large", "max-snippet": -1 } },
     formatDetection: { telephone: false },
     category: "technology",
+    other: {
+      "geo.region": site.geoRegion,
+      "geo.placename": site.city,
+      "geo.position": `${site.coordinates.latitude};${site.coordinates.longitude}`,
+      "ICBM": `${site.coordinates.latitude}, ${site.coordinates.longitude}`,
+    },
   }
 }
 

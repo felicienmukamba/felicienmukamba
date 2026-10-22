@@ -11,8 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return locales.map((lang) => ({
       url: `${site.url}/${lang}${path}`,
       lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: path === "" ? (lang === "en" ? 1 : 0.9) : 0.6,
+      changeFrequency: path === "" ? ("weekly" as const) : ("monthly" as const),
+      priority: path === "" ? 1.0 : 0.7,
       alternates: { languages },
     }))
   })

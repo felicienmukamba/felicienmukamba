@@ -2,6 +2,7 @@ import { ArrowUpRight, Github, Linkedin, Mail, Phone } from "lucide-react"
 import { CopyEmailButton, LocalTime } from "@/components/contact-actions"
 import { XIcon } from "@/components/icons"
 import { Reveal } from "@/components/motion"
+import { ProjectBrief } from "@/components/project-brief"
 import type { Dictionary } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
 import { site } from "@/lib/site"
@@ -25,7 +26,7 @@ export function Contact({ lang, t }: { lang: Locale; t: Dictionary }) {
 
           <div className="relative">
             <p className="flex items-center justify-center gap-3 font-mono text-[12px] uppercase tracking-[0.16em] text-subtle-foreground">
-              <span className="text-accent">09</span>
+              <span className="text-accent">10</span>
               <span aria-hidden className="h-px w-8 bg-line-strong" />
               {t.contact.kicker}
             </p>
@@ -38,10 +39,12 @@ export function Contact({ lang, t }: { lang: Locale; t: Dictionary }) {
             </h2>
             <p className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">{t.contact.description}</p>
 
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <ProjectBrief b={t.brief} />
+
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
               <a
                 href={`mailto:${site.email}`}
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-foreground px-6 text-[15px] font-medium text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                className="group inline-flex h-11 items-center gap-2 rounded-full border border-line-strong px-5 text-[14px] font-medium transition-colors hover:bg-surface-2"
               >
                 <Mail className="size-4" aria-hidden />
                 {t.contact.cta}

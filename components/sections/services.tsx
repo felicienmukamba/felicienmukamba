@@ -23,6 +23,7 @@ import type { Dictionary } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
 import { site } from "@/lib/site"
 import { cn } from "@/lib/utils"
+import { whatsappUrl } from "@/lib/whatsapp"
 
 const serviceIcons: Record<string, typeof Compass> = {
   diagnostic: Compass,
@@ -46,7 +47,7 @@ export function Services({ lang, t }: { lang: Locale; t: Dictionary }) {
     <Section id="services" labelledBy="services-title">
       <SectionHeading
         id="services-title"
-        index="03"
+        index="01"
         kicker={services.kicker}
         title={services.title}
         accent={services.titleAccent}
@@ -71,7 +72,7 @@ export function Services({ lang, t }: { lang: Locale; t: Dictionary }) {
               </p>
             </div>
             <a
-              href={`https://wa.me/${site.phoneHref}?text=${encodeURIComponent(services.ctaBanner.waMessage)}`}
+              href={whatsappUrl(services.ctaBanner.waMessage)}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-foreground px-6 text-[14px] font-medium text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
@@ -193,7 +194,7 @@ export function Services({ lang, t }: { lang: Locale; t: Dictionary }) {
                   {/* Action Link to WhatsApp with custom prompt */}
                   <div className="mt-5 border-t border-line pt-4">
                     <a
-                      href={`https://wa.me/${site.phoneHref}?text=${encodeURIComponent(item.waPrompt)}`}
+                      href={whatsappUrl(item.waPrompt)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={cn(
@@ -274,7 +275,7 @@ export function Services({ lang, t }: { lang: Locale; t: Dictionary }) {
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <a
-                href={`https://wa.me/${site.phoneHref}?text=${encodeURIComponent(services.ctaBanner.waMessage)}`}
+                href={whatsappUrl(services.ctaBanner.waMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex h-12 items-center gap-2 rounded-full bg-foreground px-6 text-[15px] font-medium text-background transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
@@ -284,10 +285,10 @@ export function Services({ lang, t }: { lang: Locale; t: Dictionary }) {
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
               </a>
               <a
-                href={`mailto:${site.email}?subject=${encodeURIComponent("Demande de service SOSIDE / Proposition")}`}
+                href="#brief"
                 className="inline-flex h-12 items-center gap-2 rounded-full border border-line-strong bg-surface-2/60 px-6 text-[15px] font-medium text-foreground transition-colors hover:bg-surface-2"
               >
-                <Mail className="size-4" aria-hidden />
+                <ArrowRight className="size-4" aria-hidden />
                 {services.ctaBanner.emailButton}
               </a>
             </div>

@@ -5,6 +5,7 @@ import { AiSection } from "@/components/sections/ai"
 import { Contact } from "@/components/sections/contact"
 import { Education } from "@/components/sections/education"
 import { Experience } from "@/components/sections/experience"
+import { Faq } from "@/components/sections/faq"
 import { Footer } from "@/components/sections/footer"
 import { Hero } from "@/components/sections/hero"
 import { LabTeaser } from "@/components/sections/lab"
@@ -12,6 +13,7 @@ import { Projects } from "@/components/sections/projects"
 import { Services } from "@/components/sections/services"
 import { Skills } from "@/components/sections/skills"
 import { Marquee } from "@/components/ui-kit"
+import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { getDictionary } from "@/lib/dictionaries"
 import { headerLabels } from "@/lib/header-labels"
 import { isLocale } from "@/lib/i18n"
@@ -30,17 +32,19 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <div className="container-page mt-16 md:mt-20">
           <Marquee items={stack} />
         </div>
+        <Services lang={lang} t={t} />
+        <Projects t={t} />
         <About t={t} />
         <AiSection t={t} />
-        <Services lang={lang} t={t} />
         <Experience t={t} />
-        <Projects t={t} />
         <Skills t={t} />
         <Education t={t} />
         <LabTeaser lang={lang} t={t} />
+        <Faq t={t} />
         <Contact lang={lang} t={t} />
       </main>
       <Footer t={t} />
+      <WhatsAppFloat label={t.brief.floating} message={t.hero.waMessage} />
     </>
   )
 }

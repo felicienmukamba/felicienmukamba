@@ -3,9 +3,9 @@ import { site } from "@/lib/site"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${site.name} — Software Engineer & AI Engineer`,
+    name: `${site.name} — Ingénieur Logiciel, AI Engineer & Fondateur SOSIDE`,
     short_name: site.name,
-    description: "Software engineer, AI engineer and founder of SOSIDE, based in Bukavu, DR Congo.",
+    description: "Ingénieur logiciel, AI Engineer et fondateur de SOSIDE COMPANY SAS à Bukavu, Sud-Kivu, RDC.",
     start_url: "/",
     display: "standalone",
     background_color: "#0c0c12",

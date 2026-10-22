@@ -7,7 +7,7 @@ export function About({ t }: { t: Dictionary }) {
     <Section id="about" labelledBy="about-title">
       <div className="grid gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
         <div>
-          <SectionHeading id="about-title" index="01" kicker={t.about.kicker} title={t.about.title} accent={t.about.titleAccent} />
+          <SectionHeading id="about-title" index="03" kicker={t.about.kicker} title={t.about.title} accent={t.about.titleAccent} />
           <div className="mt-10 space-y-6 text-[17px] leading-[1.75] text-muted-foreground md:text-lg">
             {t.about.paragraphs.map((p, i) => (
               <Reveal key={i} delay={0.08 * i}>

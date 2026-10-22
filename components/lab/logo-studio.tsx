@@ -367,7 +367,14 @@ export function LogoStudio({ lang, t }: { lang: Lang; t: LabStrings }) {
           </div>
         </div>
 
-        {tab === "proposals" && (
+        {!loaded && (
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3" aria-hidden>
+            {Array.from({ length: 6 }, (_, i) => (
+              <div key={i} className="h-44 animate-pulse rounded-2xl border border-line bg-surface-2/60" />
+            ))}
+          </div>
+        )}
+        {loaded && tab === "proposals" && (
           <Proposals
             cfg={cfg}
             seed={seed}
@@ -380,9 +387,9 @@ export function LogoStudio({ lang, t }: { lang: Lang; t: LabStrings }) {
             }}
           />
         )}
-        {tab === "editor" && <Editor cfg={cfg} patch={patch} measure={measure} s={s} onReset={() => set(DEFAULT_LOGO)} />}
-        {tab === "versions" && <Versions cfg={cfg} measure={measure} s={s} lang={lang} />}
-        {tab === "collateral" && <Collateral cfg={cfg} s={s} t={t} />}
+        {loaded && tab === "editor" && <Editor cfg={cfg} patch={patch} measure={measure} s={s} onReset={() => set(DEFAULT_LOGO)} />}
+        {loaded && tab === "versions" && <Versions cfg={cfg} measure={measure} s={s} lang={lang} />}
+        {loaded && tab === "collateral" && <Collateral cfg={cfg} s={s} t={t} />}
       </div>
     </div>
   )
@@ -1044,9 +1051,10 @@ function Collateral({ cfg, s, t }: { cfg: LogoConfig; s: S; t: LabStrings }) {
 
   useEffect(() => {
     let alive = true
-    const id = setTimeout(async () => {
-      const [symbol, fontCss] = await Promise.all([buildSvg(cfg, "symbol", "color", 400), fontEmbedCss([{ font: bodyFont, weights: [400, 600, 700, 800] }])])
-      if (alive) setAssets({ logo: svgDataUrl(symbol.svg), fontCss, key })
+    const id = setTimeout(() => {
+      // Show the assets as soon as the logo is ready; the embedded body font (slower) swaps in after.
+      buildSvg(cfg, "symbol", "color", 400).then((symbol) => alive && setAssets((a) => ({ logo: svgDataUrl(symbol.svg), fontCss: a?.fontCss ?? "", key })))
+      fontEmbedCss([{ font: bodyFont, weights: [400, 600, 700, 800] }]).then((fontCss) => alive && setAssets((a) => (a ? { ...a, fontCss } : a)))
     }, 250)
     return () => {
       alive = false
